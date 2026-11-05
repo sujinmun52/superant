@@ -55,6 +55,7 @@ public final class ScreenshotTool {
 
         Path records = Files.createTempDirectory("superant-shot").resolve("records.json");
         controller = new GameController(new RecordRepository(records), new Random(seed));
+        Sfx.setEnabled(false);
         SwingUtilities.invokeAndWait(() -> {
             Theme.install();
             frame = new MainFrame(controller);
@@ -103,8 +104,9 @@ public final class ScreenshotTool {
         SwingUtilities.invokeAndWait(() -> call(frame, "onNextTurn"));
         Thread.sleep(1250);
         shot(frame.getRootPane(), "beta_04_live", "턴 마감 장중 애니메이션: 가격이 틱 단위로 오르내리고(빨강/파랑 깜빡임) 차트에 LIVE 표시");
-        Thread.sleep(1500);
-        shot(frame.getRootPane(), "beta_05_turn_summary", "장 마감 직후 턴 결과 카드: 이번 턴 손익, 최고 상승/최대 하락 종목, 칭호 변화, 연속 수익");
+        SwingUtilities.invokeAndWait(() -> call(frame, "finishTicks"));
+        Thread.sleep(330);
+        shot(frame.getRootPane(), "beta_05_turn_summary", "장 마감 직후 턴 결과 카드(이번 턴 손익, 최고 상승/최대 하락 종목, 칭호 변화, 연속 수익)와 속보 연출(배지 깜빡임, 제목 타이핑)");
         Thread.sleep(2600);
         v = controller.getView();
         final ViewData v2b = v;

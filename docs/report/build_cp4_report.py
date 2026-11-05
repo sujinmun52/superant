@@ -247,7 +247,7 @@ for line in [
     "집합: NewsService가 공개한 News 목록은 추첨 자료와 별개로 조회용으로 유지된다.",
     "연관: MainFrame은 GameController를, GameController는 GameSession(0..1), ResultEvaluator, RecordStore를 단방향으로 참조한다.",
     "의존: GameController는 ViewData와 ActionResult를 생성해 반환하고, GameSession은 GameSnapshot을, ResultEvaluator는 GameResult를 만든다.",
-    "제약과 static: 현금 {cash >= 0}, 가격 {price >= 1}, 완료 턴 {0..30}. GameSession.TOTAL_TURNS = 30, INITIAL_CASH = 1000000, GOAL_ASSETS = 1200000, Portfolio.MAX_QUANTITY = 99999, Market.MAX_RATE = 0.20은 static 상수(밑줄)다. 열거형 AntRank는 수익률별 칭호 사다리로 화면 연출과 결과 칭호에만 쓰이며 엔딩 판정 기준은 바꾸지 않는다.",
+    "제약과 static: 현금 {cash >= 0}, 가격 {price >= 1}, 완료 턴 {0..30}. GameSession.TOTAL_TURNS = 30, INITIAL_CASH = 1000000, GOAL_ASSETS = 1200000, Portfolio.MAX_QUANTITY = 99999, Market.MAX_RATE = 0.20은 static 상수(밑줄)다. 열거형 AntRank는 수익률별 칭호 사다리로 화면 연출과 결과 칭호에만 쓰이며 엔딩 판정 기준은 바꾸지 않는다. Sfx는 효과음을 합성해 재생하는 view 보조 클래스로 MainFrame이 사용(의존)한다.",
     "다이어그램 외 보조 클래스: 화면 색과 글꼴을 모은 Theme, 둥근 버튼 같은 작은 컴포넌트를 모은 Widgets, JSON 읽기/쓰기 도우미 Json은 패키지 내부(package-private) 보조 클래스라 기능 매핑에서 제외했다.",
     "CP3 대비 변경: 시퀀스의 GameView를 MainFrame과 대화상자 4개로 나누고, 공통 반환값을 상속 구조로, 저장소를 인터페이스와 구현으로 분리했다.",
 ]:

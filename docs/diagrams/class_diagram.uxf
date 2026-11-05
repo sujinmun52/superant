@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
 <zoom_level>10</zoom_level>
-<element><id>UMLPackage</id><coordinates><x>36</x><y>84</y><w>2348</w><h>460</h></coordinates><panel_attributes>view
+<element><id>UMLPackage</id><coordinates><x>36</x><y>84</y><w>2348</w><h>600</h></coordinates><panel_attributes>view
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
-<element><id>UMLPackage</id><coordinates><x>356</x><y>594</y><w>1548</w><h>400</h></coordinates><panel_attributes>controller
+<element><id>UMLPackage</id><coordinates><x>356</x><y>734</y><w>1548</w><h>400</h></coordinates><panel_attributes>controller
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
-<element><id>UMLPackage</id><coordinates><x>36</x><y>1044</y><w>2478</w><h>810</h></coordinates><panel_attributes>domain
+<element><id>UMLPackage</id><coordinates><x>36</x><y>1184</y><w>2478</w><h>810</h></coordinates><panel_attributes>domain
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
-<element><id>UMLPackage</id><coordinates><x>36</x><y>1904</y><w>508</w><h>590</h></coordinates><panel_attributes>service
+<element><id>UMLPackage</id><coordinates><x>36</x><y>2044</y><w>508</w><h>590</h></coordinates><panel_attributes>service
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
-<element><id>UMLPackage</id><coordinates><x>656</x><y>1904</y><w>538</w><h>680</h></coordinates><panel_attributes>persistence
+<element><id>UMLPackage</id><coordinates><x>656</x><y>2044</y><w>538</w><h>680</h></coordinates><panel_attributes>persistence
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
-<element><id>UMLPackage</id><coordinates><x>1306</x><y>1904</y><w>808</w><h>580</h></coordinates><panel_attributes>model
+<element><id>UMLPackage</id><coordinates><x>1306</x><y>2044</y><w>808</w><h>580</h></coordinates><panel_attributes>model
 bg=#F7F9FC</panel_attributes><additional_attributes/></element>
 <element><id>UMLClass</id><coordinates><x>60</x><y>140</y><w>230</w><h>80</h></coordinates><panel_attributes>*StockGameApp*
 --
@@ -21,7 +21,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 <element><id>UMLClass</id><coordinates><x>380</x><y>140</y><w>160</w><h>30</h></coordinates><panel_attributes>*javax.swing::JFrame*</panel_attributes><additional_attributes/></element>
 <element><id>UMLClass</id><coordinates><x>920</x><y>140</y><w>160</w><h>30</h></coordinates><panel_attributes>*javax.swing::JPanel*</panel_attributes><additional_attributes/></element>
 <element><id>UMLClass</id><coordinates><x>1470</x><y>140</y><w>160</w><h>30</h></coordinates><panel_attributes>*javax.swing::JDialog*</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>380</x><y>220</y><w>470</w><h>300</h></coordinates><panel_attributes>*MainFrame*
+<element><id>UMLClass</id><coordinates><x>380</x><y>220</y><w>470</w><h>320</h></coordinates><panel_attributes>*MainFrame*
 --
 -controller : GameController
 -startPanel : StartPanel
@@ -38,6 +38,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 -onNextTurn() : void
 -animateTurn(before : ViewData, result : TurnResult) : void
 -showTurnSummary(before : ViewData, result : TurnResult) : void
+-flashNews() : void
 -showResult() : void
 bg=white</panel_attributes><additional_attributes/></element>
 <element><id>UMLClass</id><coordinates><x>920</x><y>220</y><w>230</w><h>110</h></coordinates><panel_attributes>*StartPanel*
@@ -80,7 +81,15 @@ bg=white</panel_attributes><additional_attributes/></element>
     name : String, difficulty : Difficulty)
 -onSearch() : void
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>380</x><y>650</y><w>490</w><h>280</h></coordinates><panel_attributes>*GameController*
+<element><id>UMLClass</id><coordinates><x>1580</x><y>550</y><w>250</w><h>110</h></coordinates><panel_attributes>*Sfx*
+--
+_-enabled : boolean_
+--
+_+play(sound : Sfx.Sound) : void_
+_+setEnabled(on : boolean) : void_
+_~synth(notes : int[][]) : byte[]_
+bg=white</panel_attributes><additional_attributes/></element>
+<element><id>UMLClass</id><coordinates><x>380</x><y>790</y><w>490</w><h>280</h></coordinates><panel_attributes>*GameController*
 --
 -session : GameSession
 -evaluator : ResultEvaluator
@@ -98,7 +107,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +saveResult() : SaveResult
 +readRecords(name : String, difficulty : Difficulty) : RecordEntry
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>950</x><y>650</y><w>230</w><h>180</h></coordinates><panel_attributes>*ViewData*
+<element><id>UMLClass</id><coordinates><x>950</x><y>790</y><w>230</w><h>180</h></coordinates><panel_attributes>*ViewData*
 --
 -snapshot : GameSnapshot
 -totalAssets : BigDecimal
@@ -110,7 +119,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 --
 +getSnapshot() : GameSnapshot
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1300</x><y>650</y><w>180</w><h>130</h></coordinates><panel_attributes>/ActionResult/
+<element><id>UMLClass</id><coordinates><x>1300</x><y>790</y><w>180</w><h>130</h></coordinates><panel_attributes>/ActionResult/
 --
 #success : boolean
 #errorCode : String
@@ -118,12 +127,12 @@ bg=white</panel_attributes><additional_attributes/></element>
 --
 +isSuccess() : boolean
 +getMessage() : String</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1040</x><y>840</y><w>170</w><h>80</h></coordinates><panel_attributes>*StartResult*
+<element><id>UMLClass</id><coordinates><x>1040</x><y>980</y><w>170</w><h>80</h></coordinates><panel_attributes>*StartResult*
 --
 -view : ViewData
 --
 +getView() : ViewData</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1240</x><y>840</y><w>200</w><h>130</h></coordinates><panel_attributes>*TradeResult*
+<element><id>UMLClass</id><coordinates><x>1240</x><y>980</y><w>200</w><h>130</h></coordinates><panel_attributes>*TradeResult*
 --
 -price : long
 -quantity : int
@@ -131,20 +140,20 @@ bg=white</panel_attributes><additional_attributes/></element>
 -view : ViewData
 --
 +getView() : ViewData</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1470</x><y>840</y><w>170</w><h>110</h></coordinates><panel_attributes>*TurnResult*
+<element><id>UMLClass</id><coordinates><x>1470</x><y>980</y><w>170</w><h>110</h></coordinates><panel_attributes>*TurnResult*
 --
 -completedTurns : int
 -ended : boolean
 -view : ViewData
 --
 +isEnded() : boolean</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1670</x><y>840</y><w>210</w><h>100</h></coordinates><panel_attributes>*SaveResult*
+<element><id>UMLClass</id><coordinates><x>1670</x><y>980</y><w>210</w><h>100</h></coordinates><panel_attributes>*SaveResult*
 --
 -alreadySaved : boolean
 -location : Path
 --
 +isAlreadySaved() : boolean</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>1100</y><w>480</w><h>380</h></coordinates><panel_attributes>*GameSession*
+<element><id>UMLClass</id><coordinates><x>60</x><y>1240</y><w>480</w><h>380</h></coordinates><panel_attributes>*GameSession*
 --
 _+TOTAL_TURNS : int = 30_
 _+INITIAL_CASH : BigDecimal = 1000000_
@@ -168,7 +177,7 @@ _+GOAL_ASSETS : BigDecimal = 1200000_
 +isEnded() : boolean
 +snapshot() : GameSnapshot
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>630</x><y>1100</y><w>380</w><h>200</h></coordinates><panel_attributes>*Portfolio*
+<element><id>UMLClass</id><coordinates><x>630</x><y>1240</y><w>380</w><h>200</h></coordinates><panel_attributes>*Portfolio*
 --
 _+MAX_QUANTITY : int = 99999_
 -cash : BigDecimal {cash &gt;= 0}
@@ -181,7 +190,7 @@ _+MAX_QUANTITY : int = 99999_
 +totalAssets(market : Market) : BigDecimal
 +weights(market : Market) : Map&lt;String, BigDecimal&gt;
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>630</x><y>1370</y><w>330</w><h>180</h></coordinates><panel_attributes>*Holding*
+<element><id>UMLClass</id><coordinates><x>630</x><y>1510</y><w>330</w><h>180</h></coordinates><panel_attributes>*Holding*
 --
 -stockId : String
 -quantity : int
@@ -192,7 +201,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +add(qty : int, amount : BigDecimal) : void
 +remove(qty : int) : BigDecimal
 +unrealizedPnl(price : long) : BigDecimal</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1000</x><y>1370</y><w>200</w><h>160</h></coordinates><panel_attributes>*Trade*
+<element><id>UMLClass</id><coordinates><x>1000</x><y>1510</y><w>200</w><h>160</h></coordinates><panel_attributes>*Trade*
 --
 -turn : int
 -stockId : String
@@ -203,7 +212,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 --
 +getAmount() : long
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1290</x><y>1100</y><w>420</w><h>160</h></coordinates><panel_attributes>*Market*
+<element><id>UMLClass</id><coordinates><x>1290</x><y>1240</y><w>420</w><h>160</h></coordinates><panel_attributes>*Market*
 --
 _+MAX_RATE : BigDecimal = 0.20_
 -stocks : Map&lt;String, Stock&gt;
@@ -214,7 +223,7 @@ _+createStocks() : List&lt;Stock&gt;_
 +applyTurn(draw : TurnDraw, newsEffects :
     Map&lt;String, BigDecimal&gt;, factor : BigDecimal) : void
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1290</x><y>1330</y><w>300</w><h>210</h></coordinates><panel_attributes>*Stock*
+<element><id>UMLClass</id><coordinates><x>1290</x><y>1470</y><w>300</w><h>210</h></coordinates><panel_attributes>*Stock*
 --
 -id : String
 -name : String
@@ -228,7 +237,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +updatePrice(rate : BigDecimal) : long
 +getPriceHistory() : List&lt;Long&gt;
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1800</x><y>1100</y><w>370</w><h>200</h></coordinates><panel_attributes>*NewsService*
+<element><id>UMLClass</id><coordinates><x>1800</x><y>1240</y><w>370</w><h>200</h></coordinates><panel_attributes>*NewsService*
 --
 -difficulty : Difficulty
 -draws : List&lt;TurnDraw&gt;
@@ -241,7 +250,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +pastNews() : List&lt;News&gt;
 +effectsFor(turn : int) : Map&lt;String, BigDecimal&gt;
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1800</x><y>1370</y><w>300</w><h>150</h></coordinates><panel_attributes>*TurnDraw*
+<element><id>UMLClass</id><coordinates><x>1800</x><y>1510</y><w>300</w><h>150</h></coordinates><panel_attributes>*TurnDraw*
 --
 -turn : int
 -marketRate : BigDecimal
@@ -250,7 +259,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 -news : News
 --
 +getNews() : News</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>2190</x><y>1370</y><w>300</w><h>150</h></coordinates><panel_attributes>*News*
+<element><id>UMLClass</id><coordinates><x>2190</x><y>1510</y><w>300</w><h>150</h></coordinates><panel_attributes>*News*
 --
 -event : NewsEvent
 -publishedTurn : int
@@ -260,7 +269,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +isDelayed() : boolean
 +hint(difficulty : Difficulty) : String
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>1550</y><w>350</w><h>280</h></coordinates><panel_attributes>*GameSnapshot*
+<element><id>UMLClass</id><coordinates><x>60</x><y>1690</y><w>350</w><h>280</h></coordinates><panel_attributes>*GameSnapshot*
 --
 -sessionId : UUID
 -playerName : String
@@ -277,7 +286,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 +isCompleted() : boolean
 +findStock(id : String) : Stock
 +quantityOf(id : String) : int</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>1960</y><w>460</w><h>150</h></coordinates><panel_attributes>*ResultEvaluator*
+<element><id>UMLClass</id><coordinates><x>60</x><y>2100</y><w>460</w><h>150</h></coordinates><panel_attributes>*ResultEvaluator*
 --
 --
 +evaluate(snapshot : GameSnapshot) : GameResult
@@ -286,7 +295,7 @@ bg=white</panel_attributes><additional_attributes/></element>
 -findAchievements(snapshot : GameSnapshot) : List&lt;Achievement&gt;
 -maxDrawdown(history : List&lt;BigDecimal&gt;) : BigDecimal
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>2170</y><w>260</w><h>300</h></coordinates><panel_attributes>*GameResult*
+<element><id>UMLClass</id><coordinates><x>60</x><y>2310</y><w>260</w><h>300</h></coordinates><panel_attributes>*GameResult*
 --
 -sessionId : UUID
 -playerName : String
@@ -305,14 +314,14 @@ bg=white</panel_attributes><additional_attributes/></element>
 +getTitle() : String
 +getRank() : AntRank
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>680</x><y>1960</y><w>490</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>680</x><y>2100</y><w>490</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 *RecordStore*
 --
 --
 +saveResult(result : GameResult) : SaveResult
 +readRecords(name : String, difficulty : Difficulty) : RecordEntry
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>680</x><y>2140</y><w>490</w><h>160</h></coordinates><panel_attributes>*RecordRepository*
+<element><id>UMLClass</id><coordinates><x>680</x><y>2280</y><w>490</w><h>160</h></coordinates><panel_attributes>*RecordRepository*
 --
 -file : Path
 --
@@ -323,7 +332,7 @@ _+defaultPath() : Path_
 -loadAll() : List&lt;RecordEntry&gt;
 -writeAtomically(entries : List&lt;RecordEntry&gt;) : void
 bg=white</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>680</x><y>2360</y><w>310</w><h>200</h></coordinates><panel_attributes>*RecordEntry*
+<element><id>UMLClass</id><coordinates><x>680</x><y>2500</y><w>310</w><h>200</h></coordinates><panel_attributes>*RecordEntry*
 --
 -playerName : String
 -difficulty : Difficulty
@@ -335,37 +344,37 @@ bg=white</panel_attributes><additional_attributes/></element>
 -savedSessions : Set&lt;UUID&gt;
 --
 +merge(result : GameResult) : boolean</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1330</x><y>1960</y><w>230</w><h>140</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1330</x><y>2100</y><w>230</w><h>140</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *Difficulty*
 --
 EASY
 NORMAL
 HARD
 -volatilityFactor : BigDecimal</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1330</x><y>2130</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1330</x><y>2270</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *GameState*
 --
 READY
 UPDATING
 ENDED</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1330</x><y>2290</y><w>130</w><h>110</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1330</x><y>2430</y><w>130</w><h>110</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *OrderSide*
 --
 BUY
 SELL</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1590</x><y>1960</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1590</x><y>2100</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *Sector*
 --
 TECH
 ENERGY
 TRANSPORT</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1590</x><y>2120</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1590</x><y>2260</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *RiskLevel*
 --
 LOW
 MEDIUM
 HIGH</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1590</x><y>2280</y><w>140</w><h>180</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1590</x><y>2420</y><w>140</w><h>180</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *NewsEvent*
 --
 TECH_SUCCESS
@@ -374,13 +383,13 @@ ENERGY_PRICE_UP
 GREEN_POWER
 LOGISTICS_DEMAND
 ECONOMY_SLOWDOWN</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1760</x><y>1960</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1760</x><y>2100</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *Ending*
 --
 PROFIT
 MAINTAIN
 RETRY</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1760</x><y>2120</y><w>130</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1760</x><y>2260</y><w>130</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *InvestorType*
 --
 CONCENTRATED
@@ -388,13 +397,13 @@ STABLE
 AGGRESSIVE
 DIVERSIFIED
 BALANCED</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1760</x><y>2310</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1760</x><y>2450</y><w>130</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *Achievement*
 --
 NO_LOSS
 LONG_HOLD
 DIVERSIFIED</panel_attributes><additional_attributes/></element>
-<element><id>UMLClass</id><coordinates><x>1920</x><y>1960</y><w>170</w><h>200</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+<element><id>UMLClass</id><coordinates><x>1920</x><y>2100</y><w>170</w><h>200</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 *AntRank*
 --
 COLONY
@@ -409,80 +418,82 @@ SUPER
 <element><id>Relation</id><coordinates><x>1375</x><y>160</y><w>153</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>143;10;10;90</additional_attributes></element>
 <element><id>Relation</id><coordinates><x>1540</x><y>160</y><w>210</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;90</additional_attributes></element>
 <element><id>Relation</id><coordinates><x>1572</x><y>160</y><w>540</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;530;90</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1115</x><y>770</y><w>231</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>221;10;10;70</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1330</x><y>770</y><w>52</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>42;10;10;70</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1398</x><y>770</y><w>167</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;157;70</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1434</x><y>770</y><w>351</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;341;70</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>1115</x><y>910</y><w>231</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>221;10;10;70</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>1330</x><y>910</y><w>52</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>42;10;10;70</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>1398</x><y>910</y><w>167</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;157;70</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>1434</x><y>910</y><w>351</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;341;70</additional_attributes></element>
 <element><id>Relation</id><coordinates><x>1070</x><y>145</y><w>180</w><h>275</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;10;170;265;140;265</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>915</x><y>2060</y><w>20</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>840</x><y>255</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>915</x><y>2200</y><w>20</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>840</x><y>258</y><w>90</w><h>27</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=1
-m2=1</panel_attributes><additional_attributes>80;20;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>840</x><y>390</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+m2=1</panel_attributes><additional_attributes>80;17;10;10</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>840</x><y>400</y><w>90</w><h>22</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=1
-m2=1</panel_attributes><additional_attributes>80;20;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>530</x><y>1128</y><w>110</w><h>22</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+m2=1</panel_attributes><additional_attributes>80;10;10;12</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>530</x><y>1268</y><w>110</w><h>22</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=1
 m2=1</panel_attributes><additional_attributes>100;12;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>338</x><y>1060</y><w>1130</w><h>50</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>338</x><y>1200</y><w>1130</w><h>50</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=1
 m2=1</panel_attributes><additional_attributes>1120;40;1120;10;10;10;10;40</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>434</x><y>1035</y><w>1524</w><h>75</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>434</x><y>1175</y><w>1524</w><h>75</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=1
 m2=1</panel_attributes><additional_attributes>1514;65;1514;10;10;10;10;65</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>734</x><y>1290</y><w>71</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>734</x><y>1430</y><w>71</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=0..*
 m2=1</panel_attributes><additional_attributes>61;80;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>924</x><y>1290</y><w>146</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>924</x><y>1430</y><w>146</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=0..*
 m2=1</panel_attributes><additional_attributes>136;80;136;50;10;50;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1430</x><y>1250</y><w>80</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>1430</x><y>1390</y><w>80</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=6
 m2=1</panel_attributes><additional_attributes>10;80;70;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1940</x><y>1290</y><w>55</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>1940</x><y>1430</y><w>55</w><h>90</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=30
 m2=1</panel_attributes><additional_attributes>10;80;45;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>825</x><y>2290</y><w>110</w><h>80</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>825</x><y>2430</y><w>110</w><h>80</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;&lt;
 m1=0..*
 m2=1</panel_attributes><additional_attributes>10;70;100;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>2160</x><y>1230</y><w>190</w><h>150</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;
+<element><id>Relation</id><coordinates><x>2160</x><y>1370</y><w>190</w><h>150</h></coordinates><panel_attributes>lt=&lt;-&lt;&lt;&lt;&lt;
 m1=0..*
 m2=1</panel_attributes><additional_attributes>180;140;180;10;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>280</x><y>170</y><w>110</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
+<element><id>Relation</id><coordinates><x>280</x><y>170</y><w>110</w><h>98</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
-m2=1</panel_attributes><additional_attributes>100;86;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>511</x><y>510</y><w>26</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
+m2=1</panel_attributes><additional_attributes>100;88;10;10</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>511</x><y>530</y><w>26</w><h>270</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=*
-controller</panel_attributes><additional_attributes>16;140;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>194</x><y>920</y><w>270</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
+controller</panel_attributes><additional_attributes>16;260;10;10</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>194</x><y>1060</y><w>270</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..1
 m2=1
 session</panel_attributes><additional_attributes>10;180;10;100;260;100;260;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>20</x><y>864</y><w>370</w><h>1151</h></coordinates><panel_attributes>lt=&lt;-
+<element><id>Relation</id><coordinates><x>20</x><y>1004</y><w>370</w><h>1151</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=1</panel_attributes><additional_attributes>40;1141;10;1141;10;10;360;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>786</x><y>920</y><w>1774</w><h>1050</h></coordinates><panel_attributes>lt=&lt;-
+<element><id>Relation</id><coordinates><x>786</x><y>1060</y><w>1774</w><h>1050</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=1
 store</panel_attributes><additional_attributes>138;1040;138;990;1764;990;1764;75;10;75;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>2090</x><y>1435</y><w>110</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+<element><id>Relation</id><coordinates><x>2090</x><y>1575</y><w>110</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..1
 m2=1</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>793</x><y>340</y><w>602</w><h>190</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>592;10;592;145;10;145;10;180</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>860</x><y>730</y><w>100</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>793</x><y>340</y><w>602</w><h>210</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>592;10;592;145;10;145;10;200</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>722</x><y>530</y><w>868</w><h>85</h></coordinates><panel_attributes>lt=&lt;.
+uses</panel_attributes><additional_attributes>858;75;10;75;10;10</additional_attributes></element>
+<element><id>Relation</id><coordinates><x>860</x><y>870</y><w>100</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>90;10;10;60</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>225</x><y>1470</y><w>85</w><h>90</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>225</x><y>1610</y><w>85</w><h>90</h></coordinates><panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;80;75;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>180</x><y>2100</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>180</x><y>2240</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;70;110;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>225</x><y>1820</y><w>75</w><h>150</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>225</x><y>1960</y><w>75</w><h>150</h></coordinates><panel_attributes>lt=&lt;.
 uses</panel_attributes><additional_attributes>10;10;65;140</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>1000</x><y>1250</y><w>300</w><h>153</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>1000</x><y>1390</y><w>300</w><h>153</h></coordinates><panel_attributes>lt=&lt;.
 uses</panel_attributes><additional_attributes>290;143;10;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>310</x><y>2226</y><w>380</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>310</x><y>2366</y><w>380</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
 uses</panel_attributes><additional_attributes>10;34;370;10</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>811</x><y>595</y><w>589</w><h>65</h></coordinates><panel_attributes>lt=&lt;.
+<element><id>Relation</id><coordinates><x>811</x><y>735</y><w>589</w><h>65</h></coordinates><panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>579;55;579;10;10;10;10;55</additional_attributes></element>
 </diagram>

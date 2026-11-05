@@ -127,6 +127,9 @@
 <polyline points="506.0,250.0 506.0,335.0 810.0,335.0 810.0,280.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
 <polyline points="816.0,291.0 810.0,280.0 804.0,291.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
 <text x="664.0" y="330.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="485.0,250.0 485.0,275.0 920.0,275.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="909.0,281.0 920.0,275.0 909.0,269.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="708.5" y="270.0" class="lbl">uses</text>
 <polyline points="590.0,455.0 670.0,455.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
 <polyline points="659.0,461.0 670.0,455.0 659.0,449.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
 <text x="636.0" y="450.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
@@ -175,6 +178,9 @@
 <rect x="1110" y="250" width="120" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <text x="1170.0" y="271" class="cname">RecordDialog</text>
 <text x="1230" y="245" class="tag">UI-05 / F-10</text>
+<rect x="920" y="260" width="60" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="950.0" y="281" class="cname">Sfx</text>
+<text x="980" y="255" class="tag">효과음</text>
 <rect x="380" y="440" width="210" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <text x="485.0" y="461" class="cname">GameController</text>
 <text x="590" y="435" class="tag">FN-01~03 / F-01, F-03~05</text>

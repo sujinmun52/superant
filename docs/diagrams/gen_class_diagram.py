@@ -107,6 +107,7 @@ box("MainFrame", "MainFrame", [
     "-onNextTurn() : void",
     "-animateTurn(before : ViewData, result : TurnResult) : void",
     "-showTurnSummary(before : ViewData, result : TurnResult) : void",
+    "-flashNews() : void",
     "-showResult() : void",
 ], tags="UI-02 / F-02~08")
 box("StartPanel", "StartPanel", [
@@ -144,6 +145,13 @@ box("RecordDialog", "RecordDialog", [
     "    name : String, difficulty : Difficulty)",
     "-onSearch() : void",
 ], tags="UI-05 / F-10")
+box("Sfx", "Sfx", [
+    "_-enabled : boolean",
+], [
+    "_+play(sound : Sfx.Sound) : void",
+    "_+setEnabled(on : boolean) : void",
+    "_~synth(notes : int[][]) : byte[]",
+], tags="효과음")
 
 # ---------------------------------------------------------------- controller
 box("Controller", "GameController", [
@@ -403,8 +411,9 @@ B["JDialog"].at(B["Chart"].x + B["Chart"].w + 260, TOP)
 B["OrderDialog"].at(B["JDialog"].x - 250, B["JDialog"].y + 110)
 B["ResultDialog"].right(B["OrderDialog"], 30)
 B["RecordDialog"].right(B["ResultDialog"], 30)
+B["Sfx"].at(B["ResultDialog"].x, B["MainFrame"].y + B["MainFrame"].h + 10)
 VIEW_BOTTOM = max(b.y + b.h for k, b in B.items() if k in
-                  ("App", "MainFrame", "Chart", "OrderDialog", "ResultDialog", "RecordDialog"))
+                  ("App", "MainFrame", "Chart", "OrderDialog", "ResultDialog", "RecordDialog", "Sfx"))
 
 # controller 패키지
 CY = VIEW_BOTTOM + 130
@@ -512,6 +521,9 @@ _cb = B["Chart"].y + B["Chart"].h + 25
 rel("dep", "MainFrame", "bottom", "OrderDialog", "bottom", af=0.9, bf=0.5, label="<<create>>",
     via=[(B["MainFrame"].x + B["MainFrame"].w * 0.9, _cb),
          (B["OrderDialog"].x + B["OrderDialog"].w * 0.5, _cb)])
+_sm = B["Sfx"].y + B["Sfx"].h / 2
+rel("dep", "MainFrame", "bottom", "Sfx", "left", af=0.75, label="uses",
+    via=[(B["MainFrame"].x + B["MainFrame"].w * 0.75, _sm)])
 rel("dep", "Controller", "right", "ViewData", "left", label="<<create>>")
 rel("dep", "ViewData", "right", "ActionResult", "left", label="")
 rel("dep", "Session", "bottom", "Snapshot", "top", label="<<create>>")
@@ -529,7 +541,7 @@ rel("dep", "Controller", "top", "ActionResult", "top", af=0.9, bf=0.5, label="<<
 # ================================================================ packages
 PKGS = [
     ("view", ["App", "JFrame", "MainFrame", "JPanel", "StartPanel", "Chart", "JDialog",
-              "OrderDialog", "ResultDialog", "RecordDialog"]),
+              "OrderDialog", "ResultDialog", "RecordDialog", "Sfx"]),
     ("controller", ["Controller", "ViewData", "ActionResult", "StartResult", "TradeResult",
                     "TurnResult", "SaveResult"]),
     ("domain", ["Session", "Portfolio", "Holding", "Trade", "Market", "Stock", "NewsService",

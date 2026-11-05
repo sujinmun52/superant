@@ -117,6 +117,9 @@ public class MainFrame extends JFrame {
     private final Map<String, Integer> tickDir = new HashMap<>();
     private Timer ticker;
     private ViewData tickBefore;
+    private Timer newsFx;
+    private final JPanel newsStrip = new JPanel(new BorderLayout(12, 0));
+    private final Widgets.FlatButton soundButton = new Widgets.FlatButton("", Theme.PANEL2, Theme.TEXT);
     private TurnResult tickResult;
 
     private ViewData view;
@@ -238,7 +241,7 @@ public class MainFrame extends JFrame {
     }
 
     private JComponent buildNewsStrip() {
-        JPanel strip = new JPanel(new BorderLayout(12, 0));
+        JPanel strip = newsStrip;
         strip.setBackground(Theme.PANEL2);
         strip.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, Theme.GOLD),
                 BorderFactory.createEmptyBorder(10, 14, 10, 14)));
@@ -402,11 +405,63 @@ public class MainFrame extends JFrame {
         nextButton.setFont(Theme.font(15, true));
         nextButton.setPreferredSize(new Dimension(230, 40));
         nextButton.addActionListener(e -> onNextTurn());
+        soundButton.setToolTipText("효과음 켜기/끄기");
+        soundButton.addActionListener(e -> {
+            Sfx.setEnabled(!Sfx.isEnabled());
+            updateSoundButton();
+        });
+        updateSoundButton();
+        right.add(soundButton);
         right.add(records);
         right.add(newGame);
         right.add(nextButton);
         bar.add(right, BorderLayout.EAST);
         return bar;
+    }
+
+    private void updateSoundButton() {
+        soundButton.setText(Sfx.isEnabled() ? "♪ 소리 켬" : "♪ 소리 끔");
+        soundButton.setForeground(Sfx.isEnabled() ? Theme.TEXT : Theme.MUTED);
+    }
+
+    /**
+     * 새 턴의 뉴스를 속보처럼 보여 준다. 배지가 깜빡이고 제목이 한 글자씩 타이핑되며 경고음이 울린다.
+     * 뉴스가 없는 턴이나 게임 종료 후에는 아무 일도 하지 않는다.
+     */
+    private void flashNews() {
+        stopNewsFx();
+        if (view == null || view.getCurrentNews() == null || view.getSnapshot().isCompleted()) {
+            return;
+        }
+        String full = newsTitle.getText();
+        newsTitle.setText(" ");
+        Sfx.play(Sfx.Sound.NEWS);
+        int[] k = {0};
+        newsFx = new Timer(40, e -> {
+            k[0]++;
+            int chars = Math.min(full.length(), k[0]);
+            newsTitle.setText(full.substring(0, chars) + (chars < full.length() ? "▌" : ""));
+            boolean on = (k[0] / 4) % 2 == 0;
+            newsBadge.setBackground(on ? Theme.UP : Theme.GOLD);
+            newsStrip.setBackground(on ? Theme.PANEL : Theme.PANEL2);
+            if (chars >= full.length() && k[0] >= 48) {
+                stopNewsFx();
+            }
+        });
+        newsFx.start();
+    }
+
+    private void stopNewsFx() {
+        if (newsFx == null) {
+            return;
+        }
+        newsFx.stop();
+        newsFx = null;
+        newsBadge.setBackground(Theme.GOLD);
+        newsStrip.setBackground(Theme.PANEL2);
+        if (view != null && view.getCurrentNews() != null && !view.getSnapshot().isCompleted()) {
+            newsTitle.setText("[" + view.getCurrentTurn() + "턴] " + view.getCurrentNews().getEvent().getTitle());
+        }
     }
 
     /**
@@ -453,6 +508,11 @@ public class MainFrame extends JFrame {
         }
 
         News news = data.getCurrentNews();
+        if (newsFx != null) {
+            newsFx.stop();
+            newsFx = null;
+            newsStrip.setBackground(Theme.PANEL2);
+        }
         if (ended) {
             newsTitle.setText("30턴 완료! 결과를 확인하세요.");
             newsHint.setText("오른쪽 아래 '결과 보기' 버튼을 누르면 엔딩과 투자 성향을 볼 수 있습니다.");
@@ -633,6 +693,7 @@ public class MainFrame extends JFrame {
         selectTab(0);
         status("게임 시작! 1턴 뉴스를 확인하고 종목을 골라 투자하세요.", Theme.MINT);
         cards.show(root, GAME);
+        flashNews();
     }
 
     /**
@@ -668,9 +729,11 @@ public class MainFrame extends JFrame {
         TradeResult r = controller.placeOrder(selectedId, side, qty, view.getVersion(), UUID.randomUUID());
         if (r.isSuccess()) {
             refresh(r.getView());
+            Sfx.play(side == OrderSide.BUY ? Sfx.Sound.BUY : Sfx.Sound.SELL);
             String extra = side == OrderSide.SELL ? "  실현 손익 " + Theme.signedWon(r.getRealizedPnl()) : "";
             status(r.getMessage() + extra, side == OrderSide.BUY ? Theme.UP : Theme.DOWN);
         } else {
+            Sfx.play(Sfx.Sound.ERROR);
             status(r.getMessage(), Theme.UP);
             if ("STALE_VIEW".equals(r.getErrorCode())) {
                 refresh(controller.getView());
@@ -827,10 +890,13 @@ public class MainFrame extends JFrame {
         refresh(r.getView());
         BigDecimal diff = r.getView().getTotalAssets().subtract(tickBefore.getTotalAssets());
         status(r.getCompletedTurns() + "턴 장 마감 · 총자산 " + Theme.signedWon(diff), Theme.trend(diff));
+        boolean rankUp = AntRank.of(r.getView().getReturnRate()).compareTo(AntRank.of(tickBefore.getReturnRate())) > 0;
         if (r.isEnded()) {
             showResult();
         } else {
+            Sfx.play(rankUp ? Sfx.Sound.RANK_UP : diff.signum() >= 0 ? Sfx.Sound.CLOSE_UP : Sfx.Sound.CLOSE_DOWN);
             showTurnSummary(tickBefore, r);
+            flashNews();
         }
     }
 
@@ -890,6 +956,8 @@ public class MainFrame extends JFrame {
         if (controller.evaluateResult() == null) {
             return;
         }
+        Sfx.play(controller.evaluateResult().getEnding() == superant.model.Ending.RETRY
+                ? Sfx.Sound.CLOSE_DOWN : Sfx.Sound.RANK_UP);
         new ResultDialog(this, controller, controller.evaluateResult()).setVisible(true);
     }
 
