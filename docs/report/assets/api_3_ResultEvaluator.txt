@@ -1,1 +1,1 @@
-ResultEvaluator 클래스 문서: evaluate 메서드의 설명, 파라미터, 반환값, 예외
+ResultEvaluator 클래스 문서: 클래스 설명(FN-04), 메서드 요약, evaluate 메서드 상세(설명, 파라미터, 반환값, 예외)

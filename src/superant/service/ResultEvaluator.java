@@ -29,7 +29,8 @@ public class ResultEvaluator {
     private static final BigDecimal PROFIT_LINE = BigDecimal.valueOf(20);
 
     /**
-     * 결과를 판정한다.
+     * 결과를 판정한다. 최종 수익률이 20% 이상이면 수익 달성, 0% 이상이면 유지, 그 밖에는 재도전 엔딩이며,
+     * 턴별 평균 비중으로 투자 성향을, 거래 이력으로 업적과 최대 낙폭을 함께 계산한다.
      *
      * @param snapshot 30턴을 마친 게임의 스냅샷
      * @return 게임 결과
