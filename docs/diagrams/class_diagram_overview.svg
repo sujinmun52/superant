@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1340" viewBox="0 0 1310 1340">
+<svg xmlns="http://www.w3.org/2000/svg" width="1370" height="1340" viewBox="0 0 1370 1340">
 <style>text{font-family:Consolas,"Malgun Gothic",monospace;fill:#1B2430}.cname{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-weight:700;font-size:14px;text-anchor:middle}.italic{font-style:italic}.stereo{font-size:11px;text-anchor:middle}.mem{font-size:12px}.mult{font-size:12px;font-weight:700}.lbl{font-size:11px;font-style:italic;fill:#3B4656}.tag{font-family:"Malgun Gothic",sans-serif;font-size:11px;font-weight:700;fill:#1F5FD1;text-anchor:end}.pkg{font-family:"Segoe UI",sans-serif;font-size:14px;font-weight:700}.title{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-size:22px;font-weight:700}.legend{font-family:"Malgun Gothic",sans-serif;font-size:12px}</style>
-<rect width="1310" height="1340" fill="#FFFFFF"/>
+<rect width="1370" height="1340" fill="#FFFFFF"/>
 <text x="40" y="44" class="title">슈퍼개미 Class Diagram (package superant) - 전체 구조</text>
 <rect x="36" y="84" width="60" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
 <text x="46" y="100" class="pkg">view</text>
@@ -19,7 +19,7 @@
 <rect x="356" y="916" width="188" height="288" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
 <rect x="656" y="894" width="69" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
 <text x="666" y="910" class="pkg">model</text>
-<rect x="656" y="916" width="498" height="238" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="656" y="916" width="658" height="238" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
 <polyline points="450.0,220.0 460.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
 <polygon points="460.0,170.0 465.1,185.3 449.4,182.2" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <polyline points="650.0,220.0 670.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
@@ -260,5 +260,8 @@
 <rect x="1000" y="1090" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <text x="1065.0" y="1106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
 <text x="1065.0" y="1123" class="cname">Achievement</text>
+<rect x="1160" y="950" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1225.0" y="966" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1225.0" y="983" class="cname">AntRank</text>
 <text x="60" y="1270" class="legend">파란 글씨: 연결 기능(F), 함수 명세(FN), 화면(UI) 번호 · 밑줄: static · { } : 제약 · 실선 화살표: 연관 · 점선 화살표: 의존 · 빈 삼각형: 일반화 · 점선 빈 삼각형: 실체화 · 검은 마름모: 합성 · 흰 마름모: 집합</text>
 </svg>

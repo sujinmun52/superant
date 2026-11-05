@@ -19,7 +19,9 @@ import superant.domain.NewsService;
 import superant.domain.Portfolio;
 import superant.domain.Stock;
 import superant.domain.TurnDraw;
+import superant.model.AntRank;
 import superant.model.Difficulty;
+import superant.model.Ending;
 import superant.model.OrderSide;
 import superant.persistence.RecordEntry;
 import superant.persistence.RecordRepository;
@@ -50,6 +52,7 @@ public final class RuleTest {
         tradeRejections();
         duplicateRequestIgnored();
         fullGameAndRecords();
+        rankLadder();
         System.out.printf("%nPASSED %d, FAILED %d%n", passed, failed);
         if (failed > 0) {
             System.exit(1);
@@ -64,6 +67,25 @@ public final class RuleTest {
             failed++;
             System.out.println("  FAIL " + name);
         }
+    }
+
+    private static void rankLadder() {
+        check("칭호 -10.01% 개미굴", AntRank.of(new BigDecimal("-10.01")) == AntRank.COLONY);
+        check("칭호 -10% 새내기", AntRank.of(new BigDecimal("-10")) == AntRank.ROOKIE);
+        check("칭호 0% 일개미", AntRank.of(BigDecimal.ZERO) == AntRank.WORKER);
+        check("칭호 19.99% 병정개미", AntRank.of(new BigDecimal("19.99")) == AntRank.SOLDIER);
+        check("칭호 20% 여왕개미", AntRank.of(new BigDecimal("20")) == AntRank.QUEEN);
+        check("칭호 50% 슈퍼개미", AntRank.of(new BigDecimal("50")) == AntRank.SUPER);
+        GameResult queen = result(new BigDecimal("30.82"), Ending.PROFIT);
+        GameResult sup = result(new BigDecimal("50.00"), Ending.PROFIT);
+        check("수익 달성 30% 결과 칭호 여왕개미", "여왕개미 등극!".equals(queen.getTitle()));
+        check("수익 달성 50% 결과 칭호 슈퍼개미", "슈퍼개미 등극!".equals(sup.getTitle()));
+    }
+
+    private static GameResult result(BigDecimal rate, Ending ending) {
+        return new GameResult(UUID.randomUUID(), "t", Difficulty.EASY, BigDecimal.ZERO, rate, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, null, 0, ending, superant.model.InvestorType.BALANCED,
+                Collections.emptyList());
     }
 
     private static void priceRounding() {

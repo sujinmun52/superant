@@ -61,7 +61,8 @@ public class ResultDialog extends JDialog {
         banner.setBackground(Theme.PANEL);
         banner.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(accent, 2),
                 BorderFactory.createEmptyBorder(16, 20, 16, 20)));
-        JLabel small = Theme.label("GAME OVER · " + result.getEnding().getLabel(), 13, accent, true);
+        JLabel small = Theme.label("GAME OVER · " + result.getEnding().getLabel() + " · 최종 칭호 "
+                + result.getRank().getLabel() + " ", 13, accent, true);
         JLabel title = new JLabel(result.getTitle());
         title.setFont(Theme.title(44));
         title.setForeground(accent);

@@ -46,6 +46,7 @@ import superant.domain.News;
 import superant.domain.Portfolio;
 import superant.domain.Stock;
 import superant.domain.Trade;
+import superant.model.AntRank;
 import superant.model.Difficulty;
 import superant.model.OrderSide;
 import superant.model.RiskLevel;
@@ -104,6 +105,11 @@ public class MainFrame extends JFrame {
     private final List<Widgets.FlatButton> tabButtons = new ArrayList<>();
 
     private final JLabel holdLabel = Theme.label(" ", 13, Theme.MUTED, true);
+    private final JLabel goalTitle = Theme.label(" ", 12, Theme.MUTED, true);
+    private final JLabel rankLabel = new JLabel(" ");
+    private final JLabel streakLabel = Theme.label(" ", 12, Theme.UP, true);
+    private static final BigDecimal SUPER_ASSETS = BigDecimal.valueOf(1_500_000);
+    private final SummaryPane summary = new SummaryPane();
 
     private static final int TICK_FRAMES = 40;
     private static final int TICK_MS = 55;
@@ -140,6 +146,7 @@ public class MainFrame extends JFrame {
         root.add(startPanel, START);
         root.add(buildGamePanel(), GAME);
         setContentPane(root);
+        setGlassPane(summary);
 
         setSize(1320, 860);
         setMinimumSize(new Dimension(1180, 760));
@@ -189,7 +196,7 @@ public class MainFrame extends JFrame {
         turn.setLayout(new BoxLayout(turn, BoxLayout.Y_AXIS));
         turnLabel.setFont(Theme.title(26));
         turnLabel.setForeground(Theme.MINT);
-        for (JComponent c : new JComponent[]{playerLabel, turnLabel, pips}) {
+        for (JComponent c : new JComponent[]{playerLabel, turnLabel, pips, spacer(4), streakLabel}) {
             c.setAlignmentX(0f);
             turn.add(c);
         }
@@ -205,9 +212,9 @@ public class MainFrame extends JFrame {
 
         JPanel goal = Theme.card();
         goal.setLayout(new BoxLayout(goal, BoxLayout.Y_AXIS));
-        JLabel gl = Theme.label("목표 1,200,000원", 12, Theme.MUTED, true);
         gauge.setMaximumSize(new Dimension(Integer.MAX_VALUE, 12));
-        for (JComponent c : new JComponent[]{gl, spacer(10), gauge, spacer(8), goalLabel}) {
+        rankLabel.setFont(Theme.title(22));
+        for (JComponent c : new JComponent[]{goalTitle, rankLabel, spacer(6), gauge, spacer(6), goalLabel}) {
             c.setAlignmentX(0f);
             goal.add(c);
         }
@@ -433,12 +440,17 @@ public class MainFrame extends JFrame {
         }
         holdLabel.setText(heldCount == 0 ? "보유 종목 없음" : "보유 " + heldCount + "종목 · 평가손익 " + Theme.signedWon(heldPnl) + " ");
         holdLabel.setForeground(heldCount == 0 ? Theme.MUTED : Theme.trend(heldPnl));
-        double ratio = data.getTotalAssets().doubleValue() / GameSession.GOAL_ASSETS.doubleValue();
-        gauge.setRatio(ratio);
-        BigDecimal left = GameSession.GOAL_ASSETS.subtract(data.getTotalAssets());
-        goalLabel.setText(left.signum() <= 0 ? "목표 달성! 이대로 지켜내세요" : "목표까지 " + Theme.won(left)
-                + "  (" + Math.round(ratio * 100) + "%)  ");
-        goalLabel.setForeground(left.signum() <= 0 ? Theme.GOLD : Theme.MUTED);
+        updateGoal(data.getTotalAssets());
+        int streak = streak(s.getAssetHistory());
+        if (streak >= 2) {
+            streakLabel.setText("▲ " + streak + "턴 연속 수익 중!  ");
+            streakLabel.setForeground(Theme.UP);
+        } else if (streak <= -2) {
+            streakLabel.setText("▼ " + (-streak) + "턴 연속 하락  ");
+            streakLabel.setForeground(Theme.DOWN);
+        } else {
+            streakLabel.setText(" ");
+        }
 
         News news = data.getCurrentNews();
         if (ended) {
@@ -514,6 +526,58 @@ public class MainFrame extends JFrame {
             nextButton.setText(data.getCurrentTurn() == GameSession.TOTAL_TURNS ? "마지막 턴 마감 ▶" : "턴 마감 · 다음 턴 ▶");
             nextButton.setBase(Theme.MINT);
         }
+    }
+
+    /**
+     * 칭호와 목표 게이지를 갱신한다. 여왕개미(20%) 전에는 120만 원, 그 뒤에는 150만 원(슈퍼개미)을 목표로 보여 준다.
+     */
+    private void updateGoal(BigDecimal total) {
+        BigDecimal rate = total.subtract(GameSession.INITIAL_CASH).multiply(BigDecimal.valueOf(100))
+                .divide(GameSession.INITIAL_CASH, 2, RoundingMode.HALF_UP);
+        AntRank rank = AntRank.of(rate);
+        rankLabel.setText(rank.getLabel() + " ");
+        rankLabel.setForeground(rankColor(rank));
+        boolean queen = rank.compareTo(AntRank.QUEEN) >= 0;
+        BigDecimal target = queen ? SUPER_ASSETS : GameSession.GOAL_ASSETS;
+        goalTitle.setText(queen ? "도전 1,500,000원 · 슈퍼개미" : "목표 1,200,000원 · 여왕개미");
+        double ratio = total.doubleValue() / target.doubleValue();
+        gauge.setRatio(ratio);
+        if (rank == AntRank.SUPER) {
+            goalLabel.setText("슈퍼개미 달성! 끝까지 지켜내세요  ");
+            goalLabel.setForeground(Theme.GOLD);
+        } else {
+            AntRank next = rank.next();
+            BigDecimal need = GameSession.INITIAL_CASH.multiply(BigDecimal.ONE.add(
+                    next.getMinRate().divide(BigDecimal.valueOf(100)))).subtract(total);
+            goalLabel.setText("다음 칭호 " + next.getLabel() + "까지 " + Theme.won(need.max(BigDecimal.ONE)) + "  ");
+            goalLabel.setForeground(Theme.MUTED);
+        }
+    }
+
+    static Color rankColor(AntRank rank) {
+        switch (rank) {
+            case SUPER: return Theme.GOLD;
+            case QUEEN: return Theme.MINT;
+            case SOLDIER: return Theme.RISK_MID;
+            case WORKER: return Theme.TEXT;
+            default: return Theme.DOWN;
+        }
+    }
+
+    /**
+     * 마감 자산 이력으로 연속 수익(양수) 또는 연속 하락(음수) 턴 수를 센다.
+     */
+    private static int streak(List<BigDecimal> assets) {
+        int n = 0;
+        for (int i = assets.size() - 1; i >= 0; i--) {
+            BigDecimal prev = i == 0 ? GameSession.INITIAL_CASH : assets.get(i - 1);
+            int c = assets.get(i).compareTo(prev);
+            if (c == 0 || (n > 0 && c < 0) || (n < 0 && c > 0)) {
+                break;
+            }
+            n += c;
+        }
+        return n;
     }
 
     private void updateDetail() {
@@ -745,6 +809,7 @@ public class MainFrame extends JFrame {
         rateLabel.setText("수익률 " + Theme.pct(diff.multiply(BigDecimal.valueOf(100))
                 .divide(GameSession.INITIAL_CASH, 2, RoundingMode.HALF_UP)) + "  (" + Theme.signedWon(diff) + ")  ");
         rateLabel.setForeground(Theme.trend(diff));
+        updateGoal(total);
     }
 
     private void finishTicks() {
@@ -764,7 +829,51 @@ public class MainFrame extends JFrame {
         status(r.getCompletedTurns() + "턴 장 마감 · 총자산 " + Theme.signedWon(diff), Theme.trend(diff));
         if (r.isEnded()) {
             showResult();
+        } else {
+            showTurnSummary(tickBefore, r);
         }
+    }
+
+    /**
+     * 장 마감 직후 이번 턴 손익, 최고 상승/최대 하락 종목, 칭호 변화, 연속 수익을 카드로 보여 준다.
+     *
+     * @param before 마감 전 화면 데이터
+     * @param result 턴 마감 결과
+     */
+    private void showTurnSummary(ViewData before, TurnResult result) {
+        ViewData after = result.getView();
+        GameSnapshot s = after.getSnapshot();
+        BigDecimal diff = after.getTotalAssets().subtract(before.getTotalAssets());
+        BigDecimal pct = diff.multiply(BigDecimal.valueOf(100))
+                .divide(before.getTotalAssets(), 2, RoundingMode.HALF_UP);
+        Stock best = null;
+        Stock worst = null;
+        for (Stock st : s.getStocks()) {
+            if (best == null || st.changeRate().compareTo(best.changeRate()) > 0) {
+                best = st;
+            }
+            if (worst == null || st.changeRate().compareTo(worst.changeRate()) < 0) {
+                worst = st;
+            }
+        }
+        List<Object[]> lines = new ArrayList<>();
+        lines.add(new Object[]{result.getCompletedTurns() + "턴 장 마감", Theme.GOLD, 15f});
+        lines.add(new Object[]{Theme.signedWon(diff) + "  (" + Theme.pct(pct) + ") ", Theme.trend(diff), 34f});
+        lines.add(new Object[]{"최고 상승  " + best.getName() + " " + Theme.pct(best.changeRate()) + " ", Theme.UP, 15f});
+        lines.add(new Object[]{"최대 하락  " + worst.getName() + " " + Theme.pct(worst.changeRate()) + " ", Theme.DOWN, 15f});
+        AntRank was = AntRank.of(before.getReturnRate());
+        AntRank now = AntRank.of(after.getReturnRate());
+        if (now.compareTo(was) > 0) {
+            lines.add(new Object[]{"칭호 상승!  " + was.getLabel() + " → " + now.getLabel() + " ", rankColor(now), 20f});
+        } else if (now.compareTo(was) < 0) {
+            lines.add(new Object[]{"칭호 하락  " + was.getLabel() + " → " + now.getLabel() + " ", Theme.MUTED, 16f});
+        }
+        int streak = streak(s.getAssetHistory());
+        if (streak >= 2) {
+            lines.add(new Object[]{"▲ " + streak + "턴 연속 수익 중! ", Theme.UP, 17f});
+        }
+        lines.add(new Object[]{"클릭하면 닫힙니다", Theme.MUTED, 12f});
+        summary.showLines(lines);
     }
 
     private void setTradingEnabled(boolean on) {
@@ -851,6 +960,65 @@ public class MainFrame extends JFrame {
             }
             setBackground(bg);
             return this;
+        }
+    }
+
+    /** 화면 위에 잠깐 떠서 턴 결과를 보여 주는 반투명 카드 (글래스 페인). */
+    private static final class SummaryPane extends JComponent {
+        private List<Object[]> lines = new ArrayList<>();
+        private final Timer hide = new Timer(2800, e -> setVisible(false));
+
+        SummaryPane() {
+            hide.setRepeats(false);
+            addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mousePressed(java.awt.event.MouseEvent e) {
+                    setVisible(false);
+                }
+            });
+        }
+
+        void showLines(List<Object[]> lines) {
+            this.lines = lines;
+            setVisible(true);
+            repaint();
+            hide.restart();
+        }
+
+        @Override
+        protected void paintComponent(java.awt.Graphics g) {
+            java.awt.Graphics2D g2 = Widgets.smooth(g);
+            g2.setColor(new Color(0, 0, 0, 110));
+            g2.fillRect(0, 0, getWidth(), getHeight());
+            int[] heights = new int[lines.size()];
+            int cw = 0;
+            int ch = 36;
+            for (int i = 0; i < lines.size(); i++) {
+                g2.setFont(Theme.font((Float) lines.get(i)[2], true));
+                java.awt.FontMetrics fm = g2.getFontMetrics();
+                heights[i] = fm.getHeight() + 6;
+                ch += heights[i];
+                cw = Math.max(cw, fm.stringWidth((String) lines.get(i)[0]));
+            }
+            cw = Math.max(cw + 80, 420);
+            int x = (getWidth() - cw) / 2;
+            int y = (getHeight() - ch) / 2;
+            g2.setColor(Theme.PANEL2);
+            g2.fillRoundRect(x, y, cw, ch, 24, 24);
+            g2.setColor(Theme.GOLD);
+            g2.setStroke(new java.awt.BasicStroke(2f));
+            g2.drawRoundRect(x, y, cw, ch, 24, 24);
+            int ty = y + 18;
+            for (int i = 0; i < lines.size(); i++) {
+                Object[] l = lines.get(i);
+                g2.setFont(Theme.font((Float) l[2], true));
+                java.awt.FontMetrics fm = g2.getFontMetrics();
+                g2.setColor((Color) l[1]);
+                String text = (String) l[0];
+                g2.drawString(text, x + (cw - fm.stringWidth(text)) / 2, ty + fm.getAscent());
+                ty += heights[i];
+            }
+            g2.dispose();
         }
     }
 

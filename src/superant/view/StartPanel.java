@@ -105,7 +105,7 @@ public class StartPanel extends JPanel {
         box.add(buttons, c);
 
         JLabel rules = Theme.label("<html><div style='text-align:center'>종목 6개 · 수수료 없음 · 턴마다 75% 확률로 뉴스 발생<br>"
-                + "수익률 20% 이상이면 슈퍼개미 등극!</div></html>", 12, Theme.MUTED, false);
+                + "수익률 20% 이상이면 여왕개미, 50% 이상이면 진짜 슈퍼개미 등극!</div></html>", 12, Theme.MUTED, false);
         rules.setHorizontalAlignment(SwingConstants.CENTER);
         c.insets = new Insets(4, 0, 0, 0);
         box.add(rules, c);

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import superant.model.Achievement;
+import superant.model.AntRank;
 import superant.model.Difficulty;
 import superant.model.Ending;
 import superant.model.InvestorType;
@@ -67,11 +68,24 @@ public class GameResult {
 
     /**
      * 결과 배너에 표시할 칭호를 반환한다.
+     * 수익 달성 엔딩 중 수익률 50% 이상이면 "슈퍼개미 등극!", 그 밖에는 엔딩 칭호를 쓴다.
      *
-     * @return "슈퍼개미 등극!", "일개미 생존", "개미굴로 귀환" 중 하나
+     * @return "슈퍼개미 등극!", "여왕개미 등극!", "일개미 생존", "개미굴로 귀환" 중 하나
      */
     public String getTitle() {
+        if (ending == Ending.PROFIT && getRank() == AntRank.SUPER) {
+            return "슈퍼개미 등극!";
+        }
         return ending.getTitle();
+    }
+
+    /**
+     * 최종 수익률에 해당하는 칭호를 반환한다.
+     *
+     * @return 칭호
+     */
+    public AntRank getRank() {
+        return AntRank.of(returnRate);
     }
 
     /** @return 세션 ID */

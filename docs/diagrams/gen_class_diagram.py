@@ -106,6 +106,7 @@ box("MainFrame", "MainFrame", [
     "-onSell() : void",
     "-onNextTurn() : void",
     "-animateTurn(before : ViewData, result : TurnResult) : void",
+    "-showTurnSummary(before : ViewData, result : TurnResult) : void",
     "-showResult() : void",
 ], tags="UI-02 / F-02~08")
 box("StartPanel", "StartPanel", [
@@ -342,7 +343,7 @@ box("GameResult", "GameResult", [
     "-ending : Ending",
     "-investorType : InvestorType",
     "-achievements : List<Achievement>",
-], ["+getTitle() : String"], tags="F-09")
+], ["+getTitle() : String", "+getRank() : AntRank"], tags="F-09")
 
 # ---------------------------------------------------------------- persistence
 box("RecordStore", "RecordStore", [], [
@@ -382,6 +383,7 @@ ENUMS = [
     ("Ending", ["PROFIT", "MAINTAIN", "RETRY"]),
     ("InvestorType", ["CONCENTRATED", "STABLE", "AGGRESSIVE", "DIVERSIFIED", "BALANCED"]),
     ("Achievement", ["NO_LOSS", "LONG_HOLD", "DIVERSIFIED"]),
+    ("AntRank", ["COLONY", "ROOKIE", "WORKER", "SOLDIER", "QUEEN", "SUPER", "-minRate : BigDecimal"]),
 ]
 for name, vals in ENUMS:
     box("E_" + name, name, vals, [], stereo="enumeration")
