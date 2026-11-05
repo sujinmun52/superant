@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1340" viewBox="0 0 1310 1340">
+<style>text{font-family:Consolas,"Malgun Gothic",monospace;fill:#1B2430}.cname{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-weight:700;font-size:14px;text-anchor:middle}.italic{font-style:italic}.stereo{font-size:11px;text-anchor:middle}.mem{font-size:12px}.mult{font-size:12px;font-weight:700}.lbl{font-size:11px;font-style:italic;fill:#3B4656}.tag{font-family:"Malgun Gothic",sans-serif;font-size:11px;font-weight:700;fill:#1F5FD1;text-anchor:end}.pkg{font-family:"Segoe UI",sans-serif;font-size:14px;font-weight:700}.title{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-size:22px;font-weight:700}.legend{font-family:"Malgun Gothic",sans-serif;font-size:12px}</style>
+<rect width="1310" height="1340" fill="#FFFFFF"/>
+<text x="40" y="44" class="title">슈퍼개미 Class Diagram (package superant) - 전체 구조</text>
+<rect x="36" y="84" width="60" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="46" y="100" class="pkg">view</text>
+<rect x="36" y="106" width="1218" height="228" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="356" y="384" width="114" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="366" y="400" class="pkg">controller</text>
+<rect x="356" y="406" width="818" height="178" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="36" y="634" width="78" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="46" y="650" class="pkg">domain</text>
+<rect x="36" y="656" width="958" height="188" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="36" y="894" width="87" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="46" y="910" class="pkg">service</text>
+<rect x="36" y="916" width="208" height="178" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="356" y="894" width="123" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="366" y="910" class="pkg">persistence</text>
+<rect x="356" y="916" width="188" height="288" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="656" y="894" width="69" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="666" y="910" class="pkg">model</text>
+<rect x="656" y="916" width="498" height="238" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<polyline points="450.0,220.0 460.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="460.0,170.0 465.1,185.3 449.4,182.2" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="650.0,220.0 670.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="670.0,170.0 672.2,186.0 657.4,180.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="810.0,250.0 1028.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1028.0,170.0 1017.6,182.3 1012.1,167.3" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1000.0,250.0 1060.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1060.0,170.0 1058.0,186.0 1045.2,176.4" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1158.0,250.0 1092.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1092.0,170.0 1107.1,175.7 1094.7,185.9" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="730.0,530.0 962.0,470.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="962.0,470.0 950.4,481.3 946.4,465.8" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="860.0,530.0 984.0,470.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="984.0,470.0 974.9,483.3 967.9,468.9" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="985.0,530.0 1006.0,470.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1006.0,470.0 1008.9,485.9 993.8,480.6" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1105.0,530.0 1028.0,470.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1028.0,470.0 1044.0,472.3 1034.1,484.9" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="720.0,295.0 750.0,295.0 750.0,155.0 750.0,155.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="750.0,155.0 750.0,155.0 750.0,155.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="450.0,1060.0 440.0,990.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polygon points="440.0,990.0 449.9,1002.7 434.1,1005.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="520.0,224.5 590.0,235.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="520.0,224.5 527.0,231.6 535.8,226.9 528.8,219.8" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="578.2,239.3 590.0,235.0 580.0,227.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="547.2" y="242.2" class="mult">1</text>
+<text x="573.7" y="246.2" class="mult" text-anchor="end">1</text>
+<polyline points="520.0,238.0 590.0,295.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="520.0,238.0 522.4,247.7 532.4,248.1 530.0,238.4" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="577.7,292.7 590.0,295.0 585.3,283.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="536.8" y="266.2" class="mult">1</text>
+<text x="572.7" y="295.4" class="mult" text-anchor="end">1</text>
+<polyline points="170.0,693.0 260.0,696.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="170.0,693.0 177.8,699.3 186.0,693.5 178.2,687.3" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="248.8,701.6 260.0,696.0 249.2,689.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="198.7" y="707.9" class="mult">1</text>
+<text x="244.7" y="709.4" class="mult" text-anchor="end">1</text>
+<polyline points="126.0,690.0 126.0,660.0 574.0,660.0 574.0,690.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="126.0,690.0 132.0,682.0 126.0,674.0 120.0,682.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="568.0,679.0 574.0,690.0 580.0,679.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="139.0" y="668.0" class="mult">1</text>
+<text x="567.0" y="676.0" class="mult">1</text>
+<polyline points="148.0,690.0 148.0,635.0 770.0,635.0 770.0,690.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="148.0,690.0 154.0,682.0 148.0,674.0 142.0,682.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="764.0,679.0 770.0,690.0 776.0,679.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="161.0" y="668.0" class="mult">1</text>
+<text x="763.0" y="676.0" class="mult">1</text>
+<polyline points="305.0,720.0 295.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="305.0,720.0 297.9,727.1 302.7,735.8 309.8,728.8" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="290.6,778.3 295.0,790.0 302.5,780.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="294.4" y="748.3" class="mult">1</text>
+<text x="290.6" y="774.8" class="mult">0..*</text>
+<polyline points="380.0,720.0 380.0,760.0 391.0,760.0 391.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="380.0,720.0 374.0,728.0 380.0,736.0 386.0,728.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="385.0,779.0 391.0,790.0 397.0,779.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="373.0" y="750.0" class="mult">1</text>
+<text x="384.0" y="776.0" class="mult">0..*</text>
+<polyline points="585.0,720.0 585.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="585.0,720.0 579.0,728.0 585.0,736.0 591.0,728.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="579.0,779.0 585.0,790.0 591.0,779.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="578.0" y="750.0" class="mult">1</text>
+<text x="578.0" y="776.0" class="mult">6</text>
+<polyline points="780.0,720.0 770.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="780.0,720.0 772.9,727.1 777.7,735.8 784.8,728.8" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="765.6,778.3 770.0,790.0 777.5,780.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="769.4" y="748.3" class="mult">1</text>
+<text x="765.6" y="774.8" class="mult">30</text>
+<polyline points="450.0,1090.0 430.0,1150.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="450.0,1090.0 441.8,1095.7 444.9,1105.2 453.2,1099.5" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="427.8,1137.7 430.0,1150.0 439.2,1141.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="435.3" y="1115.5" class="mult">1</text>
+<text x="429.2" y="1133.8" class="mult">0..*</text>
+<polyline points="830.0,711.0 935.0,711.0 935.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="830.0,711.0 838.0,717.0 846.0,711.0 838.0,705.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="929.0,779.0 935.0,790.0 941.0,779.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="859.0" y="725.0" class="mult">1</text>
+<text x="928.0" y="776.0" class="mult">0..*</text>
+<polyline points="170.0,155.0 380.0,223.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="367.7,225.9 380.0,223.6 371.4,214.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="181.3" y="172.2" class="mult">1</text>
+<text x="362.8" y="231.5" class="mult" text-anchor="end">1</text>
+<polyline points="422.0,250.0 443.0,440.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="435.8,429.7 443.0,440.0 447.8,428.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="416.4" y="267.0" class="mult">*</text>
+<text x="434.1" y="427.2" class="mult">1</text>
+<text x="438.5" y="340.0" class="lbl">controller</text>
+<polyline points="411.5,470.0 411.5,610.0 93.0,610.0 93.0,690.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="87.0,679.0 93.0,690.0 99.0,679.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="404.5" y="486.0" class="mult">1</text>
+<text x="86.0" y="676.0" class="mult">0..1</text>
+<text x="258.2" y="605.0" class="lbl">session</text>
+<polyline points="380.0,464.0 30.0,464.0 30.0,959.0 60.0,959.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="49.0,965.0 60.0,959.0 49.0,953.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="371.0" y="458.0" class="mult">1</text>
+<text x="45.0" y="973.0" class="mult" text-anchor="end">1</text>
+<polyline points="558.5,470.0 558.5,585.0 1030.0,585.0 1030.0,900.0 440.0,900.0 440.0,950.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="434.0,939.0 440.0,950.0 446.0,939.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="551.5" y="486.0" class="mult">1</text>
+<text x="433.0" y="936.0" class="mult">1</text>
+<text x="741.0" y="895.0" class="lbl">store</text>
+<polyline points="810.0,805.0 900.0,805.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="889.0,811.0 900.0,805.0 889.0,799.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="825.0" y="819.0" class="mult">1</text>
+<text x="885.0" y="819.0" class="mult" text-anchor="end">0..1</text>
+<polyline points="506.0,250.0 506.0,335.0 810.0,335.0 810.0,280.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="816.0,291.0 810.0,280.0 804.0,291.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="664.0" y="330.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="590.0,455.0 670.0,455.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="659.0,461.0 670.0,455.0 659.0,449.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="636.0" y="450.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="115.0,720.0 115.0,790.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="109.0,779.0 115.0,790.0 121.0,779.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="121.0" y="750.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="140.0,980.0 105.0,1040.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="105.4,1027.5 105.0,1040.0 115.7,1033.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="128.5" y="1005.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="140.0,950.0 115.0,820.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="123.0,829.7 115.0,820.0 111.2,831.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="133.5" y="880.0" class="lbl">uses</text>
+<polyline points="410.0,714.0 530.0,799.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="517.6,797.5 530.0,799.0 524.5,787.7" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="476.0" y="751.5" class="lbl">uses</text>
+<polyline points="380.0,1078.0 150.0,1049.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="161.7,1044.4 150.0,1049.0 160.2,1056.3" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="271.0" y="1058.5" class="lbl">uses</text>
+<polyline points="569.0,440.0 569.0,395.0 995.0,395.0 995.0,440.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="989.0,429.0 995.0,440.0 1001.0,429.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="788.0" y="390.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<rect x="60" y="140" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="115.0" y="161" class="cname">StockGameApp</text>
+<text x="170" y="135" class="tag">실행</text>
+<rect x="380" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="460.0" y="161" class="cname">javax.swing::JFrame</text>
+<rect x="590" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="670.0" y="161" class="cname">javax.swing::JPanel</text>
+<rect x="980" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1060.0" y="161" class="cname">javax.swing::JDialog</text>
+<rect x="380" y="220" width="140" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="450.0" y="241" class="cname">MainFrame</text>
+<text x="520" y="215" class="tag">UI-02 / F-02~08</text>
+<rect x="590" y="220" width="120" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="650.0" y="241" class="cname">StartPanel</text>
+<text x="710" y="215" class="tag">UI-01 / F-01</text>
+<rect x="590" y="280" width="130" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="655.0" y="301" class="cname">PriceChartPanel</text>
+<text x="720" y="275" class="tag">F-08</text>
+<rect x="730" y="250" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="810.0" y="271" class="cname">OrderDialog</text>
+<text x="890" y="245" class="tag">UI-03 / F-04, F-05</text>
+<rect x="920" y="250" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1000.0" y="271" class="cname">ResultDialog</text>
+<text x="1080" y="245" class="tag">UI-04 / F-09, F-10</text>
+<rect x="1110" y="250" width="120" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1170.0" y="271" class="cname">RecordDialog</text>
+<text x="1230" y="245" class="tag">UI-05 / F-10</text>
+<rect x="380" y="440" width="210" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="485.0" y="461" class="cname">GameController</text>
+<text x="590" y="435" class="tag">FN-01~03 / F-01, F-03~05</text>
+<rect x="670" y="440" width="150" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="745.0" y="461" class="cname">ViewData</text>
+<text x="820" y="435" class="tag">F-02, F-06, F-07</text>
+<rect x="940" y="440" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="995.0" y="461" class="cname italic">ActionResult</text>
+<rect x="680" y="530" width="100" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="730.0" y="551" class="cname">StartResult</text>
+<rect x="810" y="530" width="100" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="860.0" y="551" class="cname">TradeResult</text>
+<rect x="940" y="530" width="90" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="985.0" y="551" class="cname">TurnResult</text>
+<rect x="1060" y="530" width="90" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1105.0" y="551" class="cname">SaveResult</text>
+<rect x="60" y="690" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="115.0" y="711" class="cname">GameSession</text>
+<text x="170" y="685" class="tag">F-01, F-03</text>
+<rect x="260" y="690" width="150" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="335.0" y="711" class="cname">Portfolio</text>
+<text x="410" y="685" class="tag">F-04, F-05, F-06</text>
+<rect x="260" y="790" width="70" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="295.0" y="811" class="cname">Holding</text>
+<rect x="370" y="790" width="70" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="405.0" y="811" class="cname">Trade</text>
+<text x="440" y="785" class="tag">F-08</text>
+<rect x="530" y="690" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="585.0" y="711" class="cname">Market</text>
+<text x="640" y="685" class="tag">F-02, F-03</text>
+<rect x="530" y="790" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="585.0" y="811" class="cname">Stock</text>
+<text x="640" y="785" class="tag">F-02, F-08</text>
+<rect x="730" y="690" width="100" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="780.0" y="711" class="cname">NewsService</text>
+<text x="830" y="685" class="tag">F-07</text>
+<rect x="730" y="790" width="80" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="770.0" y="811" class="cname">TurnDraw</text>
+<rect x="900" y="790" width="70" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="935.0" y="811" class="cname">News</text>
+<text x="970" y="785" class="tag">F-07</text>
+<rect x="60" y="790" width="110" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="115.0" y="811" class="cname">GameSnapshot</text>
+<rect x="60" y="950" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="140.0" y="971" class="cname">ResultEvaluator</text>
+<text x="220" y="945" class="tag">FN-04 / F-09, F-10</text>
+<rect x="60" y="1040" width="90" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="105.0" y="1061" class="cname">GameResult</text>
+<text x="150" y="1035" class="tag">F-09</text>
+<rect x="380" y="950" width="120" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="440.0" y="966" class="stereo">&lt;&lt;interface&gt;&gt;</text>
+<text x="440.0" y="983" class="cname">RecordStore</text>
+<text x="500" y="945" class="tag">F-10</text>
+<rect x="380" y="1060" width="140" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="450.0" y="1081" class="cname">RecordRepository</text>
+<text x="520" y="1055" class="tag">FN-05</text>
+<rect x="380" y="1150" width="100" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="430.0" y="1171" class="cname">RecordEntry</text>
+<rect x="680" y="950" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="745.0" y="966" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="745.0" y="983" class="cname">Difficulty</text>
+<rect x="680" y="1020" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="745.0" y="1036" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="745.0" y="1053" class="cname">GameState</text>
+<rect x="680" y="1090" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="745.0" y="1106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="745.0" y="1123" class="cname">OrderSide</text>
+<rect x="840" y="950" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="905.0" y="966" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="905.0" y="983" class="cname">Sector</text>
+<rect x="840" y="1020" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="905.0" y="1036" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="905.0" y="1053" class="cname">RiskLevel</text>
+<rect x="840" y="1090" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="905.0" y="1106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="905.0" y="1123" class="cname">NewsEvent</text>
+<rect x="1000" y="950" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1065.0" y="966" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1065.0" y="983" class="cname">Ending</text>
+<rect x="1000" y="1020" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1065.0" y="1036" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1065.0" y="1053" class="cname">InvestorType</text>
+<rect x="1000" y="1090" width="130" height="40" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1065.0" y="1106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1065.0" y="1123" class="cname">Achievement</text>
+<text x="60" y="1270" class="legend">파란 글씨: 연결 기능(F), 함수 명세(FN), 화면(UI) 번호 · 밑줄: static · { } : 제약 · 실선 화살표: 연관 · 점선 화살표: 의존 · 빈 삼각형: 일반화 · 점선 빈 삼각형: 실체화 · 검은 마름모: 합성 · 흰 마름모: 집합</text>
+</svg>

@@ -1,0 +1,710 @@
+package superant.view;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+import superant.controller.GameController;
+import superant.controller.StartResult;
+import superant.controller.TradeResult;
+import superant.controller.TurnResult;
+import superant.controller.ViewData;
+import superant.domain.GameSession;
+import superant.domain.GameSnapshot;
+import superant.domain.Holding;
+import superant.domain.News;
+import superant.domain.Portfolio;
+import superant.domain.Stock;
+import superant.domain.Trade;
+import superant.model.Difficulty;
+import superant.model.OrderSide;
+import superant.model.RiskLevel;
+
+/**
+ * 메인 창. 시작 화면(UI-01)과 게임 화면(UI-02)을 카드로 전환한다.
+ * <p>
+ * 화면은 컨트롤러가 돌려준 {@link ViewData} 만으로 다시 그리며,
+ * 요청을 보낼 때 그 version 을 함께 보낸다.
+ */
+public class MainFrame extends JFrame {
+    private static final String START = "start";
+    private static final String GAME = "game";
+
+    private final GameController controller;
+    private final StartPanel startPanel;
+    private final PriceChartPanel chartPanel = new PriceChartPanel();
+    private final JTable stockTable;
+    private final JTable holdingTable;
+    private final JTable tradeTable;
+    private final JTextArea newsArea = new JTextArea();
+    private final DefaultTableModel stockModel;
+    private final DefaultTableModel holdingModel;
+    private final DefaultTableModel tradeModel;
+
+    private final CardLayout cards = new CardLayout();
+    private final JPanel root = new JPanel(cards);
+
+    private final JLabel playerLabel = Theme.label("", 13, Theme.MUTED, true);
+    private final JLabel turnLabel = new JLabel();
+    private final Widgets.TurnPips pips = new Widgets.TurnPips();
+    private final JLabel assetLabel = Theme.label("", 24, Theme.TEXT, true);
+    private final JLabel rateLabel = Theme.label("", 14, Theme.MUTED, true);
+    private final JLabel cashLabel = Theme.label("", 20, Theme.TEXT, true);
+    private final JLabel goalLabel = Theme.label("", 12, Theme.MUTED, false);
+    private final Widgets.GoalGauge gauge = new Widgets.GoalGauge();
+    private final JLabel newsBadge = Theme.label(" BREAKING ", 12, Theme.BG, true);
+    private final JLabel newsTitle = Theme.label("", 16, Theme.TEXT, true);
+    private final JLabel newsHint = Theme.label("", 13, Theme.MUTED, false);
+
+    private final JLabel detailName = Theme.label("", 22, Theme.TEXT, true);
+    private final JLabel detailMeta = Theme.label("", 12, Theme.MUTED, false);
+    private final JLabel detailPrice = Theme.label("", 26, Theme.TEXT, true);
+    private final JLabel detailChange = Theme.label("", 14, Theme.MUTED, true);
+    private final JLabel detailHolding = Theme.label("", 13, Theme.MUTED, false);
+
+    private final JSpinner qtySpinner = new JSpinner(new SpinnerNumberModel(1, 1, Portfolio.MAX_QUANTITY, 1));
+    private final Widgets.FlatButton buyButton = new Widgets.FlatButton("매수", Theme.UP, Color.WHITE);
+    private final Widgets.FlatButton sellButton = new Widgets.FlatButton("매도", Theme.DOWN, Color.WHITE);
+    private final Widgets.FlatButton maxButton = new Widgets.FlatButton("최대", Theme.PANEL2, Theme.TEXT);
+    private final Widgets.FlatButton nextButton = new Widgets.FlatButton("", Theme.MINT, Theme.BG);
+    private final JLabel statusLabel = Theme.label(" ", 13, Theme.MUTED, false);
+
+    private final CardLayout tabCards = new CardLayout();
+    private final JPanel tabBody = new JPanel(tabCards);
+    private final List<Widgets.FlatButton> tabButtons = new ArrayList<>();
+
+    private ViewData view;
+    private String selectedId = "S01";
+    private boolean refreshing;
+
+    /**
+     * 메인 창을 만든다.
+     *
+     * @param controller 게임 컨트롤러
+     */
+    public MainFrame(GameController controller) {
+        super("슈퍼개미 - 30턴 투자 챌린지");
+        this.controller = controller;
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setBackground(Theme.BG);
+
+        startPanel = new StartPanel(this::onStart, () -> new RecordDialog(this, controller).setVisible(true));
+
+        stockModel = readOnlyModel("ID", "종목", "업종", "위험도", "현재가", "등락률", "보유");
+        stockTable = new JTable(stockModel);
+        holdingModel = readOnlyModel("종목", "수량", "평균 단가", "현재가", "평가 금액", "평가 손익", "수익률");
+        holdingTable = new JTable(holdingModel);
+        tradeModel = readOnlyModel("턴", "종목", "구분", "수량", "체결가", "거래 금액", "실현 손익");
+        tradeTable = new JTable(tradeModel);
+
+        root.add(startPanel, START);
+        root.add(buildGamePanel(), GAME);
+        setContentPane(root);
+
+        setSize(1320, 860);
+        setMinimumSize(new Dimension(1180, 760));
+        setLocationRelativeTo(null);
+        cards.show(root, START);
+    }
+
+    private static DefaultTableModel readOnlyModel(String... cols) {
+        return new DefaultTableModel(cols, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+    }
+
+    private JComponent buildGamePanel() {
+        JPanel game = new JPanel(new BorderLayout(0, 12));
+        game.setBackground(Theme.BG);
+        game.setBorder(BorderFactory.createEmptyBorder(14, 16, 14, 16));
+
+        JPanel north = new JPanel(new BorderLayout(0, 10));
+        north.setOpaque(false);
+        north.add(buildHud(), BorderLayout.NORTH);
+        north.add(buildNewsStrip(), BorderLayout.SOUTH);
+        game.add(north, BorderLayout.NORTH);
+
+        JPanel center = new JPanel(new GridLayout(2, 1, 0, 12));
+        center.setOpaque(false);
+        JPanel upper = new JPanel(new GridLayout(1, 2, 12, 0));
+        upper.setOpaque(false);
+        upper.add(buildMarket());
+        upper.add(buildDetail());
+        center.add(upper);
+        center.add(buildTabs());
+        game.add(center, BorderLayout.CENTER);
+
+        game.add(buildBottomBar(), BorderLayout.SOUTH);
+        return game;
+    }
+
+    private JComponent buildHud() {
+        JPanel hud = new JPanel(new GridLayout(1, 4, 12, 0));
+        hud.setOpaque(false);
+
+        JPanel turn = Theme.card();
+        turn.setLayout(new BoxLayout(turn, BoxLayout.Y_AXIS));
+        turnLabel.setFont(Theme.title(26));
+        turnLabel.setForeground(Theme.MINT);
+        for (JComponent c : new JComponent[]{playerLabel, turnLabel, pips}) {
+            c.setAlignmentX(0f);
+            turn.add(c);
+        }
+        pips.setMaximumSize(new Dimension(Integer.MAX_VALUE, 10));
+        hud.add(turn);
+
+        JPanel asset = Theme.card();
+        asset.setLayout(new BoxLayout(asset, BoxLayout.Y_AXIS));
+        asset.add(Theme.label("총자산", 12, Theme.MUTED, true));
+        asset.add(assetLabel);
+        asset.add(rateLabel);
+        hud.add(asset);
+
+        JPanel goal = Theme.card();
+        goal.setLayout(new BoxLayout(goal, BoxLayout.Y_AXIS));
+        JLabel gl = Theme.label("목표 1,200,000원", 12, Theme.MUTED, true);
+        gauge.setMaximumSize(new Dimension(Integer.MAX_VALUE, 12));
+        for (JComponent c : new JComponent[]{gl, spacer(10), gauge, spacer(8), goalLabel}) {
+            c.setAlignmentX(0f);
+            goal.add(c);
+        }
+        hud.add(goal);
+
+        JPanel cash = Theme.card();
+        cash.setLayout(new BoxLayout(cash, BoxLayout.Y_AXIS));
+        cash.add(Theme.label("주문 가능 현금", 12, Theme.MUTED, true));
+        cash.add(cashLabel);
+        hud.add(cash);
+        return hud;
+    }
+
+    private static JComponent spacer(int h) {
+        JPanel p = new JPanel();
+        p.setOpaque(false);
+        p.setPreferredSize(new Dimension(1, h));
+        p.setMaximumSize(new Dimension(Integer.MAX_VALUE, h));
+        return p;
+    }
+
+    private JComponent buildNewsStrip() {
+        JPanel strip = new JPanel(new BorderLayout(12, 0));
+        strip.setBackground(Theme.PANEL2);
+        strip.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, Theme.GOLD),
+                BorderFactory.createEmptyBorder(10, 14, 10, 14)));
+        newsBadge.setOpaque(true);
+        newsBadge.setBackground(Theme.GOLD);
+        newsBadge.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
+        JPanel badgeBox = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 4));
+        badgeBox.setOpaque(false);
+        badgeBox.add(newsBadge);
+        strip.add(badgeBox, BorderLayout.WEST);
+        JPanel text = new JPanel(new GridLayout(2, 1, 0, 2));
+        text.setOpaque(false);
+        text.add(newsTitle);
+        text.add(newsHint);
+        strip.add(text, BorderLayout.CENTER);
+        return strip;
+    }
+
+    private JComponent buildMarket() {
+        Theme.styleTable(stockTable);
+        stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        stockTable.removeColumn(stockTable.getColumnModel().getColumn(0));
+        DefaultTableCellRenderer base = new MarketRenderer();
+        for (int i = 0; i < stockTable.getColumnCount(); i++) {
+            stockTable.getColumnModel().getColumn(i).setCellRenderer(base);
+        }
+        stockTable.getColumnModel().getColumn(0).setPreferredWidth(150);
+        stockTable.getSelectionModel().addListSelectionListener(e -> {
+            if (refreshing || e.getValueIsAdjusting()) {
+                return;
+            }
+            int row = stockTable.getSelectedRow();
+            if (row >= 0) {
+                selectedId = (String) stockModel.getValueAt(stockTable.convertRowIndexToModel(row), 0);
+                updateDetail();
+            }
+        });
+        JPanel p = new JPanel(new BorderLayout(0, 8));
+        p.setBackground(Theme.PANEL);
+        p.setBorder(Theme.cardBorder(12));
+        p.add(Theme.label("시장 · 6종목", 14, Theme.TEXT, true), BorderLayout.NORTH);
+        p.add(Theme.scroll(stockTable), BorderLayout.CENTER);
+        return p;
+    }
+
+    private JComponent buildDetail() {
+        JPanel p = new JPanel(new BorderLayout(0, 8));
+        p.setBackground(Theme.PANEL);
+        p.setBorder(Theme.cardBorder(12));
+        JPanel head = new JPanel(new BorderLayout());
+        head.setOpaque(false);
+        JPanel left = new JPanel(new GridLayout(2, 1));
+        left.setOpaque(false);
+        left.add(detailName);
+        left.add(detailMeta);
+        JPanel right = new JPanel(new GridLayout(3, 1));
+        right.setOpaque(false);
+        detailPrice.setHorizontalAlignment(SwingConstants.RIGHT);
+        detailChange.setHorizontalAlignment(SwingConstants.RIGHT);
+        detailHolding.setHorizontalAlignment(SwingConstants.RIGHT);
+        right.add(detailPrice);
+        right.add(detailChange);
+        right.add(detailHolding);
+        head.add(left, BorderLayout.CENTER);
+        head.add(right, BorderLayout.EAST);
+        p.add(head, BorderLayout.NORTH);
+        p.add(chartPanel, BorderLayout.CENTER);
+        return p;
+    }
+
+    private JComponent buildTabs() {
+        JPanel p = new JPanel(new BorderLayout(0, 8));
+        p.setBackground(Theme.PANEL);
+        p.setBorder(Theme.cardBorder(12));
+        JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
+        bar.setOpaque(false);
+
+        Theme.styleTable(holdingTable);
+        Theme.styleTable(tradeTable);
+        DefaultTableCellRenderer pnl = new PnlRenderer();
+        for (int i = 0; i < holdingTable.getColumnCount(); i++) {
+            holdingTable.getColumnModel().getColumn(i).setCellRenderer(pnl);
+        }
+        for (int i = 0; i < tradeTable.getColumnCount(); i++) {
+            tradeTable.getColumnModel().getColumn(i).setCellRenderer(pnl);
+        }
+        newsArea.setEditable(false);
+        newsArea.setBackground(Theme.PANEL);
+        newsArea.setForeground(Theme.TEXT);
+        newsArea.setFont(Theme.font(13, false));
+        newsArea.setLineWrap(true);
+        newsArea.setWrapStyleWord(true);
+        newsArea.setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
+
+        addTab(bar, "포트폴리오", Theme.scroll(holdingTable));
+        addTab(bar, "거래 내역", Theme.scroll(tradeTable));
+        addTab(bar, "뉴스 피드", Theme.scroll(newsArea));
+        selectTab(0);
+        p.add(bar, BorderLayout.NORTH);
+        tabBody.setOpaque(false);
+        p.add(tabBody, BorderLayout.CENTER);
+        return p;
+    }
+
+    private void addTab(JPanel bar, String name, JComponent content) {
+        int index = tabButtons.size();
+        Widgets.FlatButton b = new Widgets.FlatButton(name, Theme.PANEL2, Theme.TEXT);
+        b.setFont(Theme.font(13, true));
+        b.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        b.addActionListener(e -> selectTab(index));
+        tabButtons.add(b);
+        bar.add(b);
+        tabBody.add(content, name);
+    }
+
+    private void selectTab(int index) {
+        for (int i = 0; i < tabButtons.size(); i++) {
+            Widgets.FlatButton b = tabButtons.get(i);
+            b.setBase(i == index ? Theme.MINT : Theme.PANEL2);
+            b.setForeground(i == index ? Theme.BG : Theme.TEXT);
+        }
+        tabCards.show(tabBody, tabButtons.get(index).getText());
+    }
+
+    private JComponent buildBottomBar() {
+        JPanel bar = new JPanel(new BorderLayout(12, 0));
+        bar.setBackground(Theme.PANEL);
+        bar.setBorder(Theme.cardBorder(10));
+
+        JPanel left = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        left.setOpaque(false);
+        left.add(Theme.label("수량", 13, Theme.MUTED, true));
+        qtySpinner.setFont(Theme.font(15, true));
+        qtySpinner.setPreferredSize(new Dimension(110, 38));
+        JSpinner.DefaultEditor ed = (JSpinner.DefaultEditor) qtySpinner.getEditor();
+        ed.getTextField().setBackground(Theme.PANEL2);
+        ed.getTextField().setForeground(Theme.TEXT);
+        ed.getTextField().setCaretColor(Theme.MINT);
+        qtySpinner.setBorder(BorderFactory.createLineBorder(Theme.BORDER));
+        left.add(qtySpinner);
+        maxButton.setToolTipText("현재 현금으로 살 수 있는 최대 수량");
+        maxButton.addActionListener(e -> onMax());
+        left.add(maxButton);
+        buyButton.setPreferredSize(new Dimension(100, 40));
+        sellButton.setPreferredSize(new Dimension(100, 40));
+        buyButton.addActionListener(e -> onBuy());
+        sellButton.addActionListener(e -> onSell());
+        left.add(buyButton);
+        left.add(sellButton);
+        bar.add(left, BorderLayout.WEST);
+
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        bar.add(statusLabel, BorderLayout.CENTER);
+
+        JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
+        right.setOpaque(false);
+        Widgets.FlatButton records = new Widgets.FlatButton("기록", Theme.PANEL2, Theme.TEXT);
+        records.addActionListener(e -> openRecords());
+        Widgets.FlatButton newGame = new Widgets.FlatButton("새 게임", Theme.PANEL2, Theme.TEXT);
+        newGame.addActionListener(e -> onNewGame());
+        nextButton.setFont(Theme.font(15, true));
+        nextButton.setPreferredSize(new Dimension(230, 40));
+        nextButton.addActionListener(e -> onNextTurn());
+        right.add(records);
+        right.add(newGame);
+        right.add(nextButton);
+        bar.add(right, BorderLayout.EAST);
+        return bar;
+    }
+
+    /**
+     * 컨트롤러가 준 화면 데이터로 게임 화면 전체를 다시 그린다.
+     *
+     * @param data 화면 데이터
+     */
+    public void refresh(ViewData data) {
+        if (data == null) {
+            return;
+        }
+        this.view = data;
+        GameSnapshot s = data.getSnapshot();
+        boolean ended = s.isCompleted();
+
+        playerLabel.setText(s.getPlayerName() + "  ·  " + s.getDifficulty().name() + " · " + s.getDifficulty().getDescription() + " ");
+        turnLabel.setText(ended ? "GAME OVER" : String.format("TURN %02d / %d", data.getCurrentTurn(), GameSession.TOTAL_TURNS));
+        pips.setProgress(s.getCompletedTurns(), GameSession.TOTAL_TURNS);
+        assetLabel.setText(Theme.won(data.getTotalAssets()));
+        rateLabel.setText("수익률 " + Theme.pct(data.getReturnRate()) + "  (" + Theme.signedWon(
+                data.getTotalAssets().subtract(GameSession.INITIAL_CASH)) + ")  ");
+        rateLabel.setForeground(Theme.trend(data.getReturnRate()));
+        cashLabel.setText(Theme.won(s.getCash()));
+        double ratio = data.getTotalAssets().doubleValue() / GameSession.GOAL_ASSETS.doubleValue();
+        gauge.setRatio(ratio);
+        BigDecimal left = GameSession.GOAL_ASSETS.subtract(data.getTotalAssets());
+        goalLabel.setText(left.signum() <= 0 ? "목표 달성! 이대로 지켜내세요" : "목표까지 " + Theme.won(left)
+                + "  (" + Math.round(ratio * 100) + "%)  ");
+        goalLabel.setForeground(left.signum() <= 0 ? Theme.GOLD : Theme.MUTED);
+
+        News news = data.getCurrentNews();
+        if (ended) {
+            newsTitle.setText("30턴 완료! 결과를 확인하세요.");
+            newsHint.setText("오른쪽 아래 '결과 보기' 버튼을 누르면 엔딩과 투자 성향을 볼 수 있습니다.");
+            newsBadge.setBackground(Theme.MINT);
+            newsBadge.setText(" FINISH ");
+        } else if (news != null) {
+            newsTitle.setText("[" + data.getCurrentTurn() + "턴] " + news.getEvent().getTitle());
+            newsHint.setText(news.hint(s.getDifficulty()));
+            newsBadge.setBackground(Theme.GOLD);
+            newsBadge.setText(" BREAKING ");
+        } else {
+            newsTitle.setText("[" + data.getCurrentTurn() + "턴] 특별한 뉴스가 없습니다.");
+            newsHint.setText("시장 흐름과 업종 변동만 반영됩니다.");
+            newsBadge.setBackground(Theme.MUTED);
+            newsBadge.setText(" QUIET ");
+        }
+
+        refreshing = true;
+        stockModel.setRowCount(0);
+        int selRow = 0;
+        for (int i = 0; i < s.getStocks().size(); i++) {
+            Stock st = s.getStocks().get(i);
+            int qty = s.quantityOf(st.getId());
+            stockModel.addRow(new Object[]{st.getId(), st.getName() + "  " + st.getId(), st.getSector().getLabel(),
+                    st.getRisk(), String.format("%,d", st.currentPrice()), st.changeRate(),
+                    qty > 0 ? String.format("%,d주", qty) : "-"});
+            if (st.getId().equals(selectedId)) {
+                selRow = i;
+            }
+        }
+        stockTable.setRowSelectionInterval(selRow, selRow);
+        refreshing = false;
+        updateDetail();
+
+        holdingModel.setRowCount(0);
+        for (Holding h : s.getHoldings()) {
+            if (h.getQuantity() == 0) {
+                continue;
+            }
+            Stock st = s.findStock(h.getStockId());
+            BigDecimal value = BigDecimal.valueOf(st.currentPrice()).multiply(BigDecimal.valueOf(h.getQuantity()));
+            BigDecimal pnl = h.unrealizedPnl(st.currentPrice());
+            BigDecimal rate = h.getCostBasis().signum() == 0 ? BigDecimal.ZERO
+                    : pnl.multiply(BigDecimal.valueOf(100)).divide(h.getCostBasis(), 2, RoundingMode.HALF_UP);
+            holdingModel.addRow(new Object[]{st.getName(), String.format("%,d주", h.getQuantity()),
+                    Theme.won(h.averagePrice()), Theme.won(st.currentPrice()), Theme.won(value), pnl, rate});
+        }
+
+        tradeModel.setRowCount(0);
+        List<Trade> trades = s.getTrades();
+        for (int i = trades.size() - 1; i >= 0; i--) {
+            Trade t = trades.get(i);
+            tradeModel.addRow(new Object[]{t.getTurn() + "턴", s.findStock(t.getStockId()).getName(),
+                    t.getSide(), String.format("%,d주", t.getQuantity()), Theme.won(t.getPrice()),
+                    Theme.won(t.getAmount()), t.getSide() == OrderSide.SELL ? t.getRealizedPnl() : "-"});
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (News n : data.getNewsFeed()) {
+            sb.append('[').append(n.getPublishedTurn()).append("턴] ").append(n.getEvent().getTitle())
+                    .append("\n    ").append(n.hint(s.getDifficulty())).append("\n\n");
+        }
+        newsArea.setText(sb.length() == 0 ? "아직 발표된 뉴스가 없습니다." : sb.toString());
+        newsArea.setCaretPosition(0);
+
+        buyButton.setEnabled(!ended);
+        sellButton.setEnabled(!ended);
+        maxButton.setEnabled(!ended);
+        qtySpinner.setEnabled(!ended);
+        if (ended) {
+            nextButton.setText("결과 보기 ▶");
+            nextButton.setBase(Theme.GOLD);
+        } else {
+            nextButton.setText(data.getCurrentTurn() == GameSession.TOTAL_TURNS ? "마지막 턴 마감 ▶" : "턴 마감 · 다음 턴 ▶");
+            nextButton.setBase(Theme.MINT);
+        }
+    }
+
+    private void updateDetail() {
+        if (view == null) {
+            return;
+        }
+        GameSnapshot s = view.getSnapshot();
+        Stock st = s.findStock(selectedId);
+        if (st == null) {
+            return;
+        }
+        detailName.setText(st.getName() + "  " + st.getId());
+        detailMeta.setText(st.getSector().getLabel() + " 업종 · 위험도 " + st.getRisk().getLabel() + " · " + st.getDescription());
+        detailPrice.setText(Theme.won(st.currentPrice()));
+        BigDecimal ch = st.changeRate();
+        detailChange.setText((ch.signum() > 0 ? "▲ " : ch.signum() < 0 ? "▼ " : "") + Theme.pct(ch) + " (직전 턴 대비) ");
+        detailChange.setForeground(Theme.trend(ch));
+        int qty = s.quantityOf(st.getId());
+        detailHolding.setText(qty > 0 ? "보유 " + String.format("%,d주", qty) : "보유 없음");
+        chartPanel.setPrices(st.getPriceHistory());
+    }
+
+    /**
+     * 시작 버튼 동작 (FN-01).
+     */
+    private void onStart() {
+        Difficulty d = startPanel.getDifficulty();
+        StartResult r = controller.startGame(startPanel.getPlayerName(), d);
+        if (!r.isSuccess()) {
+            JOptionPane.showMessageDialog(this, r.getMessage(), "시작할 수 없음", JOptionPane.WARNING_MESSAGE);
+            startPanel.focusName();
+            return;
+        }
+        selectedId = "S01";
+        qtySpinner.setValue(1);
+        refresh(r.getView());
+        selectTab(0);
+        status("게임 시작! 1턴 뉴스를 확인하고 종목을 골라 투자하세요.", Theme.MINT);
+        cards.show(root, GAME);
+    }
+
+    /**
+     * 매수 버튼 동작 (FN-02).
+     */
+    private void onBuy() {
+        order(OrderSide.BUY);
+    }
+
+    /**
+     * 매도 버튼 동작 (FN-02).
+     */
+    private void onSell() {
+        order(OrderSide.SELL);
+    }
+
+    private void order(OrderSide side) {
+        if (view == null) {
+            return;
+        }
+        commitSpinner();
+        int qty = (Integer) qtySpinner.getValue();
+        Stock st = view.getSnapshot().findStock(selectedId);
+        if (side == OrderSide.SELL && view.getSnapshot().quantityOf(selectedId) < qty) {
+            status("보유 수량이 부족합니다. (보유 " + view.getSnapshot().quantityOf(selectedId) + "주)", Theme.UP);
+            return;
+        }
+        boolean ok = new OrderDialog(this).showDialog(side, st, qty, view.getSnapshot().getCash());
+        if (!ok) {
+            status("주문을 취소했습니다.", Theme.MUTED);
+            return;
+        }
+        TradeResult r = controller.placeOrder(selectedId, side, qty, view.getVersion(), UUID.randomUUID());
+        if (r.isSuccess()) {
+            refresh(r.getView());
+            String extra = side == OrderSide.SELL ? "  실현 손익 " + Theme.signedWon(r.getRealizedPnl()) : "";
+            status(r.getMessage() + extra, side == OrderSide.BUY ? Theme.UP : Theme.DOWN);
+        } else {
+            status(r.getMessage(), Theme.UP);
+            if ("STALE_VIEW".equals(r.getErrorCode())) {
+                refresh(controller.getView());
+            }
+        }
+    }
+
+    private void onMax() {
+        if (view == null) {
+            return;
+        }
+        Stock st = view.getSnapshot().findStock(selectedId);
+        long max = view.getSnapshot().getCash().longValue() / st.currentPrice();
+        int held = view.getSnapshot().quantityOf(selectedId);
+        int value = (int) Math.max(1, Math.min(Portfolio.MAX_QUANTITY, max));
+        qtySpinner.setValue(value);
+        status(String.format("최대 매수 %,d주 · 보유 %,d주", max, held), Theme.MUTED);
+    }
+
+    private void commitSpinner() {
+        try {
+            qtySpinner.commitEdit();
+        } catch (java.text.ParseException e) {
+            qtySpinner.setValue(1);
+        }
+    }
+
+    /**
+     * 턴 마감 버튼 동작 (FN-03). 30턴을 마치면 결과 화면을 연다.
+     */
+    private void onNextTurn() {
+        if (view == null) {
+            return;
+        }
+        if (view.getSnapshot().isCompleted()) {
+            showResult();
+            return;
+        }
+        BigDecimal before = view.getTotalAssets();
+        TurnResult r = controller.advanceTurn(view.getVersion(), UUID.randomUUID());
+        if (!r.isSuccess()) {
+            status(r.getMessage(), Theme.UP);
+            refresh(controller.getView());
+            return;
+        }
+        refresh(r.getView());
+        BigDecimal diff = r.getView().getTotalAssets().subtract(before);
+        status(r.getCompletedTurns() + "턴 마감 · 총자산 " + Theme.signedWon(diff), Theme.trend(diff));
+        if (r.isEnded()) {
+            showResult();
+        }
+    }
+
+    /**
+     * 결과 화면을 연다 (FN-04).
+     */
+    private void showResult() {
+        if (controller.evaluateResult() == null) {
+            return;
+        }
+        new ResultDialog(this, controller, controller.evaluateResult()).setVisible(true);
+    }
+
+    private void onNewGame() {
+        if (view != null && !view.getSnapshot().isCompleted()) {
+            int c = JOptionPane.showConfirmDialog(this, "진행 중인 게임을 버리고 새로 시작할까요?", "새 게임",
+                    JOptionPane.YES_NO_OPTION);
+            if (c != JOptionPane.YES_OPTION) {
+                return;
+            }
+        }
+        if (view != null) {
+            startPanel.prefill(view.getSnapshot().getPlayerName(), view.getSnapshot().getDifficulty());
+        }
+        cards.show(root, START);
+        startPanel.focusName();
+    }
+
+    private void openRecords() {
+        if (view == null) {
+            new RecordDialog(this, controller).setVisible(true);
+        } else {
+            new RecordDialog(this, controller, view.getSnapshot().getPlayerName(),
+                    view.getSnapshot().getDifficulty()).setVisible(true);
+        }
+    }
+
+    private void status(String text, Color color) {
+        statusLabel.setText(text);
+        statusLabel.setForeground(color);
+    }
+
+    /** 시장 표 셀 렌더러: 위험도 색 점, 등락률 색. */
+    private static final class MarketRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable t, Object v, boolean sel, boolean focus, int row, int col) {
+            super.getTableCellRendererComponent(t, v, sel, false, row, col);
+            setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+            setForeground(Theme.TEXT);
+            setFont(Theme.font(13, col == 0));
+            setHorizontalAlignment(col >= 3 ? SwingConstants.RIGHT : col == 0 ? SwingConstants.LEFT : SwingConstants.CENTER);
+            if (v instanceof RiskLevel) {
+                RiskLevel r = (RiskLevel) v;
+                setText("● " + r.getLabel());
+                setForeground(Theme.risk(r));
+            } else if (v instanceof BigDecimal) {
+                BigDecimal b = (BigDecimal) v;
+                setText((b.signum() > 0 ? "▲ " : b.signum() < 0 ? "▼ " : "") + Theme.pct(b));
+                setForeground(Theme.trend(b));
+            }
+            setBackground(sel ? t.getSelectionBackground() : Theme.PANEL);
+            return this;
+        }
+    }
+
+    /** 손익 칸에 색을 입히는 렌더러. */
+    private static final class PnlRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable t, Object v, boolean sel, boolean focus, int row, int col) {
+            super.getTableCellRendererComponent(t, v, sel, false, row, col);
+            setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+            setForeground(Theme.TEXT);
+            setHorizontalAlignment(col == 0 ? SwingConstants.LEFT : SwingConstants.RIGHT);
+            if (v instanceof BigDecimal) {
+                BigDecimal b = (BigDecimal) v;
+                boolean isRate = t.getColumnName(col).contains("률");
+                setText(isRate ? Theme.pct(b) : Theme.signedWon(b));
+                setForeground(Theme.trend(b));
+            } else if (v instanceof OrderSide) {
+                OrderSide s = (OrderSide) v;
+                setText(s.getLabel());
+                setForeground(s == OrderSide.BUY ? Theme.UP : Theme.DOWN);
+                setHorizontalAlignment(SwingConstants.CENTER);
+            }
+            setBackground(sel ? t.getSelectionBackground() : Theme.PANEL);
+            return this;
+        }
+    }
+}

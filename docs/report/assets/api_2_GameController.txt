@@ -1,0 +1,1 @@
+GameController 클래스 문서: 생성자와 FN-01 ~ FN-05 메서드 요약

@@ -1,0 +1,1 @@
+ResultEvaluator 클래스 문서: evaluate 메서드의 설명, 파라미터, 반환값, 예외
