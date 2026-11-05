@@ -97,6 +97,7 @@ public class MainFrame extends JFrame {
     private final Widgets.FlatButton buyButton = new Widgets.FlatButton("매수", Theme.UP, Color.WHITE);
     private final Widgets.FlatButton sellButton = new Widgets.FlatButton("매도", Theme.DOWN, Color.WHITE);
     private final Widgets.FlatButton maxButton = new Widgets.FlatButton("최대", Theme.PANEL2, Theme.TEXT);
+    private final Widgets.FlatButton sellAllButton = new Widgets.FlatButton("전량 매도", Theme.PANEL2, Theme.DOWN);
     private final Widgets.FlatButton nextButton = new Widgets.FlatButton("", Theme.MINT, Theme.BG);
     private final JLabel statusLabel = Theme.label(" ", 13, Theme.MUTED, false);
 
@@ -389,8 +390,12 @@ public class MainFrame extends JFrame {
         sellButton.setPreferredSize(new Dimension(100, 40));
         buyButton.addActionListener(e -> onBuy());
         sellButton.addActionListener(e -> onSell());
+        sellAllButton.setToolTipText("선택한 종목의 보유 수량을 모두 매도");
+        sellAllButton.setPreferredSize(new Dimension(100, 40));
+        sellAllButton.addActionListener(e -> onSellAll());
         left.add(buyButton);
         left.add(sellButton);
+        left.add(sellAllButton);
         bar.add(left, BorderLayout.WEST);
 
         statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -710,6 +715,23 @@ public class MainFrame extends JFrame {
         order(OrderSide.SELL);
     }
 
+    /**
+     * 전량 매도 버튼 동작 (FN-02). 선택한 종목의 보유 수량을 수량 칸에 넣고 매도 주문을 연다.
+     */
+    private void onSellAll() {
+        if (view == null) {
+            return;
+        }
+        int held = view.getSnapshot().quantityOf(selectedId);
+        if (held == 0) {
+            Sfx.play(Sfx.Sound.ERROR);
+            status("보유하지 않은 종목입니다. 보유 종목(민트 막대)을 선택하세요.", Theme.UP);
+            return;
+        }
+        qtySpinner.setValue(Math.min(held, Portfolio.MAX_QUANTITY));
+        order(OrderSide.SELL);
+    }
+
     private void order(OrderSide side) {
         if (view == null) {
             return;
@@ -945,6 +967,7 @@ public class MainFrame extends JFrame {
     private void setTradingEnabled(boolean on) {
         buyButton.setEnabled(on);
         sellButton.setEnabled(on);
+        sellAllButton.setEnabled(on);
         maxButton.setEnabled(on);
         qtySpinner.setEnabled(on);
     }

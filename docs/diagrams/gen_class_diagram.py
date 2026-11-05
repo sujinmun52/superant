@@ -104,6 +104,7 @@ box("MainFrame", "MainFrame", [
     "-onStart() : void",
     "-onBuy() : void",
     "-onSell() : void",
+    "-onSellAll() : void",
     "-onNextTurn() : void",
     "-animateTurn(before : ViewData, result : TurnResult) : void",
     "-showTurnSummary(before : ViewData, result : TurnResult) : void",
