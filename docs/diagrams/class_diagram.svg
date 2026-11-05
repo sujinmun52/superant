@@ -1,153 +1,153 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="2690" viewBox="0 0 2570 2690">
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="2700" viewBox="0 0 2570 2700">
 <style>text{font-family:Consolas,"Malgun Gothic",monospace;fill:#1B2430}.cname{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-weight:700;font-size:14px;text-anchor:middle}.italic{font-style:italic}.stereo{font-size:11px;text-anchor:middle}.mem{font-size:12px}.mult{font-size:12px;font-weight:700}.lbl{font-size:11px;font-style:italic;fill:#3B4656}.tag{font-family:"Malgun Gothic",sans-serif;font-size:11px;font-weight:700;fill:#1F5FD1;text-anchor:end}.pkg{font-family:"Segoe UI",sans-serif;font-size:14px;font-weight:700}.title{font-family:"Segoe UI","Malgun Gothic",sans-serif;font-size:22px;font-weight:700}.legend{font-family:"Malgun Gothic",sans-serif;font-size:12px}</style>
-<rect width="2570" height="2690" fill="#FFFFFF"/>
+<rect width="2570" height="2700" fill="#FFFFFF"/>
 <text x="40" y="44" class="title">슈퍼개미 Class Diagram (package superant) - 상세</text>
 <rect x="36" y="84" width="60" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
 <text x="46" y="100" class="pkg">view</text>
-<rect x="36" y="106" width="2178" height="408" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<rect x="356" y="564" width="114" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
-<text x="366" y="580" class="pkg">controller</text>
-<rect x="356" y="586" width="1548" height="378" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<rect x="36" y="1014" width="78" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
-<text x="46" y="1030" class="pkg">domain</text>
-<rect x="36" y="1036" width="2478" height="788" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<rect x="36" y="1874" width="87" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
-<text x="46" y="1890" class="pkg">service</text>
-<rect x="36" y="1896" width="508" height="548" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<rect x="656" y="1874" width="123" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
-<text x="666" y="1890" class="pkg">persistence</text>
-<rect x="656" y="1896" width="538" height="658" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<rect x="1306" y="1874" width="69" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
-<text x="1316" y="1890" class="pkg">model</text>
-<rect x="1306" y="1896" width="608" height="558" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
-<polyline points="530.0,220.0 460.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="460.0,170.0 476.0,171.6 466.7,184.6" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="865.0,220.0 830.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="830.0,170.0 844.6,176.9 831.5,186.1" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1215.0,250.0 1348.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1348.0,170.0 1340.1,184.1 1331.9,170.4" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1570.0,250.0 1380.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1380.0,170.0 1396.0,168.1 1389.8,182.8" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1932.0,250.0 1412.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1412.0,170.0 1427.1,164.2 1424.6,180.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1125.0,810.0 1336.0,750.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1336.0,750.0 1324.7,761.5 1320.3,746.1" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1340.0,810.0 1372.0,750.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1372.0,750.0 1372.5,766.1 1358.4,758.6" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1555.0,810.0 1408.0,750.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1408.0,750.0 1424.0,747.9 1417.9,762.7" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1775.0,810.0 1444.0,750.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1444.0,750.0 1459.2,744.6 1456.3,760.4" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1040.0,410.0 1070.0,410.0 1070.0,155.0 910.0,155.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="910.0,155.0 924.0,147.0 924.0,163.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="925.0,2110.0 925.0,2040.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polygon points="925.0,2040.0 933.0,2054.0 917.0,2054.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="680.0,260.5 750.0,275.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="680.0,260.5 686.6,268.0 695.7,263.7 689.1,256.2" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="738.0,278.6 750.0,275.0 740.4,266.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="706.4" y="279.6" class="mult">1</text>
-<text x="733.3" y="285.1" class="mult" text-anchor="end">1</text>
-<polyline points="680.0,382.0 750.0,410.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="680.0,382.0 685.2,390.5 694.9,387.9 689.7,379.4" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="737.6,411.5 750.0,410.0 742.0,400.3" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="703.4" y="404.9" class="mult">1</text>
-<text x="732.6" y="416.6" class="mult" text-anchor="end">1</text>
-<polyline points="540.0,1108.0 630.0,1110.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="540.0,1108.0 547.9,1114.2 556.0,1108.4 548.1,1102.2" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="618.9,1115.8 630.0,1110.0 619.1,1103.8" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="568.8" y="1122.6" class="mult">1</text>
-<text x="614.8" y="1123.6" class="mult" text-anchor="end">1</text>
-<polyline points="348.0,1070.0 348.0,1040.0 1458.0,1040.0 1458.0,1070.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="348.0,1070.0 354.0,1062.0 348.0,1054.0 342.0,1062.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1452.0,1059.0 1458.0,1070.0 1464.0,1059.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="361.0" y="1048.0" class="mult">1</text>
-<text x="1451.0" y="1056.0" class="mult">1</text>
-<polyline points="444.0,1070.0 444.0,1015.0 1948.0,1015.0 1948.0,1070.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="444.0,1070.0 450.0,1062.0 444.0,1054.0 438.0,1062.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1942.0,1059.0 1948.0,1070.0 1954.0,1059.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="457.0" y="1048.0" class="mult">1</text>
-<text x="1941.0" y="1056.0" class="mult">1</text>
-<polyline points="744.0,1270.0 795.0,1340.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="744.0,1270.0 743.9,1280.0 753.4,1282.9 753.6,1272.9" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="783.7,1334.6 795.0,1340.0 793.4,1327.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="754.2" y="1300.9" class="mult">1</text>
-<text x="779.3" y="1335.3" class="mult" text-anchor="end">0..*</text>
-<polyline points="934.0,1270.0 934.0,1310.0 1060.0,1310.0 1060.0,1340.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="934.0,1270.0 928.0,1278.0 934.0,1286.0 940.0,1278.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1054.0,1329.0 1060.0,1340.0 1066.0,1329.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="927.0" y="1300.0" class="mult">1</text>
-<text x="1053.0" y="1326.0" class="mult">0..*</text>
-<polyline points="1500.0,1230.0 1440.0,1300.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1500.0,1230.0 1490.2,1232.2 1489.6,1242.1 1499.3,1240.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1442.6,1287.7 1440.0,1300.0 1451.7,1295.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1478.5" y="1247.2" class="mult">1</text>
-<text x="1447.1" y="1283.8" class="mult">6</text>
-<polyline points="1985.0,1270.0 1950.0,1340.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="1985.0,1270.0 1976.1,1274.5 1977.8,1284.3 1986.8,1279.8" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="1949.6,1327.5 1950.0,1340.0 1960.3,1332.8" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1967.4" y="1292.8" class="mult">1</text>
-<text x="1952.1" y="1323.4" class="mult">30</text>
-<polyline points="925.0,2270.0 835.0,2330.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="925.0,2270.0 915.0,2269.4 911.7,2278.9 921.7,2279.4" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="840.8,2318.9 835.0,2330.0 847.5,2328.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="900.8" y="2280.1" class="mult">1</text>
-<text x="847.4" y="2315.7" class="mult">0..*</text>
-<polyline points="2170.0,1210.0 2340.0,1210.0 2340.0,1340.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polygon points="2170.0,1210.0 2178.0,1216.0 2186.0,1210.0 2178.0,1204.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="2334.0,1329.0 2340.0,1340.0 2346.0,1329.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="2199.0" y="1224.0" class="mult">1</text>
-<text x="2333.0" y="1326.0" class="mult">0..*</text>
-<polyline points="290.0,180.0 380.0,252.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="367.7,250.2 380.0,252.4 375.2,240.8" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="296.1" y="199.3" class="mult">1</text>
-<text x="362.7" y="252.9" class="mult" text-anchor="end">1</text>
-<polyline points="470.0,490.0 527.0,620.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="517.1,612.3 527.0,620.0 528.1,607.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="468.7" y="509.0" class="mult">*</text>
-<text x="513.6" y="611.5" class="mult">1</text>
-<text x="504.5" y="550.0" class="lbl">controller</text>
-<polyline points="453.5,900.0 453.5,990.0 204.0,990.0 204.0,1070.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="198.0,1059.0 204.0,1070.0 210.0,1059.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="446.5" y="916.0" class="mult">1</text>
-<text x="197.0" y="1056.0" class="mult">0..1</text>
-<text x="334.8" y="985.0" class="lbl">session</text>
-<polyline points="380.0,844.0 30.0,844.0 30.0,1975.0 60.0,1975.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="49.0,1981.0 60.0,1975.0 49.0,1969.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="371.0" y="838.0" class="mult">1</text>
-<text x="45.0" y="1989.0" class="mult" text-anchor="end">1</text>
-<polyline points="796.5,900.0 796.5,965.0 2550.0,965.0 2550.0,1880.0 925.0,1880.0 925.0,1930.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="919.0,1919.0 925.0,1930.0 931.0,1919.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="789.5" y="916.0" class="mult">1</text>
-<text x="918.0" y="1916.0" class="mult">1</text>
-<text x="1679.2" y="960.0" class="lbl">store</text>
-<polyline points="2100.0,1415.0 2190.0,1415.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<polyline points="2179.0,1421.0 2190.0,1415.0 2179.0,1409.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="2115.0" y="1429.0" class="mult">1</text>
-<text x="2175.0" y="1429.0" class="mult" text-anchor="end">0..1</text>
-<polyline points="650.0,490.0 650.0,485.0 1215.0,485.0 1215.0,350.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="1221.0,361.0 1215.0,350.0 1209.0,361.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="938.5" y="480.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
-<polyline points="870.0,760.0 950.0,710.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="943.9,720.9 950.0,710.0 937.5,710.7" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="916.0" y="730.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
-<polyline points="300.0,1450.0 235.0,1520.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="238.1,1507.9 235.0,1520.0 246.9,1516.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="273.5" y="1480.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
-<polyline points="290.0,2080.0 190.0,2140.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="196.3,2129.2 190.0,2140.0 202.5,2139.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="246.0" y="2105.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
-<polyline points="290.0,1930.0 235.0,1800.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="244.8,1807.8 235.0,1800.0 233.8,1812.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="268.5" y="1860.0" class="lbl">uses</text>
-<polyline points="1010.0,1230.0 1290.0,1363.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="1277.5,1363.7 1290.0,1363.0 1282.6,1352.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1156.0" y="1291.5" class="lbl">uses</text>
-<polyline points="680.0,2206.0 320.0,2224.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="330.7,2217.5 320.0,2224.0 331.3,2229.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="506.0" y="2210.0" class="lbl">uses</text>
-<polyline points="821.0,620.0 821.0,575.0 1390.0,575.0 1390.0,620.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
-<polyline points="1384.0,609.0 1390.0,620.0 1396.0,609.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1111.5" y="570.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<rect x="36" y="106" width="2318" height="418" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="356" y="574" width="114" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="366" y="590" class="pkg">controller</text>
+<rect x="356" y="596" width="1548" height="378" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="36" y="1024" width="78" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="46" y="1040" class="pkg">domain</text>
+<rect x="36" y="1046" width="2478" height="788" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="36" y="1884" width="87" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="46" y="1900" class="pkg">service</text>
+<rect x="36" y="1906" width="508" height="548" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="656" y="1884" width="123" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="666" y="1900" class="pkg">persistence</text>
+<rect x="656" y="1906" width="538" height="658" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<rect x="1306" y="1884" width="69" height="22" fill="#F1F4F8" stroke="#6B7686" stroke-width="1"/>
+<text x="1316" y="1900" class="pkg">model</text>
+<rect x="1306" y="1906" width="608" height="558" fill="#F7F9FC" stroke="#6B7686" stroke-width="1"/>
+<polyline points="600.0,220.0 460.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="460.0,170.0 475.9,167.2 470.5,182.2" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1005.0,220.0 970.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="970.0,170.0 984.6,176.9 971.5,186.1" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1355.0,250.0 1488.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1488.0,170.0 1480.1,184.1 1471.9,170.4" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1710.0,250.0 1520.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1520.0,170.0 1536.0,168.1 1529.8,182.8" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="2072.0,250.0 1552.0,170.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1552.0,170.0 1567.1,164.2 1564.6,180.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1125.0,820.0 1336.0,760.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1336.0,760.0 1324.7,771.5 1320.3,756.1" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1340.0,820.0 1372.0,760.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1372.0,760.0 1372.5,776.1 1358.4,768.6" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1555.0,820.0 1408.0,760.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1408.0,760.0 1424.0,757.9 1417.9,772.7" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1775.0,820.0 1444.0,760.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1444.0,760.0 1459.2,754.6 1456.3,770.4" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1180.0,410.0 1210.0,410.0 1210.0,155.0 1050.0,155.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1050.0,155.0 1064.0,147.0 1064.0,163.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="925.0,2120.0 925.0,2050.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polygon points="925.0,2050.0 933.0,2064.0 917.0,2064.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="820.0,262.0 890.0,275.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="820.0,262.0 826.8,269.4 835.7,264.9 829.0,257.6" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="878.1,278.9 890.0,275.0 880.3,267.1" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="846.7" y="280.6" class="mult">1</text>
+<text x="873.5" y="285.5" class="mult" text-anchor="end">1</text>
+<polyline points="820.0,388.0 890.0,410.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="820.0,388.0 825.8,396.1 835.3,392.8 829.4,384.7" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="877.7,412.4 890.0,410.0 881.3,401.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="844.8" y="409.3" class="mult">1</text>
+<text x="872.8" y="418.1" class="mult" text-anchor="end">1</text>
+<polyline points="540.0,1118.0 630.0,1120.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="540.0,1118.0 547.9,1124.2 556.0,1118.4 548.1,1112.2" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="618.9,1125.8 630.0,1120.0 619.1,1113.8" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="568.8" y="1132.6" class="mult">1</text>
+<text x="614.8" y="1133.6" class="mult" text-anchor="end">1</text>
+<polyline points="348.0,1080.0 348.0,1050.0 1458.0,1050.0 1458.0,1080.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="348.0,1080.0 354.0,1072.0 348.0,1064.0 342.0,1072.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1452.0,1069.0 1458.0,1080.0 1464.0,1069.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="361.0" y="1058.0" class="mult">1</text>
+<text x="1451.0" y="1066.0" class="mult">1</text>
+<polyline points="444.0,1080.0 444.0,1025.0 1948.0,1025.0 1948.0,1080.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="444.0,1080.0 450.0,1072.0 444.0,1064.0 438.0,1072.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1942.0,1069.0 1948.0,1080.0 1954.0,1069.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="457.0" y="1058.0" class="mult">1</text>
+<text x="1941.0" y="1066.0" class="mult">1</text>
+<polyline points="744.0,1280.0 795.0,1350.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="744.0,1280.0 743.9,1290.0 753.4,1292.9 753.6,1282.9" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="783.7,1344.6 795.0,1350.0 793.4,1337.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="754.2" y="1310.9" class="mult">1</text>
+<text x="779.3" y="1345.3" class="mult" text-anchor="end">0..*</text>
+<polyline points="934.0,1280.0 934.0,1320.0 1060.0,1320.0 1060.0,1350.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="934.0,1280.0 928.0,1288.0 934.0,1296.0 940.0,1288.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1054.0,1339.0 1060.0,1350.0 1066.0,1339.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="927.0" y="1310.0" class="mult">1</text>
+<text x="1053.0" y="1336.0" class="mult">0..*</text>
+<polyline points="1500.0,1240.0 1440.0,1310.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1500.0,1240.0 1490.2,1242.2 1489.6,1252.1 1499.3,1250.0" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1442.6,1297.7 1440.0,1310.0 1451.7,1305.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1478.5" y="1257.2" class="mult">1</text>
+<text x="1447.1" y="1293.8" class="mult">6</text>
+<polyline points="1985.0,1280.0 1950.0,1350.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="1985.0,1280.0 1976.1,1284.5 1977.8,1294.3 1986.8,1289.8" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="1949.6,1337.5 1950.0,1350.0 1960.3,1342.8" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1967.4" y="1302.8" class="mult">1</text>
+<text x="1952.1" y="1333.4" class="mult">30</text>
+<polyline points="925.0,2280.0 835.0,2340.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="925.0,2280.0 915.0,2279.4 911.7,2288.9 921.7,2289.4" fill="#1B2430" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="840.8,2328.9 835.0,2340.0 847.5,2338.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="900.8" y="2290.1" class="mult">1</text>
+<text x="847.4" y="2325.7" class="mult">0..*</text>
+<polyline points="2170.0,1220.0 2340.0,1220.0 2340.0,1350.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polygon points="2170.0,1220.0 2178.0,1226.0 2186.0,1220.0 2178.0,1214.0" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="2334.0,1339.0 2340.0,1350.0 2346.0,1339.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="2199.0" y="1234.0" class="mult">1</text>
+<text x="2333.0" y="1336.0" class="mult">0..*</text>
+<polyline points="290.0,180.0 380.0,253.6" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="367.7,251.3 380.0,253.6 375.3,242.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="296.0" y="199.3" class="mult">1</text>
+<text x="362.7" y="253.9" class="mult" text-anchor="end">1</text>
+<polyline points="512.0,500.0 527.0,630.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="519.8,619.8 527.0,630.0 531.7,618.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="506.4" y="517.1" class="mult">*</text>
+<text x="518.0" y="617.3" class="mult">1</text>
+<text x="525.5" y="560.0" class="lbl">controller</text>
+<polyline points="453.5,910.0 453.5,1000.0 204.0,1000.0 204.0,1080.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="198.0,1069.0 204.0,1080.0 210.0,1069.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="446.5" y="926.0" class="mult">1</text>
+<text x="197.0" y="1066.0" class="mult">0..1</text>
+<text x="334.8" y="995.0" class="lbl">session</text>
+<polyline points="380.0,854.0 30.0,854.0 30.0,1985.0 60.0,1985.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="49.0,1991.0 60.0,1985.0 49.0,1979.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="371.0" y="848.0" class="mult">1</text>
+<text x="45.0" y="1999.0" class="mult" text-anchor="end">1</text>
+<polyline points="796.5,910.0 796.5,975.0 2550.0,975.0 2550.0,1890.0 925.0,1890.0 925.0,1940.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="919.0,1929.0 925.0,1940.0 931.0,1929.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="789.5" y="926.0" class="mult">1</text>
+<text x="918.0" y="1926.0" class="mult">1</text>
+<text x="1679.2" y="970.0" class="lbl">store</text>
+<polyline points="2100.0,1425.0 2190.0,1425.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<polyline points="2179.0,1431.0 2190.0,1425.0 2179.0,1419.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="2115.0" y="1439.0" class="mult">1</text>
+<text x="2175.0" y="1439.0" class="mult" text-anchor="end">0..1</text>
+<polyline points="776.0,500.0 776.0,485.0 1355.0,485.0 1355.0,350.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="1361.0,361.0 1355.0,350.0 1349.0,361.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1071.5" y="480.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="870.0,770.0 950.0,720.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="943.9,730.9 950.0,720.0 937.5,720.7" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="916.0" y="740.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="300.0,1460.0 235.0,1530.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="238.1,1517.9 235.0,1530.0 246.9,1526.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="273.5" y="1490.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="290.0,2090.0 190.0,2150.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="196.3,2139.2 190.0,2150.0 202.5,2149.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="246.0" y="2115.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
+<polyline points="290.0,1940.0 235.0,1810.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="244.8,1817.8 235.0,1810.0 233.8,1822.5" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="268.5" y="1870.0" class="lbl">uses</text>
+<polyline points="1010.0,1240.0 1290.0,1373.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="1277.5,1373.7 1290.0,1373.0 1282.6,1362.9" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1156.0" y="1301.5" class="lbl">uses</text>
+<polyline points="680.0,2216.0 320.0,2234.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="330.7,2227.5 320.0,2234.0 331.3,2239.4" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="506.0" y="2220.0" class="lbl">uses</text>
+<polyline points="821.0,630.0 821.0,585.0 1390.0,585.0 1390.0,630.0" fill="none" stroke="#1B2430" stroke-width="1.2" stroke-dasharray="7 5"/>
+<polyline points="1384.0,619.0 1390.0,630.0 1396.0,619.0" fill="none" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1111.5" y="580.0" class="lbl">&lt;&lt;create&gt;&gt;</text>
 <rect x="60" y="140" width="230" height="80" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <text x="175.0" y="161" class="cname">StockGameApp</text>
 <text x="290" y="135" class="tag">실행</text>
@@ -156,416 +156,417 @@
 <text x="70" y="204" class="mem" text-decoration="underline">+main(args : String[]) : void</text>
 <rect x="380" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
 <text x="460.0" y="161" class="cname">javax.swing::JFrame</text>
-<rect x="750" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="830.0" y="161" class="cname">javax.swing::JPanel</text>
-<rect x="1300" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1380.0" y="161" class="cname">javax.swing::JDialog</text>
-<rect x="380" y="220" width="300" height="270" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="530.0" y="241" class="cname">MainFrame</text>
-<text x="680" y="215" class="tag">UI-02 / F-02~08</text>
-<line x1="380" y1="244" x2="680" y2="244" stroke="#1B2430" stroke-width="1"/>
+<rect x="890" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="970.0" y="161" class="cname">javax.swing::JPanel</text>
+<rect x="1440" y="140" width="160" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1520.0" y="161" class="cname">javax.swing::JDialog</text>
+<rect x="380" y="220" width="440" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="600.0" y="241" class="cname">MainFrame</text>
+<text x="820" y="215" class="tag">UI-02 / F-02~08</text>
+<line x1="380" y1="244" x2="820" y2="244" stroke="#1B2430" stroke-width="1"/>
 <text x="390" y="261" class="mem">-controller : GameController</text>
 <text x="390" y="278" class="mem">-startPanel : StartPanel</text>
 <text x="390" y="295" class="mem">-chartPanel : PriceChartPanel</text>
 <text x="390" y="312" class="mem">-stockTable : JTable</text>
 <text x="390" y="329" class="mem">-holdingTable : JTable</text>
 <text x="390" y="346" class="mem">-newsArea : JTextArea</text>
-<line x1="380" y1="356" x2="680" y2="356" stroke="#1B2430" stroke-width="1"/>
+<line x1="380" y1="356" x2="820" y2="356" stroke="#1B2430" stroke-width="1"/>
 <text x="390" y="373" class="mem">+MainFrame(controller : GameController)</text>
 <text x="390" y="390" class="mem">+refresh(view : ViewData) : void</text>
 <text x="390" y="407" class="mem">-onStart() : void</text>
 <text x="390" y="424" class="mem">-onBuy() : void</text>
 <text x="390" y="441" class="mem">-onSell() : void</text>
 <text x="390" y="458" class="mem">-onNextTurn() : void</text>
-<text x="390" y="475" class="mem">-showResult() : void</text>
-<rect x="750" y="220" width="230" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="865.0" y="241" class="cname">StartPanel</text>
-<text x="980" y="215" class="tag">UI-01 / F-01</text>
-<line x1="750" y1="244" x2="980" y2="244" stroke="#1B2430" stroke-width="1"/>
-<text x="760" y="261" class="mem">-nameField : JTextField</text>
-<text x="760" y="278" class="mem">-difficultyGroup : ButtonGroup</text>
-<line x1="750" y1="288" x2="980" y2="288" stroke="#1B2430" stroke-width="1"/>
-<text x="760" y="305" class="mem">+getPlayerName() : String</text>
-<text x="760" y="322" class="mem">+getDifficulty() : Difficulty</text>
-<rect x="750" y="360" width="290" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="895.0" y="381" class="cname">PriceChartPanel</text>
-<text x="1040" y="355" class="tag">F-08</text>
-<line x1="750" y1="384" x2="1040" y2="384" stroke="#1B2430" stroke-width="1"/>
-<text x="760" y="401" class="mem">-prices : List&lt;Long&gt;</text>
-<line x1="750" y1="411" x2="1040" y2="411" stroke="#1B2430" stroke-width="1"/>
-<text x="760" y="428" class="mem">+setPrices(prices : List&lt;Long&gt;) : void</text>
-<text x="760" y="445" class="mem">#paintComponent(g : Graphics) : void</text>
-<rect x="1050" y="250" width="330" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1215.0" y="271" class="cname">OrderDialog</text>
-<text x="1380" y="245" class="tag">UI-03 / F-04, F-05</text>
-<line x1="1050" y1="274" x2="1380" y2="274" stroke="#1B2430" stroke-width="1"/>
-<text x="1060" y="291" class="mem">-confirmed : boolean</text>
-<line x1="1050" y1="301" x2="1380" y2="301" stroke="#1B2430" stroke-width="1"/>
-<text x="1060" y="318" class="mem">+showDialog(side : OrderSide, stock : Stock,</text>
-<text x="1060" y="335" class="mem">    qty : int, cash : BigDecimal) : boolean</text>
-<rect x="1410" y="250" width="320" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1570.0" y="271" class="cname">ResultDialog</text>
-<text x="1730" y="245" class="tag">UI-04 / F-09, F-10</text>
-<line x1="1410" y1="274" x2="1730" y2="274" stroke="#1B2430" stroke-width="1"/>
-<text x="1420" y="291" class="mem">-result : GameResult</text>
-<text x="1420" y="308" class="mem">-saveStatus : JLabel</text>
-<line x1="1410" y1="318" x2="1730" y2="318" stroke="#1B2430" stroke-width="1"/>
-<text x="1420" y="335" class="mem">+ResultDialog(owner : JFrame, controller :</text>
-<text x="1420" y="352" class="mem">    GameController, result : GameResult)</text>
-<text x="1420" y="369" class="mem">-onSave() : void</text>
-<rect x="1760" y="250" width="430" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1975.0" y="271" class="cname">RecordDialog</text>
-<text x="2190" y="245" class="tag">UI-05 / F-10</text>
-<line x1="1760" y1="274" x2="2190" y2="274" stroke="#1B2430" stroke-width="1"/>
-<text x="1770" y="291" class="mem">-controller : GameController</text>
-<line x1="1760" y1="301" x2="2190" y2="301" stroke="#1B2430" stroke-width="1"/>
-<text x="1770" y="318" class="mem">+RecordDialog(owner : JFrame, controller : GameController)</text>
-<text x="1770" y="335" class="mem">+RecordDialog(owner : JFrame, controller : GameController,</text>
-<text x="1770" y="352" class="mem">    name : String, difficulty : Difficulty)</text>
-<text x="1770" y="369" class="mem">-onSearch() : void</text>
-<rect x="380" y="620" width="490" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="625.0" y="641" class="cname">GameController</text>
-<text x="870" y="615" class="tag">FN-01~03 / F-01, F-03~05</text>
-<line x1="380" y1="644" x2="870" y2="644" stroke="#1B2430" stroke-width="1"/>
-<text x="390" y="661" class="mem">-session : GameSession</text>
-<text x="390" y="678" class="mem">-evaluator : ResultEvaluator</text>
-<text x="390" y="695" class="mem">-store : RecordStore</text>
-<text x="390" y="712" class="mem">-seedSource : Random</text>
-<text x="390" y="729" class="mem">-lastResult : GameResult</text>
-<text x="390" y="746" class="mem">-handled : Map&lt;UUID, ActionResult&gt;</text>
-<line x1="380" y1="756" x2="870" y2="756" stroke="#1B2430" stroke-width="1"/>
-<text x="390" y="773" class="mem">+startGame(name : String, difficulty : Difficulty) : StartResult</text>
-<text x="390" y="790" class="mem">+placeOrder(stockId : String, side : OrderSide, qty : int,</text>
-<text x="390" y="807" class="mem">    expectedVersion : long, requestId : UUID) : TradeResult</text>
-<text x="390" y="824" class="mem">+advanceTurn(expectedVersion : long, requestId : UUID) : TurnResult</text>
-<text x="390" y="841" class="mem">+getView() : ViewData</text>
-<text x="390" y="858" class="mem">+evaluateResult() : GameResult</text>
-<text x="390" y="875" class="mem">+saveResult() : SaveResult</text>
-<text x="390" y="892" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
-<rect x="950" y="620" width="230" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1065.0" y="641" class="cname">ViewData</text>
-<text x="1180" y="615" class="tag">F-02, F-06, F-07</text>
-<line x1="950" y1="644" x2="1180" y2="644" stroke="#1B2430" stroke-width="1"/>
-<text x="960" y="661" class="mem">-snapshot : GameSnapshot</text>
-<text x="960" y="678" class="mem">-totalAssets : BigDecimal</text>
-<text x="960" y="695" class="mem">-returnRate : BigDecimal</text>
-<text x="960" y="712" class="mem">-currentNews : News</text>
-<text x="960" y="729" class="mem">-newsFeed : List&lt;News&gt;</text>
-<text x="960" y="746" class="mem">-currentTurn : int</text>
-<text x="960" y="763" class="mem">-version : long</text>
-<line x1="950" y1="773" x2="1180" y2="773" stroke="#1B2430" stroke-width="1"/>
-<text x="960" y="790" class="mem">+getSnapshot() : GameSnapshot</text>
-<rect x="1300" y="620" width="180" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1390.0" y="641" class="cname italic">ActionResult</text>
-<line x1="1300" y1="644" x2="1480" y2="644" stroke="#1B2430" stroke-width="1"/>
-<text x="1310" y="661" class="mem">#success : boolean</text>
-<text x="1310" y="678" class="mem">#errorCode : String</text>
-<text x="1310" y="695" class="mem">#message : String</text>
-<line x1="1300" y1="705" x2="1480" y2="705" stroke="#1B2430" stroke-width="1"/>
-<text x="1310" y="722" class="mem">+isSuccess() : boolean</text>
-<text x="1310" y="739" class="mem">+getMessage() : String</text>
-<rect x="1040" y="810" width="170" height="80" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1125.0" y="831" class="cname">StartResult</text>
-<line x1="1040" y1="834" x2="1210" y2="834" stroke="#1B2430" stroke-width="1"/>
-<text x="1050" y="851" class="mem">-view : ViewData</text>
-<line x1="1040" y1="861" x2="1210" y2="861" stroke="#1B2430" stroke-width="1"/>
-<text x="1050" y="878" class="mem">+getView() : ViewData</text>
-<rect x="1240" y="810" width="200" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1340.0" y="831" class="cname">TradeResult</text>
-<line x1="1240" y1="834" x2="1440" y2="834" stroke="#1B2430" stroke-width="1"/>
-<text x="1250" y="851" class="mem">-price : long</text>
-<text x="1250" y="868" class="mem">-quantity : int</text>
-<text x="1250" y="885" class="mem">-realizedPnl : BigDecimal</text>
-<text x="1250" y="902" class="mem">-view : ViewData</text>
-<line x1="1240" y1="912" x2="1440" y2="912" stroke="#1B2430" stroke-width="1"/>
-<text x="1250" y="929" class="mem">+getView() : ViewData</text>
-<rect x="1470" y="810" width="170" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1555.0" y="831" class="cname">TurnResult</text>
-<line x1="1470" y1="834" x2="1640" y2="834" stroke="#1B2430" stroke-width="1"/>
-<text x="1480" y="851" class="mem">-completedTurns : int</text>
-<text x="1480" y="868" class="mem">-ended : boolean</text>
-<text x="1480" y="885" class="mem">-view : ViewData</text>
-<line x1="1470" y1="895" x2="1640" y2="895" stroke="#1B2430" stroke-width="1"/>
-<text x="1480" y="912" class="mem">+isEnded() : boolean</text>
-<rect x="1670" y="810" width="210" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1775.0" y="831" class="cname">SaveResult</text>
-<line x1="1670" y1="834" x2="1880" y2="834" stroke="#1B2430" stroke-width="1"/>
-<text x="1680" y="851" class="mem">-alreadySaved : boolean</text>
-<text x="1680" y="868" class="mem">-location : Path</text>
-<line x1="1670" y1="878" x2="1880" y2="878" stroke="#1B2430" stroke-width="1"/>
-<text x="1680" y="895" class="mem">+isAlreadySaved() : boolean</text>
-<rect x="60" y="1070" width="480" height="380" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="300.0" y="1091" class="cname">GameSession</text>
-<text x="540" y="1065" class="tag">F-01, F-03</text>
-<line x1="60" y1="1094" x2="540" y2="1094" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="1111" class="mem" text-decoration="underline">+TOTAL_TURNS : int = 30</text>
-<text x="70" y="1128" class="mem" text-decoration="underline">+INITIAL_CASH : BigDecimal = 1000000</text>
-<text x="70" y="1145" class="mem" text-decoration="underline">+GOAL_ASSETS : BigDecimal = 1200000</text>
-<text x="70" y="1162" class="mem">-sessionId : UUID</text>
-<text x="70" y="1179" class="mem">-playerName : String</text>
-<text x="70" y="1196" class="mem">-difficulty : Difficulty</text>
-<text x="70" y="1213" class="mem">-state : GameState</text>
-<text x="70" y="1230" class="mem">-completedTurns : int {0..30}</text>
-<text x="70" y="1247" class="mem">-version : long</text>
-<text x="70" y="1264" class="mem">-assetHistory : List&lt;BigDecimal&gt;</text>
-<text x="70" y="1281" class="mem">-weightHistory : List&lt;Map&lt;String, BigDecimal&gt;&gt;</text>
-<line x1="60" y1="1291" x2="540" y2="1291" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="1308" class="mem">+GameSession(name : String, difficulty : Difficulty, seed : long)</text>
-<text x="70" y="1325" class="mem">+closeTurn() : void</text>
-<text x="70" y="1342" class="mem">+nextVersion() : long</text>
-<text x="70" y="1359" class="mem">+getCurrentTurn() : int</text>
-<text x="70" y="1376" class="mem">+getPortfolio() : Portfolio</text>
-<text x="70" y="1393" class="mem">+getMarket() : Market</text>
-<text x="70" y="1410" class="mem">+getNewsService() : NewsService</text>
-<text x="70" y="1427" class="mem">+isEnded() : boolean</text>
-<text x="70" y="1444" class="mem">+snapshot() : GameSnapshot</text>
-<rect x="630" y="1070" width="380" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="820.0" y="1091" class="cname">Portfolio</text>
-<text x="1010" y="1065" class="tag">F-04, F-05, F-06</text>
-<line x1="630" y1="1094" x2="1010" y2="1094" stroke="#1B2430" stroke-width="1"/>
-<text x="640" y="1111" class="mem" text-decoration="underline">+MAX_QUANTITY : int = 99999</text>
-<text x="640" y="1128" class="mem">-cash : BigDecimal {cash &gt;= 0}</text>
-<text x="640" y="1145" class="mem">-holdings : Map&lt;String, Holding&gt;</text>
-<text x="640" y="1162" class="mem">-trades : List&lt;Trade&gt;</text>
-<line x1="630" y1="1172" x2="1010" y2="1172" stroke="#1B2430" stroke-width="1"/>
-<text x="640" y="1189" class="mem">+buy(stock : Stock, qty : int, turn : int) : Trade</text>
-<text x="640" y="1206" class="mem">+sell(stock : Stock, qty : int, turn : int) : Trade</text>
-<text x="640" y="1223" class="mem">+getCash() : BigDecimal</text>
-<text x="640" y="1240" class="mem">+totalAssets(market : Market) : BigDecimal</text>
-<text x="640" y="1257" class="mem">+weights(market : Market) : Map&lt;String, BigDecimal&gt;</text>
-<rect x="630" y="1340" width="330" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="795.0" y="1361" class="cname">Holding</text>
-<line x1="630" y1="1364" x2="960" y2="1364" stroke="#1B2430" stroke-width="1"/>
-<text x="640" y="1381" class="mem">-stockId : String</text>
-<text x="640" y="1398" class="mem">-quantity : int</text>
-<text x="640" y="1415" class="mem">-costBasis : BigDecimal</text>
-<text x="640" y="1432" class="mem">-realizedPnl : BigDecimal</text>
-<line x1="630" y1="1442" x2="960" y2="1442" stroke="#1B2430" stroke-width="1"/>
-<text x="640" y="1459" class="mem">+averagePrice() : BigDecimal</text>
-<text x="640" y="1476" class="mem">+add(qty : int, amount : BigDecimal) : void</text>
-<text x="640" y="1493" class="mem">+remove(qty : int) : BigDecimal</text>
-<text x="640" y="1510" class="mem">+unrealizedPnl(price : long) : BigDecimal</text>
-<rect x="1000" y="1340" width="200" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1100.0" y="1361" class="cname">Trade</text>
-<text x="1200" y="1335" class="tag">F-08</text>
-<line x1="1000" y1="1364" x2="1200" y2="1364" stroke="#1B2430" stroke-width="1"/>
-<text x="1010" y="1381" class="mem">-turn : int</text>
-<text x="1010" y="1398" class="mem">-stockId : String</text>
-<text x="1010" y="1415" class="mem">-side : OrderSide</text>
-<text x="1010" y="1432" class="mem">-quantity : int</text>
-<text x="1010" y="1449" class="mem">-price : long</text>
-<text x="1010" y="1466" class="mem">-realizedPnl : BigDecimal</text>
-<line x1="1000" y1="1476" x2="1200" y2="1476" stroke="#1B2430" stroke-width="1"/>
-<text x="1010" y="1493" class="mem">+getAmount() : long</text>
-<rect x="1290" y="1070" width="420" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1500.0" y="1091" class="cname">Market</text>
-<text x="1710" y="1065" class="tag">F-02, F-03</text>
-<line x1="1290" y1="1094" x2="1710" y2="1094" stroke="#1B2430" stroke-width="1"/>
-<text x="1300" y="1111" class="mem" text-decoration="underline">+MAX_RATE : BigDecimal = 0.20</text>
-<text x="1300" y="1128" class="mem">-stocks : Map&lt;String, Stock&gt;</text>
-<line x1="1290" y1="1138" x2="1710" y2="1138" stroke="#1B2430" stroke-width="1"/>
-<text x="1300" y="1155" class="mem" text-decoration="underline">+createStocks() : List&lt;Stock&gt;</text>
-<text x="1300" y="1172" class="mem">+getStock(id : String) : Stock</text>
-<text x="1300" y="1189" class="mem">+getStocks() : List&lt;Stock&gt;</text>
-<text x="1300" y="1206" class="mem">+applyTurn(draw : TurnDraw, newsEffects :</text>
-<text x="1300" y="1223" class="mem">    Map&lt;String, BigDecimal&gt;, factor : BigDecimal) : void</text>
-<rect x="1290" y="1300" width="300" height="210" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1440.0" y="1321" class="cname">Stock</text>
-<text x="1590" y="1295" class="tag">F-02, F-08</text>
-<line x1="1290" y1="1324" x2="1590" y2="1324" stroke="#1B2430" stroke-width="1"/>
-<text x="1300" y="1341" class="mem">-id : String</text>
-<text x="1300" y="1358" class="mem">-name : String</text>
-<text x="1300" y="1375" class="mem">-sector : Sector</text>
-<text x="1300" y="1392" class="mem">-risk : RiskLevel</text>
-<text x="1300" y="1409" class="mem">-description : String</text>
-<text x="1300" y="1426" class="mem">-priceHistory : List&lt;Long&gt; {price &gt;= 1}</text>
-<line x1="1290" y1="1436" x2="1590" y2="1436" stroke="#1B2430" stroke-width="1"/>
-<text x="1300" y="1453" class="mem">+currentPrice() : long</text>
-<text x="1300" y="1470" class="mem">+changeRate() : BigDecimal</text>
-<text x="1300" y="1487" class="mem">+updatePrice(rate : BigDecimal) : long</text>
-<text x="1300" y="1504" class="mem">+getPriceHistory() : List&lt;Long&gt;</text>
-<rect x="1800" y="1070" width="370" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1985.0" y="1091" class="cname">NewsService</text>
-<text x="2170" y="1065" class="tag">F-07</text>
-<line x1="1800" y1="1094" x2="2170" y2="1094" stroke="#1B2430" stroke-width="1"/>
-<text x="1810" y="1111" class="mem">-difficulty : Difficulty</text>
-<text x="1810" y="1128" class="mem">-draws : List&lt;TurnDraw&gt;</text>
-<text x="1810" y="1145" class="mem">-published : List&lt;News&gt;</text>
-<line x1="1800" y1="1155" x2="2170" y2="1155" stroke="#1B2430" stroke-width="1"/>
-<text x="1810" y="1172" class="mem">+NewsService(seed : long, difficulty : Difficulty)</text>
-<text x="1810" y="1189" class="mem">+drawFor(turn : int) : TurnDraw</text>
-<text x="1810" y="1206" class="mem">+publish(turn : int) : void</text>
-<text x="1810" y="1223" class="mem">+currentNews() : News</text>
-<text x="1810" y="1240" class="mem">+pastNews() : List&lt;News&gt;</text>
-<text x="1810" y="1257" class="mem">+effectsFor(turn : int) : Map&lt;String, BigDecimal&gt;</text>
-<rect x="1800" y="1340" width="300" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1950.0" y="1361" class="cname">TurnDraw</text>
-<line x1="1800" y1="1364" x2="2100" y2="1364" stroke="#1B2430" stroke-width="1"/>
-<text x="1810" y="1381" class="mem">-turn : int</text>
-<text x="1810" y="1398" class="mem">-marketRate : BigDecimal</text>
-<text x="1810" y="1415" class="mem">-sectorRates : Map&lt;Sector, BigDecimal&gt;</text>
-<text x="1810" y="1432" class="mem">-companyRates : Map&lt;String, BigDecimal&gt;</text>
-<text x="1810" y="1449" class="mem">-news : News</text>
-<line x1="1800" y1="1459" x2="2100" y2="1459" stroke="#1B2430" stroke-width="1"/>
-<text x="1810" y="1476" class="mem">+getNews() : News</text>
-<rect x="2190" y="1340" width="300" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="2340.0" y="1361" class="cname">News</text>
-<text x="2490" y="1335" class="tag">F-07</text>
-<line x1="2190" y1="1364" x2="2490" y2="1364" stroke="#1B2430" stroke-width="1"/>
-<text x="2200" y="1381" class="mem">-event : NewsEvent</text>
-<text x="2200" y="1398" class="mem">-publishedTurn : int</text>
-<text x="2200" y="1415" class="mem">-applyTurn : int</text>
-<text x="2200" y="1432" class="mem">-effects : Map&lt;String, BigDecimal&gt;</text>
-<line x1="2190" y1="1442" x2="2490" y2="1442" stroke="#1B2430" stroke-width="1"/>
-<text x="2200" y="1459" class="mem">+isDelayed() : boolean</text>
-<text x="2200" y="1476" class="mem">+hint(difficulty : Difficulty) : String</text>
-<rect x="60" y="1520" width="350" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="235.0" y="1541" class="cname">GameSnapshot</text>
-<line x1="60" y1="1544" x2="410" y2="1544" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="1561" class="mem">-sessionId : UUID</text>
-<text x="70" y="1578" class="mem">-playerName : String</text>
-<text x="70" y="1595" class="mem">-difficulty : Difficulty</text>
-<text x="70" y="1612" class="mem">-state : GameState</text>
-<text x="70" y="1629" class="mem">-completedTurns : int</text>
-<text x="70" y="1646" class="mem">-cash : BigDecimal</text>
-<text x="70" y="1663" class="mem">-stocks : List&lt;Stock&gt;</text>
-<text x="70" y="1680" class="mem">-holdings : List&lt;Holding&gt;</text>
-<text x="70" y="1697" class="mem">-trades : List&lt;Trade&gt;</text>
-<text x="70" y="1714" class="mem">-assetHistory : List&lt;BigDecimal&gt;</text>
-<text x="70" y="1731" class="mem">-weightHistory : List&lt;Map&lt;String, BigDecimal&gt;&gt;</text>
-<line x1="60" y1="1741" x2="410" y2="1741" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="1758" class="mem">+isCompleted() : boolean</text>
-<text x="70" y="1775" class="mem">+findStock(id : String) : Stock</text>
-<text x="70" y="1792" class="mem">+quantityOf(id : String) : int</text>
-<rect x="60" y="1930" width="460" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="290.0" y="1951" class="cname">ResultEvaluator</text>
-<text x="520" y="1925" class="tag">FN-04 / F-09, F-10</text>
-<line x1="60" y1="1954" x2="520" y2="1954" stroke="#1B2430" stroke-width="1"/>
-<line x1="60" y1="1977" x2="520" y2="1977" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="1994" class="mem">+evaluate(snapshot : GameSnapshot) : GameResult</text>
-<text x="70" y="2011" class="mem">-decideEnding(rate : BigDecimal) : Ending</text>
-<text x="70" y="2028" class="mem">-decideType(snapshot : GameSnapshot) : InvestorType</text>
-<text x="70" y="2045" class="mem">-findAchievements(snapshot : GameSnapshot) : List&lt;Achievement&gt;</text>
-<text x="70" y="2062" class="mem">-maxDrawdown(history : List&lt;BigDecimal&gt;) : BigDecimal</text>
-<rect x="60" y="2140" width="260" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="190.0" y="2161" class="cname">GameResult</text>
-<text x="320" y="2135" class="tag">F-09</text>
-<line x1="60" y1="2164" x2="320" y2="2164" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="2181" class="mem">-sessionId : UUID</text>
-<text x="70" y="2198" class="mem">-playerName : String</text>
-<text x="70" y="2215" class="mem">-difficulty : Difficulty</text>
-<text x="70" y="2232" class="mem">-finalAssets : BigDecimal</text>
-<text x="70" y="2249" class="mem">-returnRate : BigDecimal</text>
-<text x="70" y="2266" class="mem">-realizedPnl : BigDecimal</text>
-<text x="70" y="2283" class="mem">-unrealizedPnl : BigDecimal</text>
-<text x="70" y="2300" class="mem">-maxDrawdown : BigDecimal</text>
-<text x="70" y="2317" class="mem">-bestStockId : String</text>
-<text x="70" y="2334" class="mem">-tradeCount : int</text>
-<text x="70" y="2351" class="mem">-ending : Ending</text>
-<text x="70" y="2368" class="mem">-investorType : InvestorType</text>
-<text x="70" y="2385" class="mem">-achievements : List&lt;Achievement&gt;</text>
-<line x1="60" y1="2395" x2="320" y2="2395" stroke="#1B2430" stroke-width="1"/>
-<text x="70" y="2412" class="mem">+getTitle() : String</text>
-<rect x="680" y="1930" width="490" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="925.0" y="1946" class="stereo">&lt;&lt;interface&gt;&gt;</text>
-<text x="925.0" y="1963" class="cname">RecordStore</text>
-<text x="1170" y="1925" class="tag">F-10</text>
-<line x1="680" y1="1969" x2="1170" y2="1969" stroke="#1B2430" stroke-width="1"/>
-<line x1="680" y1="1992" x2="1170" y2="1992" stroke="#1B2430" stroke-width="1"/>
-<text x="690" y="2009" class="mem">+saveResult(result : GameResult) : SaveResult</text>
-<text x="690" y="2026" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
-<rect x="680" y="2110" width="490" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="925.0" y="2131" class="cname">RecordRepository</text>
-<text x="1170" y="2105" class="tag">FN-05</text>
-<line x1="680" y1="2134" x2="1170" y2="2134" stroke="#1B2430" stroke-width="1"/>
-<text x="690" y="2151" class="mem">-file : Path</text>
-<line x1="680" y1="2161" x2="1170" y2="2161" stroke="#1B2430" stroke-width="1"/>
-<text x="690" y="2178" class="mem">+RecordRepository(file : Path)</text>
-<text x="690" y="2195" class="mem" text-decoration="underline">+defaultPath() : Path</text>
-<text x="690" y="2212" class="mem">+saveResult(result : GameResult) : SaveResult</text>
-<text x="690" y="2229" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
-<text x="690" y="2246" class="mem">-loadAll() : List&lt;RecordEntry&gt;</text>
-<text x="690" y="2263" class="mem">-writeAtomically(entries : List&lt;RecordEntry&gt;) : void</text>
-<rect x="680" y="2330" width="310" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="835.0" y="2351" class="cname">RecordEntry</text>
-<line x1="680" y1="2354" x2="990" y2="2354" stroke="#1B2430" stroke-width="1"/>
-<text x="690" y="2371" class="mem">-playerName : String</text>
-<text x="690" y="2388" class="mem">-difficulty : Difficulty</text>
-<text x="690" y="2405" class="mem">-bestAssets : BigDecimal</text>
-<text x="690" y="2422" class="mem">-bestReturnRate : BigDecimal</text>
-<text x="690" y="2439" class="mem">-playCount : int</text>
-<text x="690" y="2456" class="mem">-endings : Set&lt;Ending&gt;</text>
-<text x="690" y="2473" class="mem">-achievements : Map&lt;Achievement, Integer&gt;</text>
-<text x="690" y="2490" class="mem">-savedSessions : Set&lt;UUID&gt;</text>
-<line x1="680" y1="2500" x2="990" y2="2500" stroke="#1B2430" stroke-width="1"/>
-<text x="690" y="2517" class="mem">+merge(result : GameResult) : boolean</text>
-<rect x="1330" y="1930" width="230" height="140" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1445.0" y="1946" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1445.0" y="1963" class="cname">Difficulty</text>
-<line x1="1330" y1="1969" x2="1560" y2="1969" stroke="#1B2430" stroke-width="1"/>
-<text x="1340" y="1986" class="mem">EASY</text>
-<text x="1340" y="2003" class="mem">NORMAL</text>
-<text x="1340" y="2020" class="mem">HARD</text>
-<text x="1340" y="2037" class="mem">-volatilityFactor : BigDecimal</text>
-<rect x="1330" y="2100" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1395.0" y="2116" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1395.0" y="2133" class="cname">GameState</text>
-<line x1="1330" y1="2139" x2="1460" y2="2139" stroke="#1B2430" stroke-width="1"/>
-<text x="1340" y="2156" class="mem">READY</text>
-<text x="1340" y="2173" class="mem">UPDATING</text>
-<text x="1340" y="2190" class="mem">ENDED</text>
-<rect x="1330" y="2260" width="130" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1395.0" y="2276" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1395.0" y="2293" class="cname">OrderSide</text>
-<line x1="1330" y1="2299" x2="1460" y2="2299" stroke="#1B2430" stroke-width="1"/>
-<text x="1340" y="2316" class="mem">BUY</text>
-<text x="1340" y="2333" class="mem">SELL</text>
-<rect x="1590" y="1930" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1655.0" y="1946" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1655.0" y="1963" class="cname">Sector</text>
-<line x1="1590" y1="1969" x2="1720" y2="1969" stroke="#1B2430" stroke-width="1"/>
-<text x="1600" y="1986" class="mem">TECH</text>
-<text x="1600" y="2003" class="mem">ENERGY</text>
-<text x="1600" y="2020" class="mem">TRANSPORT</text>
-<rect x="1590" y="2090" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1655.0" y="2106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1655.0" y="2123" class="cname">RiskLevel</text>
-<line x1="1590" y1="2129" x2="1720" y2="2129" stroke="#1B2430" stroke-width="1"/>
-<text x="1600" y="2146" class="mem">LOW</text>
-<text x="1600" y="2163" class="mem">MEDIUM</text>
-<text x="1600" y="2180" class="mem">HIGH</text>
-<rect x="1590" y="2250" width="140" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1660.0" y="2266" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1660.0" y="2283" class="cname">NewsEvent</text>
-<line x1="1590" y1="2289" x2="1730" y2="2289" stroke="#1B2430" stroke-width="1"/>
-<text x="1600" y="2306" class="mem">TECH_SUCCESS</text>
-<text x="1600" y="2323" class="mem">TECH_DEFECT</text>
-<text x="1600" y="2340" class="mem">ENERGY_PRICE_UP</text>
-<text x="1600" y="2357" class="mem">GREEN_POWER</text>
-<text x="1600" y="2374" class="mem">LOGISTICS_DEMAND</text>
-<text x="1600" y="2391" class="mem">ECONOMY_SLOWDOWN</text>
-<rect x="1760" y="1930" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1825.0" y="1946" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1825.0" y="1963" class="cname">Ending</text>
-<line x1="1760" y1="1969" x2="1890" y2="1969" stroke="#1B2430" stroke-width="1"/>
-<text x="1770" y="1986" class="mem">PROFIT</text>
-<text x="1770" y="2003" class="mem">MAINTAIN</text>
-<text x="1770" y="2020" class="mem">RETRY</text>
-<rect x="1760" y="2090" width="130" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1825.0" y="2106" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1825.0" y="2123" class="cname">InvestorType</text>
-<line x1="1760" y1="2129" x2="1890" y2="2129" stroke="#1B2430" stroke-width="1"/>
-<text x="1770" y="2146" class="mem">CONCENTRATED</text>
-<text x="1770" y="2163" class="mem">STABLE</text>
-<text x="1770" y="2180" class="mem">AGGRESSIVE</text>
-<text x="1770" y="2197" class="mem">DIVERSIFIED</text>
-<text x="1770" y="2214" class="mem">BALANCED</text>
-<rect x="1760" y="2280" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
-<text x="1825.0" y="2296" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
-<text x="1825.0" y="2313" class="cname">Achievement</text>
-<line x1="1760" y1="2319" x2="1890" y2="2319" stroke="#1B2430" stroke-width="1"/>
-<text x="1770" y="2336" class="mem">NO_LOSS</text>
-<text x="1770" y="2353" class="mem">LONG_HOLD</text>
-<text x="1770" y="2370" class="mem">DIVERSIFIED</text>
-<text x="60" y="2620" class="legend">파란 글씨: 연결 기능(F), 함수 명세(FN), 화면(UI) 번호 · 밑줄: static · { } : 제약 · 실선 화살표: 연관 · 점선 화살표: 의존 · 빈 삼각형: 일반화 · 점선 빈 삼각형: 실체화 · 검은 마름모: 합성 · 흰 마름모: 집합</text>
+<text x="390" y="475" class="mem">-animateTurn(before : ViewData, result : TurnResult) : void</text>
+<text x="390" y="492" class="mem">-showResult() : void</text>
+<rect x="890" y="220" width="230" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1005.0" y="241" class="cname">StartPanel</text>
+<text x="1120" y="215" class="tag">UI-01 / F-01</text>
+<line x1="890" y1="244" x2="1120" y2="244" stroke="#1B2430" stroke-width="1"/>
+<text x="900" y="261" class="mem">-nameField : JTextField</text>
+<text x="900" y="278" class="mem">-difficultyGroup : ButtonGroup</text>
+<line x1="890" y1="288" x2="1120" y2="288" stroke="#1B2430" stroke-width="1"/>
+<text x="900" y="305" class="mem">+getPlayerName() : String</text>
+<text x="900" y="322" class="mem">+getDifficulty() : Difficulty</text>
+<rect x="890" y="360" width="290" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1035.0" y="381" class="cname">PriceChartPanel</text>
+<text x="1180" y="355" class="tag">F-08</text>
+<line x1="890" y1="384" x2="1180" y2="384" stroke="#1B2430" stroke-width="1"/>
+<text x="900" y="401" class="mem">-prices : List&lt;Long&gt;</text>
+<line x1="890" y1="411" x2="1180" y2="411" stroke="#1B2430" stroke-width="1"/>
+<text x="900" y="428" class="mem">+setPrices(prices : List&lt;Long&gt;) : void</text>
+<text x="900" y="445" class="mem">#paintComponent(g : Graphics) : void</text>
+<rect x="1190" y="250" width="330" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1355.0" y="271" class="cname">OrderDialog</text>
+<text x="1520" y="245" class="tag">UI-03 / F-04, F-05</text>
+<line x1="1190" y1="274" x2="1520" y2="274" stroke="#1B2430" stroke-width="1"/>
+<text x="1200" y="291" class="mem">-confirmed : boolean</text>
+<line x1="1190" y1="301" x2="1520" y2="301" stroke="#1B2430" stroke-width="1"/>
+<text x="1200" y="318" class="mem">+showDialog(side : OrderSide, stock : Stock,</text>
+<text x="1200" y="335" class="mem">    qty : int, cash : BigDecimal) : boolean</text>
+<rect x="1550" y="250" width="320" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1710.0" y="271" class="cname">ResultDialog</text>
+<text x="1870" y="245" class="tag">UI-04 / F-09, F-10</text>
+<line x1="1550" y1="274" x2="1870" y2="274" stroke="#1B2430" stroke-width="1"/>
+<text x="1560" y="291" class="mem">-result : GameResult</text>
+<text x="1560" y="308" class="mem">-saveStatus : JLabel</text>
+<line x1="1550" y1="318" x2="1870" y2="318" stroke="#1B2430" stroke-width="1"/>
+<text x="1560" y="335" class="mem">+ResultDialog(owner : JFrame, controller :</text>
+<text x="1560" y="352" class="mem">    GameController, result : GameResult)</text>
+<text x="1560" y="369" class="mem">-onSave() : void</text>
+<rect x="1900" y="250" width="430" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="2115.0" y="271" class="cname">RecordDialog</text>
+<text x="2330" y="245" class="tag">UI-05 / F-10</text>
+<line x1="1900" y1="274" x2="2330" y2="274" stroke="#1B2430" stroke-width="1"/>
+<text x="1910" y="291" class="mem">-controller : GameController</text>
+<line x1="1900" y1="301" x2="2330" y2="301" stroke="#1B2430" stroke-width="1"/>
+<text x="1910" y="318" class="mem">+RecordDialog(owner : JFrame, controller : GameController)</text>
+<text x="1910" y="335" class="mem">+RecordDialog(owner : JFrame, controller : GameController,</text>
+<text x="1910" y="352" class="mem">    name : String, difficulty : Difficulty)</text>
+<text x="1910" y="369" class="mem">-onSearch() : void</text>
+<rect x="380" y="630" width="490" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="625.0" y="651" class="cname">GameController</text>
+<text x="870" y="625" class="tag">FN-01~03 / F-01, F-03~05</text>
+<line x1="380" y1="654" x2="870" y2="654" stroke="#1B2430" stroke-width="1"/>
+<text x="390" y="671" class="mem">-session : GameSession</text>
+<text x="390" y="688" class="mem">-evaluator : ResultEvaluator</text>
+<text x="390" y="705" class="mem">-store : RecordStore</text>
+<text x="390" y="722" class="mem">-seedSource : Random</text>
+<text x="390" y="739" class="mem">-lastResult : GameResult</text>
+<text x="390" y="756" class="mem">-handled : Map&lt;UUID, ActionResult&gt;</text>
+<line x1="380" y1="766" x2="870" y2="766" stroke="#1B2430" stroke-width="1"/>
+<text x="390" y="783" class="mem">+startGame(name : String, difficulty : Difficulty) : StartResult</text>
+<text x="390" y="800" class="mem">+placeOrder(stockId : String, side : OrderSide, qty : int,</text>
+<text x="390" y="817" class="mem">    expectedVersion : long, requestId : UUID) : TradeResult</text>
+<text x="390" y="834" class="mem">+advanceTurn(expectedVersion : long, requestId : UUID) : TurnResult</text>
+<text x="390" y="851" class="mem">+getView() : ViewData</text>
+<text x="390" y="868" class="mem">+evaluateResult() : GameResult</text>
+<text x="390" y="885" class="mem">+saveResult() : SaveResult</text>
+<text x="390" y="902" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
+<rect x="950" y="630" width="230" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1065.0" y="651" class="cname">ViewData</text>
+<text x="1180" y="625" class="tag">F-02, F-06, F-07</text>
+<line x1="950" y1="654" x2="1180" y2="654" stroke="#1B2430" stroke-width="1"/>
+<text x="960" y="671" class="mem">-snapshot : GameSnapshot</text>
+<text x="960" y="688" class="mem">-totalAssets : BigDecimal</text>
+<text x="960" y="705" class="mem">-returnRate : BigDecimal</text>
+<text x="960" y="722" class="mem">-currentNews : News</text>
+<text x="960" y="739" class="mem">-newsFeed : List&lt;News&gt;</text>
+<text x="960" y="756" class="mem">-currentTurn : int</text>
+<text x="960" y="773" class="mem">-version : long</text>
+<line x1="950" y1="783" x2="1180" y2="783" stroke="#1B2430" stroke-width="1"/>
+<text x="960" y="800" class="mem">+getSnapshot() : GameSnapshot</text>
+<rect x="1300" y="630" width="180" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1390.0" y="651" class="cname italic">ActionResult</text>
+<line x1="1300" y1="654" x2="1480" y2="654" stroke="#1B2430" stroke-width="1"/>
+<text x="1310" y="671" class="mem">#success : boolean</text>
+<text x="1310" y="688" class="mem">#errorCode : String</text>
+<text x="1310" y="705" class="mem">#message : String</text>
+<line x1="1300" y1="715" x2="1480" y2="715" stroke="#1B2430" stroke-width="1"/>
+<text x="1310" y="732" class="mem">+isSuccess() : boolean</text>
+<text x="1310" y="749" class="mem">+getMessage() : String</text>
+<rect x="1040" y="820" width="170" height="80" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1125.0" y="841" class="cname">StartResult</text>
+<line x1="1040" y1="844" x2="1210" y2="844" stroke="#1B2430" stroke-width="1"/>
+<text x="1050" y="861" class="mem">-view : ViewData</text>
+<line x1="1040" y1="871" x2="1210" y2="871" stroke="#1B2430" stroke-width="1"/>
+<text x="1050" y="888" class="mem">+getView() : ViewData</text>
+<rect x="1240" y="820" width="200" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1340.0" y="841" class="cname">TradeResult</text>
+<line x1="1240" y1="844" x2="1440" y2="844" stroke="#1B2430" stroke-width="1"/>
+<text x="1250" y="861" class="mem">-price : long</text>
+<text x="1250" y="878" class="mem">-quantity : int</text>
+<text x="1250" y="895" class="mem">-realizedPnl : BigDecimal</text>
+<text x="1250" y="912" class="mem">-view : ViewData</text>
+<line x1="1240" y1="922" x2="1440" y2="922" stroke="#1B2430" stroke-width="1"/>
+<text x="1250" y="939" class="mem">+getView() : ViewData</text>
+<rect x="1470" y="820" width="170" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1555.0" y="841" class="cname">TurnResult</text>
+<line x1="1470" y1="844" x2="1640" y2="844" stroke="#1B2430" stroke-width="1"/>
+<text x="1480" y="861" class="mem">-completedTurns : int</text>
+<text x="1480" y="878" class="mem">-ended : boolean</text>
+<text x="1480" y="895" class="mem">-view : ViewData</text>
+<line x1="1470" y1="905" x2="1640" y2="905" stroke="#1B2430" stroke-width="1"/>
+<text x="1480" y="922" class="mem">+isEnded() : boolean</text>
+<rect x="1670" y="820" width="210" height="100" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1775.0" y="841" class="cname">SaveResult</text>
+<line x1="1670" y1="844" x2="1880" y2="844" stroke="#1B2430" stroke-width="1"/>
+<text x="1680" y="861" class="mem">-alreadySaved : boolean</text>
+<text x="1680" y="878" class="mem">-location : Path</text>
+<line x1="1670" y1="888" x2="1880" y2="888" stroke="#1B2430" stroke-width="1"/>
+<text x="1680" y="905" class="mem">+isAlreadySaved() : boolean</text>
+<rect x="60" y="1080" width="480" height="380" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="300.0" y="1101" class="cname">GameSession</text>
+<text x="540" y="1075" class="tag">F-01, F-03</text>
+<line x1="60" y1="1104" x2="540" y2="1104" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="1121" class="mem" text-decoration="underline">+TOTAL_TURNS : int = 30</text>
+<text x="70" y="1138" class="mem" text-decoration="underline">+INITIAL_CASH : BigDecimal = 1000000</text>
+<text x="70" y="1155" class="mem" text-decoration="underline">+GOAL_ASSETS : BigDecimal = 1200000</text>
+<text x="70" y="1172" class="mem">-sessionId : UUID</text>
+<text x="70" y="1189" class="mem">-playerName : String</text>
+<text x="70" y="1206" class="mem">-difficulty : Difficulty</text>
+<text x="70" y="1223" class="mem">-state : GameState</text>
+<text x="70" y="1240" class="mem">-completedTurns : int {0..30}</text>
+<text x="70" y="1257" class="mem">-version : long</text>
+<text x="70" y="1274" class="mem">-assetHistory : List&lt;BigDecimal&gt;</text>
+<text x="70" y="1291" class="mem">-weightHistory : List&lt;Map&lt;String, BigDecimal&gt;&gt;</text>
+<line x1="60" y1="1301" x2="540" y2="1301" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="1318" class="mem">+GameSession(name : String, difficulty : Difficulty, seed : long)</text>
+<text x="70" y="1335" class="mem">+closeTurn() : void</text>
+<text x="70" y="1352" class="mem">+nextVersion() : long</text>
+<text x="70" y="1369" class="mem">+getCurrentTurn() : int</text>
+<text x="70" y="1386" class="mem">+getPortfolio() : Portfolio</text>
+<text x="70" y="1403" class="mem">+getMarket() : Market</text>
+<text x="70" y="1420" class="mem">+getNewsService() : NewsService</text>
+<text x="70" y="1437" class="mem">+isEnded() : boolean</text>
+<text x="70" y="1454" class="mem">+snapshot() : GameSnapshot</text>
+<rect x="630" y="1080" width="380" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="820.0" y="1101" class="cname">Portfolio</text>
+<text x="1010" y="1075" class="tag">F-04, F-05, F-06</text>
+<line x1="630" y1="1104" x2="1010" y2="1104" stroke="#1B2430" stroke-width="1"/>
+<text x="640" y="1121" class="mem" text-decoration="underline">+MAX_QUANTITY : int = 99999</text>
+<text x="640" y="1138" class="mem">-cash : BigDecimal {cash &gt;= 0}</text>
+<text x="640" y="1155" class="mem">-holdings : Map&lt;String, Holding&gt;</text>
+<text x="640" y="1172" class="mem">-trades : List&lt;Trade&gt;</text>
+<line x1="630" y1="1182" x2="1010" y2="1182" stroke="#1B2430" stroke-width="1"/>
+<text x="640" y="1199" class="mem">+buy(stock : Stock, qty : int, turn : int) : Trade</text>
+<text x="640" y="1216" class="mem">+sell(stock : Stock, qty : int, turn : int) : Trade</text>
+<text x="640" y="1233" class="mem">+getCash() : BigDecimal</text>
+<text x="640" y="1250" class="mem">+totalAssets(market : Market) : BigDecimal</text>
+<text x="640" y="1267" class="mem">+weights(market : Market) : Map&lt;String, BigDecimal&gt;</text>
+<rect x="630" y="1350" width="330" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="795.0" y="1371" class="cname">Holding</text>
+<line x1="630" y1="1374" x2="960" y2="1374" stroke="#1B2430" stroke-width="1"/>
+<text x="640" y="1391" class="mem">-stockId : String</text>
+<text x="640" y="1408" class="mem">-quantity : int</text>
+<text x="640" y="1425" class="mem">-costBasis : BigDecimal</text>
+<text x="640" y="1442" class="mem">-realizedPnl : BigDecimal</text>
+<line x1="630" y1="1452" x2="960" y2="1452" stroke="#1B2430" stroke-width="1"/>
+<text x="640" y="1469" class="mem">+averagePrice() : BigDecimal</text>
+<text x="640" y="1486" class="mem">+add(qty : int, amount : BigDecimal) : void</text>
+<text x="640" y="1503" class="mem">+remove(qty : int) : BigDecimal</text>
+<text x="640" y="1520" class="mem">+unrealizedPnl(price : long) : BigDecimal</text>
+<rect x="1000" y="1350" width="200" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1100.0" y="1371" class="cname">Trade</text>
+<text x="1200" y="1345" class="tag">F-08</text>
+<line x1="1000" y1="1374" x2="1200" y2="1374" stroke="#1B2430" stroke-width="1"/>
+<text x="1010" y="1391" class="mem">-turn : int</text>
+<text x="1010" y="1408" class="mem">-stockId : String</text>
+<text x="1010" y="1425" class="mem">-side : OrderSide</text>
+<text x="1010" y="1442" class="mem">-quantity : int</text>
+<text x="1010" y="1459" class="mem">-price : long</text>
+<text x="1010" y="1476" class="mem">-realizedPnl : BigDecimal</text>
+<line x1="1000" y1="1486" x2="1200" y2="1486" stroke="#1B2430" stroke-width="1"/>
+<text x="1010" y="1503" class="mem">+getAmount() : long</text>
+<rect x="1290" y="1080" width="420" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1500.0" y="1101" class="cname">Market</text>
+<text x="1710" y="1075" class="tag">F-02, F-03</text>
+<line x1="1290" y1="1104" x2="1710" y2="1104" stroke="#1B2430" stroke-width="1"/>
+<text x="1300" y="1121" class="mem" text-decoration="underline">+MAX_RATE : BigDecimal = 0.20</text>
+<text x="1300" y="1138" class="mem">-stocks : Map&lt;String, Stock&gt;</text>
+<line x1="1290" y1="1148" x2="1710" y2="1148" stroke="#1B2430" stroke-width="1"/>
+<text x="1300" y="1165" class="mem" text-decoration="underline">+createStocks() : List&lt;Stock&gt;</text>
+<text x="1300" y="1182" class="mem">+getStock(id : String) : Stock</text>
+<text x="1300" y="1199" class="mem">+getStocks() : List&lt;Stock&gt;</text>
+<text x="1300" y="1216" class="mem">+applyTurn(draw : TurnDraw, newsEffects :</text>
+<text x="1300" y="1233" class="mem">    Map&lt;String, BigDecimal&gt;, factor : BigDecimal) : void</text>
+<rect x="1290" y="1310" width="300" height="210" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1440.0" y="1331" class="cname">Stock</text>
+<text x="1590" y="1305" class="tag">F-02, F-08</text>
+<line x1="1290" y1="1334" x2="1590" y2="1334" stroke="#1B2430" stroke-width="1"/>
+<text x="1300" y="1351" class="mem">-id : String</text>
+<text x="1300" y="1368" class="mem">-name : String</text>
+<text x="1300" y="1385" class="mem">-sector : Sector</text>
+<text x="1300" y="1402" class="mem">-risk : RiskLevel</text>
+<text x="1300" y="1419" class="mem">-description : String</text>
+<text x="1300" y="1436" class="mem">-priceHistory : List&lt;Long&gt; {price &gt;= 1}</text>
+<line x1="1290" y1="1446" x2="1590" y2="1446" stroke="#1B2430" stroke-width="1"/>
+<text x="1300" y="1463" class="mem">+currentPrice() : long</text>
+<text x="1300" y="1480" class="mem">+changeRate() : BigDecimal</text>
+<text x="1300" y="1497" class="mem">+updatePrice(rate : BigDecimal) : long</text>
+<text x="1300" y="1514" class="mem">+getPriceHistory() : List&lt;Long&gt;</text>
+<rect x="1800" y="1080" width="370" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1985.0" y="1101" class="cname">NewsService</text>
+<text x="2170" y="1075" class="tag">F-07</text>
+<line x1="1800" y1="1104" x2="2170" y2="1104" stroke="#1B2430" stroke-width="1"/>
+<text x="1810" y="1121" class="mem">-difficulty : Difficulty</text>
+<text x="1810" y="1138" class="mem">-draws : List&lt;TurnDraw&gt;</text>
+<text x="1810" y="1155" class="mem">-published : List&lt;News&gt;</text>
+<line x1="1800" y1="1165" x2="2170" y2="1165" stroke="#1B2430" stroke-width="1"/>
+<text x="1810" y="1182" class="mem">+NewsService(seed : long, difficulty : Difficulty)</text>
+<text x="1810" y="1199" class="mem">+drawFor(turn : int) : TurnDraw</text>
+<text x="1810" y="1216" class="mem">+publish(turn : int) : void</text>
+<text x="1810" y="1233" class="mem">+currentNews() : News</text>
+<text x="1810" y="1250" class="mem">+pastNews() : List&lt;News&gt;</text>
+<text x="1810" y="1267" class="mem">+effectsFor(turn : int) : Map&lt;String, BigDecimal&gt;</text>
+<rect x="1800" y="1350" width="300" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1950.0" y="1371" class="cname">TurnDraw</text>
+<line x1="1800" y1="1374" x2="2100" y2="1374" stroke="#1B2430" stroke-width="1"/>
+<text x="1810" y="1391" class="mem">-turn : int</text>
+<text x="1810" y="1408" class="mem">-marketRate : BigDecimal</text>
+<text x="1810" y="1425" class="mem">-sectorRates : Map&lt;Sector, BigDecimal&gt;</text>
+<text x="1810" y="1442" class="mem">-companyRates : Map&lt;String, BigDecimal&gt;</text>
+<text x="1810" y="1459" class="mem">-news : News</text>
+<line x1="1800" y1="1469" x2="2100" y2="1469" stroke="#1B2430" stroke-width="1"/>
+<text x="1810" y="1486" class="mem">+getNews() : News</text>
+<rect x="2190" y="1350" width="300" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="2340.0" y="1371" class="cname">News</text>
+<text x="2490" y="1345" class="tag">F-07</text>
+<line x1="2190" y1="1374" x2="2490" y2="1374" stroke="#1B2430" stroke-width="1"/>
+<text x="2200" y="1391" class="mem">-event : NewsEvent</text>
+<text x="2200" y="1408" class="mem">-publishedTurn : int</text>
+<text x="2200" y="1425" class="mem">-applyTurn : int</text>
+<text x="2200" y="1442" class="mem">-effects : Map&lt;String, BigDecimal&gt;</text>
+<line x1="2190" y1="1452" x2="2490" y2="1452" stroke="#1B2430" stroke-width="1"/>
+<text x="2200" y="1469" class="mem">+isDelayed() : boolean</text>
+<text x="2200" y="1486" class="mem">+hint(difficulty : Difficulty) : String</text>
+<rect x="60" y="1530" width="350" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="235.0" y="1551" class="cname">GameSnapshot</text>
+<line x1="60" y1="1554" x2="410" y2="1554" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="1571" class="mem">-sessionId : UUID</text>
+<text x="70" y="1588" class="mem">-playerName : String</text>
+<text x="70" y="1605" class="mem">-difficulty : Difficulty</text>
+<text x="70" y="1622" class="mem">-state : GameState</text>
+<text x="70" y="1639" class="mem">-completedTurns : int</text>
+<text x="70" y="1656" class="mem">-cash : BigDecimal</text>
+<text x="70" y="1673" class="mem">-stocks : List&lt;Stock&gt;</text>
+<text x="70" y="1690" class="mem">-holdings : List&lt;Holding&gt;</text>
+<text x="70" y="1707" class="mem">-trades : List&lt;Trade&gt;</text>
+<text x="70" y="1724" class="mem">-assetHistory : List&lt;BigDecimal&gt;</text>
+<text x="70" y="1741" class="mem">-weightHistory : List&lt;Map&lt;String, BigDecimal&gt;&gt;</text>
+<line x1="60" y1="1751" x2="410" y2="1751" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="1768" class="mem">+isCompleted() : boolean</text>
+<text x="70" y="1785" class="mem">+findStock(id : String) : Stock</text>
+<text x="70" y="1802" class="mem">+quantityOf(id : String) : int</text>
+<rect x="60" y="1940" width="460" height="150" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="290.0" y="1961" class="cname">ResultEvaluator</text>
+<text x="520" y="1935" class="tag">FN-04 / F-09, F-10</text>
+<line x1="60" y1="1964" x2="520" y2="1964" stroke="#1B2430" stroke-width="1"/>
+<line x1="60" y1="1987" x2="520" y2="1987" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="2004" class="mem">+evaluate(snapshot : GameSnapshot) : GameResult</text>
+<text x="70" y="2021" class="mem">-decideEnding(rate : BigDecimal) : Ending</text>
+<text x="70" y="2038" class="mem">-decideType(snapshot : GameSnapshot) : InvestorType</text>
+<text x="70" y="2055" class="mem">-findAchievements(snapshot : GameSnapshot) : List&lt;Achievement&gt;</text>
+<text x="70" y="2072" class="mem">-maxDrawdown(history : List&lt;BigDecimal&gt;) : BigDecimal</text>
+<rect x="60" y="2150" width="260" height="280" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="190.0" y="2171" class="cname">GameResult</text>
+<text x="320" y="2145" class="tag">F-09</text>
+<line x1="60" y1="2174" x2="320" y2="2174" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="2191" class="mem">-sessionId : UUID</text>
+<text x="70" y="2208" class="mem">-playerName : String</text>
+<text x="70" y="2225" class="mem">-difficulty : Difficulty</text>
+<text x="70" y="2242" class="mem">-finalAssets : BigDecimal</text>
+<text x="70" y="2259" class="mem">-returnRate : BigDecimal</text>
+<text x="70" y="2276" class="mem">-realizedPnl : BigDecimal</text>
+<text x="70" y="2293" class="mem">-unrealizedPnl : BigDecimal</text>
+<text x="70" y="2310" class="mem">-maxDrawdown : BigDecimal</text>
+<text x="70" y="2327" class="mem">-bestStockId : String</text>
+<text x="70" y="2344" class="mem">-tradeCount : int</text>
+<text x="70" y="2361" class="mem">-ending : Ending</text>
+<text x="70" y="2378" class="mem">-investorType : InvestorType</text>
+<text x="70" y="2395" class="mem">-achievements : List&lt;Achievement&gt;</text>
+<line x1="60" y1="2405" x2="320" y2="2405" stroke="#1B2430" stroke-width="1"/>
+<text x="70" y="2422" class="mem">+getTitle() : String</text>
+<rect x="680" y="1940" width="490" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="925.0" y="1956" class="stereo">&lt;&lt;interface&gt;&gt;</text>
+<text x="925.0" y="1973" class="cname">RecordStore</text>
+<text x="1170" y="1935" class="tag">F-10</text>
+<line x1="680" y1="1979" x2="1170" y2="1979" stroke="#1B2430" stroke-width="1"/>
+<line x1="680" y1="2002" x2="1170" y2="2002" stroke="#1B2430" stroke-width="1"/>
+<text x="690" y="2019" class="mem">+saveResult(result : GameResult) : SaveResult</text>
+<text x="690" y="2036" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
+<rect x="680" y="2120" width="490" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="925.0" y="2141" class="cname">RecordRepository</text>
+<text x="1170" y="2115" class="tag">FN-05</text>
+<line x1="680" y1="2144" x2="1170" y2="2144" stroke="#1B2430" stroke-width="1"/>
+<text x="690" y="2161" class="mem">-file : Path</text>
+<line x1="680" y1="2171" x2="1170" y2="2171" stroke="#1B2430" stroke-width="1"/>
+<text x="690" y="2188" class="mem">+RecordRepository(file : Path)</text>
+<text x="690" y="2205" class="mem" text-decoration="underline">+defaultPath() : Path</text>
+<text x="690" y="2222" class="mem">+saveResult(result : GameResult) : SaveResult</text>
+<text x="690" y="2239" class="mem">+readRecords(name : String, difficulty : Difficulty) : RecordEntry</text>
+<text x="690" y="2256" class="mem">-loadAll() : List&lt;RecordEntry&gt;</text>
+<text x="690" y="2273" class="mem">-writeAtomically(entries : List&lt;RecordEntry&gt;) : void</text>
+<rect x="680" y="2340" width="310" height="200" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="835.0" y="2361" class="cname">RecordEntry</text>
+<line x1="680" y1="2364" x2="990" y2="2364" stroke="#1B2430" stroke-width="1"/>
+<text x="690" y="2381" class="mem">-playerName : String</text>
+<text x="690" y="2398" class="mem">-difficulty : Difficulty</text>
+<text x="690" y="2415" class="mem">-bestAssets : BigDecimal</text>
+<text x="690" y="2432" class="mem">-bestReturnRate : BigDecimal</text>
+<text x="690" y="2449" class="mem">-playCount : int</text>
+<text x="690" y="2466" class="mem">-endings : Set&lt;Ending&gt;</text>
+<text x="690" y="2483" class="mem">-achievements : Map&lt;Achievement, Integer&gt;</text>
+<text x="690" y="2500" class="mem">-savedSessions : Set&lt;UUID&gt;</text>
+<line x1="680" y1="2510" x2="990" y2="2510" stroke="#1B2430" stroke-width="1"/>
+<text x="690" y="2527" class="mem">+merge(result : GameResult) : boolean</text>
+<rect x="1330" y="1940" width="230" height="140" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1445.0" y="1956" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1445.0" y="1973" class="cname">Difficulty</text>
+<line x1="1330" y1="1979" x2="1560" y2="1979" stroke="#1B2430" stroke-width="1"/>
+<text x="1340" y="1996" class="mem">EASY</text>
+<text x="1340" y="2013" class="mem">NORMAL</text>
+<text x="1340" y="2030" class="mem">HARD</text>
+<text x="1340" y="2047" class="mem">-volatilityFactor : BigDecimal</text>
+<rect x="1330" y="2110" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1395.0" y="2126" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1395.0" y="2143" class="cname">GameState</text>
+<line x1="1330" y1="2149" x2="1460" y2="2149" stroke="#1B2430" stroke-width="1"/>
+<text x="1340" y="2166" class="mem">READY</text>
+<text x="1340" y="2183" class="mem">UPDATING</text>
+<text x="1340" y="2200" class="mem">ENDED</text>
+<rect x="1330" y="2270" width="130" height="110" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1395.0" y="2286" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1395.0" y="2303" class="cname">OrderSide</text>
+<line x1="1330" y1="2309" x2="1460" y2="2309" stroke="#1B2430" stroke-width="1"/>
+<text x="1340" y="2326" class="mem">BUY</text>
+<text x="1340" y="2343" class="mem">SELL</text>
+<rect x="1590" y="1940" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1655.0" y="1956" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1655.0" y="1973" class="cname">Sector</text>
+<line x1="1590" y1="1979" x2="1720" y2="1979" stroke="#1B2430" stroke-width="1"/>
+<text x="1600" y="1996" class="mem">TECH</text>
+<text x="1600" y="2013" class="mem">ENERGY</text>
+<text x="1600" y="2030" class="mem">TRANSPORT</text>
+<rect x="1590" y="2100" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1655.0" y="2116" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1655.0" y="2133" class="cname">RiskLevel</text>
+<line x1="1590" y1="2139" x2="1720" y2="2139" stroke="#1B2430" stroke-width="1"/>
+<text x="1600" y="2156" class="mem">LOW</text>
+<text x="1600" y="2173" class="mem">MEDIUM</text>
+<text x="1600" y="2190" class="mem">HIGH</text>
+<rect x="1590" y="2260" width="140" height="180" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1660.0" y="2276" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1660.0" y="2293" class="cname">NewsEvent</text>
+<line x1="1590" y1="2299" x2="1730" y2="2299" stroke="#1B2430" stroke-width="1"/>
+<text x="1600" y="2316" class="mem">TECH_SUCCESS</text>
+<text x="1600" y="2333" class="mem">TECH_DEFECT</text>
+<text x="1600" y="2350" class="mem">ENERGY_PRICE_UP</text>
+<text x="1600" y="2367" class="mem">GREEN_POWER</text>
+<text x="1600" y="2384" class="mem">LOGISTICS_DEMAND</text>
+<text x="1600" y="2401" class="mem">ECONOMY_SLOWDOWN</text>
+<rect x="1760" y="1940" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1825.0" y="1956" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1825.0" y="1973" class="cname">Ending</text>
+<line x1="1760" y1="1979" x2="1890" y2="1979" stroke="#1B2430" stroke-width="1"/>
+<text x="1770" y="1996" class="mem">PROFIT</text>
+<text x="1770" y="2013" class="mem">MAINTAIN</text>
+<text x="1770" y="2030" class="mem">RETRY</text>
+<rect x="1760" y="2100" width="130" height="160" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1825.0" y="2116" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1825.0" y="2133" class="cname">InvestorType</text>
+<line x1="1760" y1="2139" x2="1890" y2="2139" stroke="#1B2430" stroke-width="1"/>
+<text x="1770" y="2156" class="mem">CONCENTRATED</text>
+<text x="1770" y="2173" class="mem">STABLE</text>
+<text x="1770" y="2190" class="mem">AGGRESSIVE</text>
+<text x="1770" y="2207" class="mem">DIVERSIFIED</text>
+<text x="1770" y="2224" class="mem">BALANCED</text>
+<rect x="1760" y="2290" width="130" height="130" fill="#FFFFFF" stroke="#1B2430" stroke-width="1.2"/>
+<text x="1825.0" y="2306" class="stereo">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1825.0" y="2323" class="cname">Achievement</text>
+<line x1="1760" y1="2329" x2="1890" y2="2329" stroke="#1B2430" stroke-width="1"/>
+<text x="1770" y="2346" class="mem">NO_LOSS</text>
+<text x="1770" y="2363" class="mem">LONG_HOLD</text>
+<text x="1770" y="2380" class="mem">DIVERSIFIED</text>
+<text x="60" y="2630" class="legend">파란 글씨: 연결 기능(F), 함수 명세(FN), 화면(UI) 번호 · 밑줄: static · { } : 제약 · 실선 화살표: 연관 · 점선 화살표: 의존 · 빈 삼각형: 일반화 · 점선 빈 삼각형: 실체화 · 검은 마름모: 합성 · 흰 마름모: 집합</text>
 </svg>

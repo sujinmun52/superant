@@ -22,6 +22,7 @@ public class PriceChartPanel extends JPanel {
     private static final int TURNS = 30;
 
     private List<Long> prices = new ArrayList<>();
+    private boolean live;
 
     /**
      * 빈 차트를 만든다.
@@ -38,6 +39,16 @@ public class PriceChartPanel extends JPanel {
      */
     public void setPrices(List<Long> prices) {
         this.prices = new ArrayList<>(prices);
+        repaint();
+    }
+
+    /**
+     * 장중 애니메이션 중임을 표시하는 LIVE 배지를 켜거나 끈다.
+     *
+     * @param live 애니메이션 중이면 true
+     */
+    public void setLive(boolean live) {
+        this.live = live;
         repaint();
     }
 
@@ -125,6 +136,17 @@ public class PriceChartPanel extends JPanel {
         g2.draw(path);
         int ly = yOf(last, lo, hi, top, h);
         g2.fillOval((int) lastX - 4, ly - 4, 8, 8);
+        if (live) {
+            g2.setColor(new Color(line.getRed(), line.getGreen(), line.getBlue(), 70));
+            g2.fillOval((int) lastX - 9, ly - 9, 18, 18);
+            g2.setFont(Theme.font(12, true));
+            String badge = "● LIVE";
+            int bw = g2.getFontMetrics().stringWidth(badge) + 14;
+            g2.setColor(Theme.UP);
+            g2.fillRoundRect(left + w - bw, top, bw, 20, 10, 10);
+            g2.setColor(Color.WHITE);
+            g2.drawString(badge, left + w - bw + 7, top + 15);
+        }
         g2.dispose();
     }
 

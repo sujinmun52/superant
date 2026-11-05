@@ -84,7 +84,7 @@ public final class ScreenshotTool {
             call(frame, "status", "바른물류 매수 20주 체결 (120,000원)", Theme.UP);
         });
         Thread.sleep(300);
-        shot(frame.getContentPane(), "beta_2_game_turn1", "게임 화면 1턴: 4종목 매수 후 HUD, EASY 뉴스 힌트, 포트폴리오");
+        shot(frame.getContentPane(), "beta_2_game_turn1", "게임 화면 1턴: 4종목 매수 후 보유 종목 강조(민트 막대), 내 보유 정보, EASY 뉴스 힌트");
 
         for (int i = 0; i < 11; i++) {
             v = controller.advanceTurn(v.getVersion(), UUID.randomUUID()).getView();
@@ -99,13 +99,16 @@ public final class ScreenshotTool {
         Thread.sleep(300);
         shot(frame.getContentPane(), "beta_3_game_turn12", "12턴: 가격 차트와 거래 내역 탭, 매도 실현 손익 표시");
 
-        SwingUtilities.invokeAndWait(() -> {
-            frame.refresh(v2);
-            call(frame, "selectTab", 0);
-        });
-        captureOrderDialog(v2);
+        SwingUtilities.invokeAndWait(() -> call(frame, "selectTab", 0));
+        SwingUtilities.invokeAndWait(() -> call(frame, "onNextTurn"));
+        Thread.sleep(1250);
+        shot(frame.getContentPane(), "beta_4_live", "턴 마감 장중 애니메이션: 가격이 틱 단위로 오르내리고(빨강/파랑 깜빡임) 차트에 LIVE 표시");
+        Thread.sleep(2600);
+        v = controller.getView();
+        final ViewData v2b = v;
+        captureOrderDialog(v2b);
 
-        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < 18; i++) {
             v = controller.advanceTurn(v.getVersion(), UUID.randomUUID()).getView();
         }
         final ViewData v3 = v;
@@ -114,16 +117,16 @@ public final class ScreenshotTool {
             call(frame, "selectTab", 2);
         });
         Thread.sleep(300);
-        shot(frame.getContentPane(), "beta_5_game_end", "30턴 종료: 거래 버튼 비활성화, 결과 보기 버튼, 뉴스 피드");
+        shot(frame.getContentPane(), "beta_6_game_end", "30턴 종료: 거래 버튼 비활성화, 결과 보기 버튼, 뉴스 피드");
 
         AtomicReference<ResultDialog> rd = new AtomicReference<>();
         SwingUtilities.invokeAndWait(() -> rd.set(new ResultDialog(frame, controller, controller.evaluateResult())));
         SwingUtilities.invokeAndWait(() -> call(rd.get(), "onSave"));
-        shot(rd.get().getContentPane(), "beta_6_result", "결과 화면: 엔딩 칭호, 성과 지표 8개, 업적, 자산 추이, 저장 완료");
+        shot(rd.get().getContentPane(), "beta_7_result", "결과 화면: 엔딩 칭호, 성과 지표 8개, 업적, 자산 추이, 저장 완료");
 
         AtomicReference<RecordDialog> rec = new AtomicReference<>();
         SwingUtilities.invokeAndWait(() -> rec.set(new RecordDialog(frame, controller, "개미왕", Difficulty.EASY)));
-        shot(rec.get().getContentPane(), "beta_7_records", "기록 조회 화면: 최고 자산, 달성 엔딩, 업적 횟수");
+        shot(rec.get().getContentPane(), "beta_8_records", "기록 조회 화면: 최고 자산, 달성 엔딩, 업적 횟수");
 
         GameController hard = new GameController(new RecordRepository(records), new Random(99));
         SwingUtilities.invokeAndWait(() -> {
@@ -150,7 +153,7 @@ public final class ScreenshotTool {
             call(frame, "status", hv.getCurrentTurn() - 1 + "턴 마감 완료", Theme.MINT);
         });
         Thread.sleep(300);
-        shot(frame.getContentPane(), "beta_8_hard", "HARD 모드: 수치 대신 지연 가능성만 안내하는 뉴스");
+        shot(frame.getContentPane(), "beta_9_hard", "HARD 모드: 수치 대신 지연 가능성만 안내하는 뉴스");
 
         SwingUtilities.invokeAndWait(() -> frame.dispose());
         System.exit(0);
@@ -161,7 +164,7 @@ public final class ScreenshotTool {
             for (java.awt.Window w : java.awt.Window.getWindows()) {
                 if (w instanceof OrderDialog && w.isShowing()) {
                     try {
-                        shot(((JDialog) w).getContentPane(), "beta_4_order", "주문 확인 창: 체결 가격, 주문 금액, 주문 후 현금");
+                        shot(((JDialog) w).getContentPane(), "beta_5_order", "주문 확인 창: 체결 가격, 주문 금액, 주문 후 현금");
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }

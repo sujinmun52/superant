@@ -10,7 +10,10 @@ import java.awt.GridLayout;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.swing.BorderFactory;
@@ -26,6 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -98,6 +102,16 @@ public class MainFrame extends JFrame {
     private final CardLayout tabCards = new CardLayout();
     private final JPanel tabBody = new JPanel(tabCards);
     private final List<Widgets.FlatButton> tabButtons = new ArrayList<>();
+
+    private final JLabel holdLabel = Theme.label(" ", 13, Theme.MUTED, true);
+
+    private static final int TICK_FRAMES = 40;
+    private static final int TICK_MS = 55;
+    private final Random tickRandom = new Random();
+    private final Map<String, Integer> tickDir = new HashMap<>();
+    private Timer ticker;
+    private ViewData tickBefore;
+    private TurnResult tickResult;
 
     private ViewData view;
     private String selectedId = "S01";
@@ -203,6 +217,7 @@ public class MainFrame extends JFrame {
         cash.setLayout(new BoxLayout(cash, BoxLayout.Y_AXIS));
         cash.add(Theme.label("주문 가능 현금", 12, Theme.MUTED, true));
         cash.add(cashLabel);
+        cash.add(holdLabel);
         hud.add(cash);
         return hud;
     }
@@ -268,18 +283,18 @@ public class MainFrame extends JFrame {
         p.setBorder(Theme.cardBorder(12));
         JPanel head = new JPanel(new BorderLayout());
         head.setOpaque(false);
-        JPanel left = new JPanel(new GridLayout(2, 1));
+        JPanel left = new JPanel(new GridLayout(3, 1));
         left.setOpaque(false);
         left.add(detailName);
         left.add(detailMeta);
-        JPanel right = new JPanel(new GridLayout(3, 1));
+        detailHolding.setFont(Theme.font(14, true));
+        left.add(detailHolding);
+        JPanel right = new JPanel(new GridLayout(2, 1));
         right.setOpaque(false);
         detailPrice.setHorizontalAlignment(SwingConstants.RIGHT);
         detailChange.setHorizontalAlignment(SwingConstants.RIGHT);
-        detailHolding.setHorizontalAlignment(SwingConstants.RIGHT);
         right.add(detailPrice);
         right.add(detailChange);
-        right.add(detailHolding);
         head.add(left, BorderLayout.CENTER);
         head.add(right, BorderLayout.EAST);
         p.add(head, BorderLayout.NORTH);
@@ -408,6 +423,16 @@ public class MainFrame extends JFrame {
                 data.getTotalAssets().subtract(GameSession.INITIAL_CASH)) + ")  ");
         rateLabel.setForeground(Theme.trend(data.getReturnRate()));
         cashLabel.setText(Theme.won(s.getCash()));
+        int heldCount = 0;
+        BigDecimal heldPnl = BigDecimal.ZERO;
+        for (Holding h : s.getHoldings()) {
+            if (h.getQuantity() > 0) {
+                heldCount++;
+                heldPnl = heldPnl.add(h.unrealizedPnl(s.findStock(h.getStockId()).currentPrice()));
+            }
+        }
+        holdLabel.setText(heldCount == 0 ? "보유 종목 없음" : "보유 " + heldCount + "종목 · 평가손익 " + Theme.signedWon(heldPnl) + " ");
+        holdLabel.setForeground(heldCount == 0 ? Theme.MUTED : Theme.trend(heldPnl));
         double ratio = data.getTotalAssets().doubleValue() / GameSession.GOAL_ASSETS.doubleValue();
         gauge.setRatio(ratio);
         BigDecimal left = GameSession.GOAL_ASSETS.subtract(data.getTotalAssets());
@@ -481,10 +506,7 @@ public class MainFrame extends JFrame {
         newsArea.setText(sb.length() == 0 ? "아직 발표된 뉴스가 없습니다." : sb.toString());
         newsArea.setCaretPosition(0);
 
-        buyButton.setEnabled(!ended);
-        sellButton.setEnabled(!ended);
-        maxButton.setEnabled(!ended);
-        qtySpinner.setEnabled(!ended);
+        setTradingEnabled(!ended);
         if (ended) {
             nextButton.setText("결과 보기 ▶");
             nextButton.setBase(Theme.GOLD);
@@ -510,7 +532,23 @@ public class MainFrame extends JFrame {
         detailChange.setText((ch.signum() > 0 ? "▲ " : ch.signum() < 0 ? "▼ " : "") + Theme.pct(ch) + " (직전 턴 대비) ");
         detailChange.setForeground(Theme.trend(ch));
         int qty = s.quantityOf(st.getId());
-        detailHolding.setText(qty > 0 ? "보유 " + String.format("%,d주", qty) : "보유 없음");
+        Holding held = null;
+        for (Holding h : s.getHoldings()) {
+            if (h.getStockId().equals(st.getId()) && h.getQuantity() > 0) {
+                held = h;
+            }
+        }
+        if (held == null) {
+            detailHolding.setText("보유하지 않은 종목");
+            detailHolding.setForeground(Theme.MUTED);
+        } else {
+            BigDecimal pnl = held.unrealizedPnl(st.currentPrice());
+            BigDecimal rate = pnl.multiply(BigDecimal.valueOf(100))
+                    .divide(held.getCostBasis(), 2, RoundingMode.HALF_UP);
+            detailHolding.setText(String.format("● 내 보유 %,d주 · 평균 %s · 평가손익 %s (%s) ", qty,
+                    Theme.won(held.averagePrice()), Theme.signedWon(pnl), Theme.pct(rate)));
+            detailHolding.setForeground(pnl.signum() == 0 ? Theme.MINT : Theme.trend(pnl));
+        }
         chartPanel.setPrices(st.getPriceHistory());
     }
 
@@ -603,23 +641,137 @@ public class MainFrame extends JFrame {
         if (view == null) {
             return;
         }
+        if (ticker != null) {
+            finishTicks();
+            return;
+        }
         if (view.getSnapshot().isCompleted()) {
             showResult();
             return;
         }
-        BigDecimal before = view.getTotalAssets();
+        ViewData before = view;
         TurnResult r = controller.advanceTurn(view.getVersion(), UUID.randomUUID());
         if (!r.isSuccess()) {
             status(r.getMessage(), Theme.UP);
             refresh(controller.getView());
             return;
         }
+        animateTurn(before, r);
+    }
+
+    /**
+     * 턴 마감 장중 애니메이션. 확정된 종가는 이미 컨트롤러가 계산했고,
+     * 화면은 이전 종가에서 새 종가까지 무작위로 흔들리는 경로를 약 2초 동안 보여 준다.
+     * 경로의 마지막 값은 항상 실제 종가와 같으므로 게임 결과에는 영향이 없다.
+     *
+     * @param before 마감 전 화면 데이터
+     * @param result 턴 마감 결과 (마감 후 화면 데이터 포함)
+     */
+    private void animateTurn(ViewData before, TurnResult result) {
+        tickBefore = before;
+        tickResult = result;
+        GameSnapshot b = before.getSnapshot();
+        GameSnapshot a = result.getView().getSnapshot();
+        List<Stock> stocks = b.getStocks();
+        long[][] paths = new long[stocks.size()][];
+        for (int i = 0; i < stocks.size(); i++) {
+            Stock s = stocks.get(i);
+            paths[i] = tickPath(s.currentPrice(), a.findStock(s.getId()).currentPrice(), s.getRisk());
+        }
+        setTradingEnabled(false);
+        nextButton.setText("건너뛰기 ▶▶");
+        nextButton.setBase(Theme.GOLD);
+        turnLabel.setText(String.format("TURN %02d · 장 진행 중", before.getCurrentTurn()));
+        newsBadge.setText(" LIVE ");
+        newsBadge.setBackground(Theme.UP);
+        chartPanel.setLive(true);
+        status("장 진행 중... 가격이 움직이고 있습니다", Theme.GOLD);
+        int[] frame = {0};
+        ticker = new Timer(TICK_MS, e -> {
+            frame[0]++;
+            if (frame[0] > TICK_FRAMES) {
+                finishTicks();
+            } else {
+                renderTick(b, paths, frame[0]);
+            }
+        });
+        ticker.start();
+    }
+
+    private long[] tickPath(long from, long to, RiskLevel risk) {
+        int n = TICK_FRAMES;
+        double total = from * risk.getMaxBasisPoints() / 10000.0 * 0.45;
+        double step = total / Math.sqrt(n);
+        double[] w = new double[n + 1];
+        for (int k = 1; k <= n; k++) {
+            w[k] = w[k - 1] + tickRandom.nextGaussian() * step;
+        }
+        long[] p = new long[n + 1];
+        for (int k = 0; k <= n; k++) {
+            double t = k / (double) n;
+            double bridge = w[k] - t * w[n];
+            p[k] = Math.max(1, Math.round(from + (to - from) * t + bridge));
+        }
+        p[0] = from;
+        p[n] = to;
+        return p;
+    }
+
+    private void renderTick(GameSnapshot b, long[][] paths, int k) {
+        BigDecimal total = b.getCash();
+        refreshing = true;
+        List<Stock> stocks = b.getStocks();
+        for (int i = 0; i < stocks.size(); i++) {
+            Stock s = stocks.get(i);
+            long p = paths[i][k];
+            tickDir.put(s.getId(), Long.compare(p, paths[i][k - 1]));
+            BigDecimal ch = BigDecimal.valueOf(p - s.currentPrice()).multiply(BigDecimal.valueOf(100))
+                    .divide(BigDecimal.valueOf(s.currentPrice()), 2, RoundingMode.HALF_UP);
+            stockModel.setValueAt(String.format("%,d", p), i, 4);
+            stockModel.setValueAt(ch, i, 5);
+            total = total.add(BigDecimal.valueOf(p).multiply(BigDecimal.valueOf(b.quantityOf(s.getId()))));
+            if (s.getId().equals(selectedId)) {
+                detailPrice.setText(Theme.won(p));
+                detailChange.setText((ch.signum() > 0 ? "▲ " : ch.signum() < 0 ? "▼ " : "") + Theme.pct(ch) + " (장중) ");
+                detailChange.setForeground(Theme.trend(ch));
+                List<Long> h = new ArrayList<>(s.getPriceHistory());
+                h.add(p);
+                chartPanel.setPrices(h);
+            }
+        }
+        refreshing = false;
+        BigDecimal diff = total.subtract(GameSession.INITIAL_CASH);
+        assetLabel.setText(Theme.won(total));
+        rateLabel.setText("수익률 " + Theme.pct(diff.multiply(BigDecimal.valueOf(100))
+                .divide(GameSession.INITIAL_CASH, 2, RoundingMode.HALF_UP)) + "  (" + Theme.signedWon(diff) + ")  ");
+        rateLabel.setForeground(Theme.trend(diff));
+    }
+
+    private void finishTicks() {
+        if (ticker != null) {
+            ticker.stop();
+            ticker = null;
+        }
+        tickDir.clear();
+        chartPanel.setLive(false);
+        TurnResult r = tickResult;
+        if (r == null) {
+            return;
+        }
+        tickResult = null;
         refresh(r.getView());
-        BigDecimal diff = r.getView().getTotalAssets().subtract(before);
-        status(r.getCompletedTurns() + "턴 마감 · 총자산 " + Theme.signedWon(diff), Theme.trend(diff));
+        BigDecimal diff = r.getView().getTotalAssets().subtract(tickBefore.getTotalAssets());
+        status(r.getCompletedTurns() + "턴 장 마감 · 총자산 " + Theme.signedWon(diff), Theme.trend(diff));
         if (r.isEnded()) {
             showResult();
         }
+    }
+
+    private void setTradingEnabled(boolean on) {
+        buyButton.setEnabled(on);
+        sellButton.setEnabled(on);
+        maxButton.setEnabled(on);
+        qtySpinner.setEnabled(on);
     }
 
     /**
@@ -661,13 +813,20 @@ public class MainFrame extends JFrame {
         statusLabel.setForeground(color);
     }
 
-    /** 시장 표 셀 렌더러: 위험도 색 점, 등락률 색. */
-    private static final class MarketRenderer extends DefaultTableCellRenderer {
+    /** 시장 표 셀 렌더러: 위험도 색 점, 등락률 색, 보유 종목 강조, 장중 틱 깜빡임. */
+    private final class MarketRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable t, Object v, boolean sel, boolean focus, int row, int col) {
             super.getTableCellRendererComponent(t, v, sel, false, row, col);
+            int modelRow = t.convertRowIndexToModel(row);
+            String id = (String) stockModel.getValueAt(modelRow, 0);
+            boolean held = !"-".equals(stockModel.getValueAt(modelRow, 6));
             setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
             setForeground(Theme.TEXT);
+            if (col == 0 && held) {
+                setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, Theme.MINT),
+                        BorderFactory.createEmptyBorder(0, 6, 0, 10)));
+            }
             setFont(Theme.font(13, col == 0));
             setHorizontalAlignment(col >= 3 ? SwingConstants.RIGHT : col == 0 ? SwingConstants.LEFT : SwingConstants.CENTER);
             if (v instanceof RiskLevel) {
@@ -678,8 +837,19 @@ public class MainFrame extends JFrame {
                 BigDecimal b = (BigDecimal) v;
                 setText((b.signum() > 0 ? "▲ " : b.signum() < 0 ? "▼ " : "") + Theme.pct(b));
                 setForeground(Theme.trend(b));
+            } else if (col == 5 && held) {
+                setText("● " + v);
+                setForeground(Theme.MINT);
+                setFont(Theme.font(13, true));
             }
-            setBackground(sel ? t.getSelectionBackground() : Theme.PANEL);
+            Color bg = sel ? t.getSelectionBackground() : Theme.PANEL;
+            Integer dir = tickDir.get(id);
+            if (dir != null && col == 3) {
+                bg = dir > 0 ? new Color(0x4A1E28) : dir < 0 ? new Color(0x1A2C4D) : bg;
+                setForeground(dir > 0 ? Theme.UP : dir < 0 ? Theme.DOWN : Theme.TEXT);
+                setFont(Theme.font(13, true));
+            }
+            setBackground(bg);
             return this;
         }
     }

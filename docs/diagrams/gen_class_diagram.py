@@ -105,6 +105,7 @@ box("MainFrame", "MainFrame", [
     "-onBuy() : void",
     "-onSell() : void",
     "-onNextTurn() : void",
+    "-animateTurn(before : ViewData, result : TurnResult) : void",
     "-showResult() : void",
 ], tags="UI-02 / F-02~08")
 box("StartPanel", "StartPanel", [
